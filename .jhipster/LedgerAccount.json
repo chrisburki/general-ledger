@@ -1,0 +1,64 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "chartOfAccounts",
+            "otherEntityName": "chartOfAccounts",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "upperAccount",
+            "otherEntityName": "ledgerAccount",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "key",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
+        },
+        {
+            "fieldName": "accountType",
+            "fieldType": "LedgerAccountType",
+            "fieldValues": "ASSETS,LIABILITIES,INCOME,EXPENSE,OFFBALANCE"
+        },
+        {
+            "fieldName": "orderedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "level",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "isleaf",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "balanceAccountId",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180213205742",
+    "entityTableName": "ledger_account",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

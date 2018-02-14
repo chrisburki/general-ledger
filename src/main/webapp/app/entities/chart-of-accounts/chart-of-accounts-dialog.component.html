@@ -1,0 +1,79 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myChartOfAccountsLabel" jhiTranslate="ledgerApp.chartOfAccounts.home.createOrEditLabel">Create or edit a Chart Of Accounts</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!chartOfAccounts.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="chartOfAccounts.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="chartOfAccounts.name" required maxlength="200"/>
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                   This field cannot be longer than 200 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.key" for="field_key">Key</label>
+            <input type="text" class="form-control" name="key" id="field_key"
+                [(ngModel)]="chartOfAccounts.key" required maxlength="60"/>
+            <div [hidden]="!(editForm.controls.key?.dirty && editForm.controls.key?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.key?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.key?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.accountingStandard" for="field_accountingStandard">Accounting Standard</label>
+            <select class="form-control" name="accountingStandard" [(ngModel)]="chartOfAccounts.accountingStandard" id="field_accountingStandard" >
+                <option value="IFRS">{{'ledgerApp.AccountingStandard.IFRS' | translate}}</option>
+                <option value="HGB">{{'ledgerApp.AccountingStandard.HGB' | translate}}</option>
+                <option value="ACUDBU">{{'ledgerApp.AccountingStandard.ACUDBU' | translate}}</option>
+                <option value="RRVEBK">{{'ledgerApp.AccountingStandard.RRVEBK' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.isMain" for="field_isMain">Is Main</label>
+            <input type="checkbox" class="form-control" name="isMain" id="field_isMain"
+                [(ngModel)]="chartOfAccounts.isMain" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.legalEntityId" for="field_legalEntityId">Legal Entity Id</label>
+            <input type="text" class="form-control" name="legalEntityId" id="field_legalEntityId"
+                [(ngModel)]="chartOfAccounts.legalEntityId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.positionKeepingId" for="field_positionKeepingId">Position Keeping Id</label>
+            <input type="text" class="form-control" name="positionKeepingId" id="field_positionKeepingId"
+                [(ngModel)]="chartOfAccounts.positionKeepingId" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

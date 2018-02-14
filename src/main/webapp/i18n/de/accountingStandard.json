@@ -1,0 +1,11 @@
+{
+    "ledgerApp": {
+        "AccountingStandard" : {
+            "null": "",
+            "IFRS": "IFRS",
+            "HGB": "HGB",
+            "ACUDBU": "ACUDBU",
+            "RRVEBK": "RRVEBK"
+        }
+    }
+}

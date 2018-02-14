@@ -1,0 +1,46 @@
+
+<div *ngIf="chartOfAccounts">
+    <h2><span jhiTranslate="ledgerApp.chartOfAccounts.detail.title">Chart Of Accounts</span> {{chartOfAccounts.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ledgerApp.chartOfAccounts.name">Name</span></dt>
+        <dd>
+            <span>{{chartOfAccounts.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.chartOfAccounts.key">Key</span></dt>
+        <dd>
+            <span>{{chartOfAccounts.key}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.chartOfAccounts.accountingStandard">Accounting Standard</span></dt>
+        <dd>
+            <span jhiTranslate="{{'ledgerApp.AccountingStandard.' + chartOfAccounts.accountingStandard}}">{{chartOfAccounts.accountingStandard}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.chartOfAccounts.isMain">Is Main</span></dt>
+        <dd>
+            <span>{{chartOfAccounts.isMain}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.chartOfAccounts.legalEntityId">Legal Entity Id</span></dt>
+        <dd>
+            <span>{{chartOfAccounts.legalEntityId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.chartOfAccounts.positionKeepingId">Position Keeping Id</span></dt>
+        <dd>
+            <span>{{chartOfAccounts.positionKeepingId}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'chart-of-accounts/'+ chartOfAccounts.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,30 @@
+
+{
+    "ledgerApp": {
+        "ledgerAccount" : {
+            "home": {
+                "title": "Ledger Accounts",
+                "createLabel": "Ledger Account erstellen",
+                "createOrEditLabel": "Ledger Account erstellen oder bearbeiten"
+            },
+            "created": "Ledger Account erstellt mit ID {{ param }}",
+            "updated": "Ledger Account aktualisiert mit ID {{ param }}",
+            "deleted": "Ledger Account gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Ledger Account {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Ledger Account"
+            },
+            "name": "Name",
+            "key": "Key",
+            "accountType": "Account Type",
+            "orderedBy": "Ordered By",
+            "level": "Level",
+            "isleaf": "Isleaf",
+            "balanceAccountId": "Balance Account Id",
+            "chartOfAccounts": "Chart Of Accounts",
+            "upperAccount": "Upper Account"
+        }
+    }
+}

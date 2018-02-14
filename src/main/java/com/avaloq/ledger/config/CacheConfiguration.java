@@ -42,6 +42,8 @@ public class CacheConfiguration {
             cm.createCache(com.avaloq.ledger.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.avaloq.ledger.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.avaloq.ledger.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.avaloq.ledger.domain.ChartOfAccounts.class.getName(), jcacheConfiguration);
+            cm.createCache(com.avaloq.ledger.domain.LedgerAccount.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

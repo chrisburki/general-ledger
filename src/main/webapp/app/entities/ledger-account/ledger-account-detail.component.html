@@ -1,0 +1,62 @@
+
+<div *ngIf="ledgerAccount">
+    <h2><span jhiTranslate="ledgerApp.ledgerAccount.detail.title">Ledger Account</span> {{ledgerAccount.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ledgerApp.ledgerAccount.name">Name</span></dt>
+        <dd>
+            <span>{{ledgerAccount.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.ledgerAccount.key">Key</span></dt>
+        <dd>
+            <span>{{ledgerAccount.key}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.ledgerAccount.accountType">Account Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'ledgerApp.LedgerAccountType.' + ledgerAccount.accountType}}">{{ledgerAccount.accountType}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.ledgerAccount.orderedBy">Ordered By</span></dt>
+        <dd>
+            <span>{{ledgerAccount.orderedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.ledgerAccount.level">Level</span></dt>
+        <dd>
+            <span>{{ledgerAccount.level}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.ledgerAccount.isleaf">Isleaf</span></dt>
+        <dd>
+            <span>{{ledgerAccount.isleaf}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.ledgerAccount.balanceAccountId">Balance Account Id</span></dt>
+        <dd>
+            <span>{{ledgerAccount.balanceAccountId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.ledgerAccount.chartOfAccounts">Chart Of Accounts</span></dt>
+        <dd>
+            <div *ngIf="ledgerAccount.chartOfAccounts">
+                <a [routerLink]="['/chart-of-accounts', ledgerAccount.chartOfAccounts?.id]">{{ledgerAccount.chartOfAccounts?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.ledgerAccount.upperAccount">Upper Account</span></dt>
+        <dd>
+            <div *ngIf="ledgerAccount.upperAccount">
+                <a [routerLink]="['/ledger-account', ledgerAccount.upperAccount?.id]">{{ledgerAccount.upperAccount?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ledger-account/'+ ledgerAccount.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

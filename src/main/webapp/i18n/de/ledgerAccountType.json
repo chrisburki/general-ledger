@@ -1,0 +1,12 @@
+{
+    "ledgerApp": {
+        "LedgerAccountType" : {
+            "null": "",
+            "ASSETS": "ASSETS",
+            "LIABILITIES": "LIABILITIES",
+            "INCOME": "INCOME",
+            "EXPENSE": "EXPENSE",
+            "OFFBALANCE": "OFFBALANCE"
+        }
+    }
+}

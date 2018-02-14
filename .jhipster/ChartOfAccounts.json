@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "key",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
+        },
+        {
+            "fieldName": "accountingStandard",
+            "fieldType": "AccountingStandard",
+            "fieldValues": "IFRS,HGB,ACUDBU,RRVEBK"
+        },
+        {
+            "fieldName": "isMain",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "legalEntityId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "positionKeepingId",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180213205741",
+    "entityTableName": "chart_of_accounts",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

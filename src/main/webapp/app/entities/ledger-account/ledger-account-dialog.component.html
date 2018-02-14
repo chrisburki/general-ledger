@@ -1,0 +1,99 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLedgerAccountLabel" jhiTranslate="ledgerApp.ledgerAccount.home.createOrEditLabel">Create or edit a Ledger Account</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!ledgerAccount.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="ledgerAccount.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.ledgerAccount.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="ledgerAccount.name" required maxlength="200"/>
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                   This field cannot be longer than 200 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.ledgerAccount.key" for="field_key">Key</label>
+            <input type="text" class="form-control" name="key" id="field_key"
+                [(ngModel)]="ledgerAccount.key" required maxlength="60"/>
+            <div [hidden]="!(editForm.controls.key?.dirty && editForm.controls.key?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.key?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.key?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.ledgerAccount.accountType" for="field_accountType">Account Type</label>
+            <select class="form-control" name="accountType" [(ngModel)]="ledgerAccount.accountType" id="field_accountType" >
+                <option value="ASSETS">{{'ledgerApp.LedgerAccountType.ASSETS' | translate}}</option>
+                <option value="LIABILITIES">{{'ledgerApp.LedgerAccountType.LIABILITIES' | translate}}</option>
+                <option value="INCOME">{{'ledgerApp.LedgerAccountType.INCOME' | translate}}</option>
+                <option value="EXPENSE">{{'ledgerApp.LedgerAccountType.EXPENSE' | translate}}</option>
+                <option value="OFFBALANCE">{{'ledgerApp.LedgerAccountType.OFFBALANCE' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.ledgerAccount.orderedBy" for="field_orderedBy">Ordered By</label>
+            <input type="text" class="form-control" name="orderedBy" id="field_orderedBy"
+                [(ngModel)]="ledgerAccount.orderedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.ledgerAccount.level" for="field_level">Level</label>
+            <input type="number" class="form-control" name="level" id="field_level"
+                [(ngModel)]="ledgerAccount.level" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.ledgerAccount.isleaf" for="field_isleaf">Isleaf</label>
+            <input type="checkbox" class="form-control" name="isleaf" id="field_isleaf"
+                [(ngModel)]="ledgerAccount.isleaf" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.ledgerAccount.balanceAccountId" for="field_balanceAccountId">Balance Account Id</label>
+            <input type="text" class="form-control" name="balanceAccountId" id="field_balanceAccountId"
+                [(ngModel)]="ledgerAccount.balanceAccountId" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.ledgerAccount.chartOfAccounts" for="field_chartOfAccounts">Chart Of Accounts</label>
+            <select class="form-control" id="field_chartOfAccounts" name="chartOfAccounts" [(ngModel)]="ledgerAccount.chartOfAccounts" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="chartOfAccountsOption.id === ledgerAccount.chartOfAccounts?.id ? ledgerAccount.chartOfAccounts : chartOfAccountsOption" *ngFor="let chartOfAccountsOption of chartofaccounts; trackBy: trackChartOfAccountsById">{{chartOfAccountsOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.ledgerAccount.upperAccount" for="field_upperAccount">Upper Account</label>
+            <select class="form-control" id="field_upperAccount" name="upperAccount" [(ngModel)]="ledgerAccount.upperAccount" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ledgerAccountOption.id === ledgerAccount.upperAccount?.id ? ledgerAccount.upperAccount : ledgerAccountOption" *ngFor="let ledgerAccountOption of ledgeraccounts; trackBy: trackLedgerAccountById">{{ledgerAccountOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

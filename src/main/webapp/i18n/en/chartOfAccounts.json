@@ -1,0 +1,27 @@
+
+{
+    "ledgerApp": {
+        "chartOfAccounts" : {
+            "home": {
+                "title": "Chart Of Accounts",
+                "createLabel": "Create a new Chart Of Accounts",
+                "createOrEditLabel": "Create or edit a Chart Of Accounts"
+            },
+            "created": "A new Chart Of Accounts is created with identifier {{ param }}",
+            "updated": "A Chart Of Accounts is updated with identifier {{ param }}",
+            "deleted": "A Chart Of Accounts is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Chart Of Accounts {{ id }}?"
+            },
+            "detail": {
+                "title": "Chart Of Accounts"
+            },
+            "name": "Name",
+            "key": "Key",
+            "accountingStandard": "Accounting Standard",
+            "isMain": "Is Main",
+            "legalEntityId": "Legal Entity Id",
+            "positionKeepingId": "Position Keeping Id"
+        }
+    }
+}
