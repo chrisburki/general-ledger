@@ -6,10 +6,17 @@ Navbar
     color: #ccc
 }
 
+/*
 .jh-navbar {
     background-color: #353d47;
     padding: .2em 1em;
 }
+*/
+.jh-navbar {
+    background-color: #000080;
+    padding: .2em 1em;
+}
+
 
 .jh-navbar .profile-image {
     margin: -10px 0px;

@@ -1,0 +1,3 @@
+id;name;jhi_key;accounting_standard;is_main;legal_entity_id;position_keeping_id
+1;BUC Ledger;BUC;IFRS;true;AAA;1
+2;HUD Ledger;HUD;HGB;true;AAA;1
