@@ -1,0 +1,122 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myJournalPostingLabel" jhiTranslate="ledgerApp.journalPosting.home.createOrEditLabel">Create or edit a Journal Posting</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!journalPosting.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="journalPosting.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.bookDate" for="field_bookDate">Book Date</label>
+            <div class="input-group">
+                <input id="field_bookDate" type="text" class="form-control" name="bookDate" ngbDatepicker  #bookDateDp="ngbDatepicker" [(ngModel)]="journalPosting.bookDate"
+                required/>
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="bookDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <div [hidden]="!(editForm.controls.bookDate?.dirty && editForm.controls.bookDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.bookDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.documentNumber" for="field_documentNumber">Document Number</label>
+            <input type="text" class="form-control" name="documentNumber" id="field_documentNumber"
+                [(ngModel)]="journalPosting.documentNumber" required/>
+            <div [hidden]="!(editForm.controls.documentNumber?.dirty && editForm.controls.documentNumber?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.documentNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.amount" for="field_amount">Amount</label>
+            <input type="number" class="form-control" name="amount" id="field_amount"
+                [(ngModel)]="journalPosting.amount" required/>
+            <div [hidden]="!(editForm.controls.amount?.dirty && editForm.controls.amount?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.amount?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.amount?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.currencyIso" for="field_currencyIso">Currency Iso</label>
+            <input type="text" class="form-control" name="currencyIso" id="field_currencyIso"
+                [(ngModel)]="journalPosting.currencyIso" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.amountCurrency" for="field_amountCurrency">Amount Currency</label>
+            <input type="number" class="form-control" name="amountCurrency" id="field_amountCurrency"
+                [(ngModel)]="journalPosting.amountCurrency" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.bookingText" for="field_bookingText">Booking Text</label>
+            <input type="text" class="form-control" name="bookingText" id="field_bookingText"
+                [(ngModel)]="journalPosting.bookingText" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.globalSequenceNumber" for="field_globalSequenceNumber">Global Sequence Number</label>
+            <input type="number" class="form-control" name="globalSequenceNumber" id="field_globalSequenceNumber"
+                [(ngModel)]="journalPosting.globalSequenceNumber" required/>
+            <div [hidden]="!(editForm.controls.globalSequenceNumber?.dirty && editForm.controls.globalSequenceNumber?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.globalSequenceNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.globalSequenceNumber?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.legalEntityId" for="field_legalEntityId">Legal Entity Id</label>
+            <input type="text" class="form-control" name="legalEntityId" id="field_legalEntityId"
+                [(ngModel)]="journalPosting.legalEntityId" required/>
+            <div [hidden]="!(editForm.controls.legalEntityId?.dirty && editForm.controls.legalEntityId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.legalEntityId?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.debitAccount" for="field_debitAccount">Debit Account</label>
+            <select class="form-control" id="field_debitAccount" name="debitAccount" [(ngModel)]="journalPosting.debitAccountId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ledgerAccountOption.id" *ngFor="let ledgerAccountOption of ledgeraccounts; trackBy: trackLedgerAccountById">{{ledgerAccountOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.creditAccount" for="field_creditAccount">Credit Account</label>
+            <select class="form-control" id="field_creditAccount" name="creditAccount" [(ngModel)]="journalPosting.creditAccountId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ledgerAccountOption.id" *ngFor="let ledgerAccountOption of ledgeraccounts; trackBy: trackLedgerAccountById">{{ledgerAccountOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

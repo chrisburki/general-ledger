@@ -1,0 +1,66 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "journalPosting",
+            "otherEntityName": "journalPosting",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "position",
+            "otherEntityName": "voucherPosition",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "amount",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "currencyIso",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "amountBaseCurrency",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "dateType",
+            "fieldType": "VoucherDateType",
+            "fieldValues": "DONE,VALUE,TRANSACTION",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "globalSequenceNumber",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "positionKeepingId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "legalEntityId",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180221050726",
+    "entityTableName": "voucher_valuation",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

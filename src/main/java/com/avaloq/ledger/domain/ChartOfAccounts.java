@@ -36,18 +36,21 @@ public class ChartOfAccounts implements Serializable {
     @Column(name = "jhi_key", length = 60, nullable = false)
     private String key;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "accounting_standard")
+    @Column(name = "accounting_standard", nullable = false)
     private AccountingStandard accountingStandard;
+
+    @NotNull
+    @Column(name = "base_currency_iso", nullable = false)
+    private String baseCurrencyIso;
 
     @Column(name = "is_main")
     private Boolean isMain;
 
-    @Column(name = "legal_entity_id")
+    @NotNull
+    @Column(name = "legal_entity_id", nullable = false)
     private String legalEntityId;
-
-    @Column(name = "position_keeping_id")
-    private String positionKeepingId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -97,6 +100,19 @@ public class ChartOfAccounts implements Serializable {
         this.accountingStandard = accountingStandard;
     }
 
+    public String getBaseCurrencyIso() {
+        return baseCurrencyIso;
+    }
+
+    public ChartOfAccounts baseCurrencyIso(String baseCurrencyIso) {
+        this.baseCurrencyIso = baseCurrencyIso;
+        return this;
+    }
+
+    public void setBaseCurrencyIso(String baseCurrencyIso) {
+        this.baseCurrencyIso = baseCurrencyIso;
+    }
+
     public Boolean isIsMain() {
         return isMain;
     }
@@ -121,19 +137,6 @@ public class ChartOfAccounts implements Serializable {
 
     public void setLegalEntityId(String legalEntityId) {
         this.legalEntityId = legalEntityId;
-    }
-
-    public String getPositionKeepingId() {
-        return positionKeepingId;
-    }
-
-    public ChartOfAccounts positionKeepingId(String positionKeepingId) {
-        this.positionKeepingId = positionKeepingId;
-        return this;
-    }
-
-    public void setPositionKeepingId(String positionKeepingId) {
-        this.positionKeepingId = positionKeepingId;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -164,9 +167,9 @@ public class ChartOfAccounts implements Serializable {
             ", name='" + getName() + "'" +
             ", key='" + getKey() + "'" +
             ", accountingStandard='" + getAccountingStandard() + "'" +
+            ", baseCurrencyIso='" + getBaseCurrencyIso() + "'" +
             ", isMain='" + isIsMain() + "'" +
             ", legalEntityId='" + getLegalEntityId() + "'" +
-            ", positionKeepingId='" + getPositionKeepingId() + "'" +
             "}";
     }
 }

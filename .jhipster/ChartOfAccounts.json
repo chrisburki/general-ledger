@@ -23,7 +23,17 @@
         {
             "fieldName": "accountingStandard",
             "fieldType": "AccountingStandard",
-            "fieldValues": "IFRS,HGB,ACUDBU,RRVEBK"
+            "fieldValues": "IFRS,HGB,ACUDBU,RRVEBK",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "baseCurrencyIso",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "isMain",
@@ -31,17 +41,16 @@
         },
         {
             "fieldName": "legalEntityId",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "positionKeepingId",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20180213205741",
     "entityTableName": "chart_of_accounts",
-    "dto": "no",
-    "pagination": "no",
-    "service": "no",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
     "jpaMetamodelFiltering": false
 }

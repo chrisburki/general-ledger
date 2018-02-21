@@ -1,0 +1,30 @@
+
+<div *ngIf="voucherAccountType">
+    <h2><span jhiTranslate="ledgerApp.voucherAccountType.detail.title">Voucher Account Type</span> {{voucherAccountType.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ledgerApp.voucherAccountType.category">Category</span></dt>
+        <dd>
+            <span>{{voucherAccountType.category}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherAccountType.name">Name</span></dt>
+        <dd>
+            <span>{{voucherAccountType.name}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'voucher-account-type/'+ voucherAccountType.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

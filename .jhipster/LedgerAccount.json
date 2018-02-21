@@ -36,7 +36,10 @@
         {
             "fieldName": "accountType",
             "fieldType": "LedgerAccountType",
-            "fieldValues": "ASSETS,LIABILITIES,INCOME,EXPENSE,OFFBALANCE"
+            "fieldValues": "ASSETS,LIABILITIES,INCOME,EXPENSE,OFFBALANCE",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "orderedBy",
@@ -53,12 +56,19 @@
         {
             "fieldName": "balanceAccountId",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "legalEntityId",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20180213205742",
     "entityTableName": "ledger_account",
-    "dto": "no",
-    "pagination": "no",
-    "service": "no",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
     "jpaMetamodelFiltering": false
 }

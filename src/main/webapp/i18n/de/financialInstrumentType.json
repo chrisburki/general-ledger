@@ -1,0 +1,23 @@
+
+{
+    "ledgerApp": {
+        "financialInstrumentType" : {
+            "home": {
+                "title": "Financial Instrument Types",
+                "createLabel": "Financial Instrument Type erstellen",
+                "createOrEditLabel": "Financial Instrument Type erstellen oder bearbeiten"
+            },
+            "created": "Financial Instrument Type erstellt mit ID {{ param }}",
+            "updated": "Financial Instrument Type aktualisiert mit ID {{ param }}",
+            "deleted": "Financial Instrument Type gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Financial Instrument Type {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Financial Instrument Type"
+            },
+            "category": "Category",
+            "name": "Name"
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "ledgerApp": {
+        "VoucherDateType" : {
+            "null": "",
+            "DONE": "DONE",
+            "VALUE": "VALUE",
+            "TRANSACTION": "TRANSACTION"
+        }
+    }
+}

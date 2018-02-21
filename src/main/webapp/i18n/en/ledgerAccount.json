@@ -23,6 +23,7 @@
             "level": "Level",
             "isleaf": "Isleaf",
             "balanceAccountId": "Balance Account Id",
+            "legalEntityId": "Legal Entity Id",
             "chartOfAccounts": "Chart Of Accounts",
             "upperAccount": "Upper Account"
         }

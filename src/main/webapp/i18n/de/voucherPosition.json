@@ -1,0 +1,30 @@
+
+{
+    "ledgerApp": {
+        "voucherPosition" : {
+            "home": {
+                "title": "Voucher Positions",
+                "createLabel": "Voucher Position erstellen",
+                "createOrEditLabel": "Voucher Position erstellen oder bearbeiten"
+            },
+            "created": "Voucher Position erstellt mit ID {{ param }}",
+            "updated": "Voucher Position aktualisiert mit ID {{ param }}",
+            "deleted": "Voucher Position gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Voucher Position {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Voucher Position"
+            },
+            "name": "Name",
+            "key": "Key",
+            "currencyIso": "Currency Iso",
+            "positionId": "Position Id",
+            "positionKeepingId": "Position Keeping Id",
+            "legalEntityId": "Legal Entity Id",
+            "financialInstrumentType": "Financial Instrument Type",
+            "accountType": "Account Type",
+            "subLedgerType": "Sub Ledger Type"
+        }
+    }
+}

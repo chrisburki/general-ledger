@@ -4,6 +4,9 @@ import com.avaloq.ledger.LedgerApp;
 
 import com.avaloq.ledger.domain.LedgerAccount;
 import com.avaloq.ledger.repository.LedgerAccountRepository;
+import com.avaloq.ledger.service.LedgerAccountService;
+import com.avaloq.ledger.service.dto.LedgerAccountDTO;
+import com.avaloq.ledger.service.mapper.LedgerAccountMapper;
 import com.avaloq.ledger.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -60,8 +63,17 @@ public class LedgerAccountResourceIntTest {
     private static final String DEFAULT_BALANCE_ACCOUNT_ID = "AAAAAAAAAA";
     private static final String UPDATED_BALANCE_ACCOUNT_ID = "BBBBBBBBBB";
 
+    private static final String DEFAULT_LEGAL_ENTITY_ID = "AAAAAAAAAA";
+    private static final String UPDATED_LEGAL_ENTITY_ID = "BBBBBBBBBB";
+
     @Autowired
     private LedgerAccountRepository ledgerAccountRepository;
+
+    @Autowired
+    private LedgerAccountMapper ledgerAccountMapper;
+
+    @Autowired
+    private LedgerAccountService ledgerAccountService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -82,7 +94,7 @@ public class LedgerAccountResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final LedgerAccountResource ledgerAccountResource = new LedgerAccountResource(ledgerAccountRepository);
+        final LedgerAccountResource ledgerAccountResource = new LedgerAccountResource(ledgerAccountService);
         this.restLedgerAccountMockMvc = MockMvcBuilders.standaloneSetup(ledgerAccountResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -104,7 +116,8 @@ public class LedgerAccountResourceIntTest {
             .orderedBy(DEFAULT_ORDERED_BY)
             .level(DEFAULT_LEVEL)
             .isleaf(DEFAULT_ISLEAF)
-            .balanceAccountId(DEFAULT_BALANCE_ACCOUNT_ID);
+            .balanceAccountId(DEFAULT_BALANCE_ACCOUNT_ID)
+            .legalEntityId(DEFAULT_LEGAL_ENTITY_ID);
         return ledgerAccount;
     }
 
@@ -119,9 +132,10 @@ public class LedgerAccountResourceIntTest {
         int databaseSizeBeforeCreate = ledgerAccountRepository.findAll().size();
 
         // Create the LedgerAccount
+        LedgerAccountDTO ledgerAccountDTO = ledgerAccountMapper.toDto(ledgerAccount);
         restLedgerAccountMockMvc.perform(post("/api/ledger-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(ledgerAccount)))
+            .content(TestUtil.convertObjectToJsonBytes(ledgerAccountDTO)))
             .andExpect(status().isCreated());
 
         // Validate the LedgerAccount in the database
@@ -135,6 +149,7 @@ public class LedgerAccountResourceIntTest {
         assertThat(testLedgerAccount.getLevel()).isEqualTo(DEFAULT_LEVEL);
         assertThat(testLedgerAccount.isIsleaf()).isEqualTo(DEFAULT_ISLEAF);
         assertThat(testLedgerAccount.getBalanceAccountId()).isEqualTo(DEFAULT_BALANCE_ACCOUNT_ID);
+        assertThat(testLedgerAccount.getLegalEntityId()).isEqualTo(DEFAULT_LEGAL_ENTITY_ID);
     }
 
     @Test
@@ -144,11 +159,12 @@ public class LedgerAccountResourceIntTest {
 
         // Create the LedgerAccount with an existing ID
         ledgerAccount.setId(1L);
+        LedgerAccountDTO ledgerAccountDTO = ledgerAccountMapper.toDto(ledgerAccount);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restLedgerAccountMockMvc.perform(post("/api/ledger-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(ledgerAccount)))
+            .content(TestUtil.convertObjectToJsonBytes(ledgerAccountDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the LedgerAccount in the database
@@ -164,10 +180,11 @@ public class LedgerAccountResourceIntTest {
         ledgerAccount.setName(null);
 
         // Create the LedgerAccount, which fails.
+        LedgerAccountDTO ledgerAccountDTO = ledgerAccountMapper.toDto(ledgerAccount);
 
         restLedgerAccountMockMvc.perform(post("/api/ledger-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(ledgerAccount)))
+            .content(TestUtil.convertObjectToJsonBytes(ledgerAccountDTO)))
             .andExpect(status().isBadRequest());
 
         List<LedgerAccount> ledgerAccountList = ledgerAccountRepository.findAll();
@@ -182,10 +199,49 @@ public class LedgerAccountResourceIntTest {
         ledgerAccount.setKey(null);
 
         // Create the LedgerAccount, which fails.
+        LedgerAccountDTO ledgerAccountDTO = ledgerAccountMapper.toDto(ledgerAccount);
 
         restLedgerAccountMockMvc.perform(post("/api/ledger-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(ledgerAccount)))
+            .content(TestUtil.convertObjectToJsonBytes(ledgerAccountDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<LedgerAccount> ledgerAccountList = ledgerAccountRepository.findAll();
+        assertThat(ledgerAccountList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkAccountTypeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = ledgerAccountRepository.findAll().size();
+        // set the field null
+        ledgerAccount.setAccountType(null);
+
+        // Create the LedgerAccount, which fails.
+        LedgerAccountDTO ledgerAccountDTO = ledgerAccountMapper.toDto(ledgerAccount);
+
+        restLedgerAccountMockMvc.perform(post("/api/ledger-accounts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(ledgerAccountDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<LedgerAccount> ledgerAccountList = ledgerAccountRepository.findAll();
+        assertThat(ledgerAccountList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkLegalEntityIdIsRequired() throws Exception {
+        int databaseSizeBeforeTest = ledgerAccountRepository.findAll().size();
+        // set the field null
+        ledgerAccount.setLegalEntityId(null);
+
+        // Create the LedgerAccount, which fails.
+        LedgerAccountDTO ledgerAccountDTO = ledgerAccountMapper.toDto(ledgerAccount);
+
+        restLedgerAccountMockMvc.perform(post("/api/ledger-accounts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(ledgerAccountDTO)))
             .andExpect(status().isBadRequest());
 
         List<LedgerAccount> ledgerAccountList = ledgerAccountRepository.findAll();
@@ -209,7 +265,8 @@ public class LedgerAccountResourceIntTest {
             .andExpect(jsonPath("$.[*].orderedBy").value(hasItem(DEFAULT_ORDERED_BY.toString())))
             .andExpect(jsonPath("$.[*].level").value(hasItem(DEFAULT_LEVEL)))
             .andExpect(jsonPath("$.[*].isleaf").value(hasItem(DEFAULT_ISLEAF.booleanValue())))
-            .andExpect(jsonPath("$.[*].balanceAccountId").value(hasItem(DEFAULT_BALANCE_ACCOUNT_ID.toString())));
+            .andExpect(jsonPath("$.[*].balanceAccountId").value(hasItem(DEFAULT_BALANCE_ACCOUNT_ID.toString())))
+            .andExpect(jsonPath("$.[*].legalEntityId").value(hasItem(DEFAULT_LEGAL_ENTITY_ID.toString())));
     }
 
     @Test
@@ -229,7 +286,8 @@ public class LedgerAccountResourceIntTest {
             .andExpect(jsonPath("$.orderedBy").value(DEFAULT_ORDERED_BY.toString()))
             .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL))
             .andExpect(jsonPath("$.isleaf").value(DEFAULT_ISLEAF.booleanValue()))
-            .andExpect(jsonPath("$.balanceAccountId").value(DEFAULT_BALANCE_ACCOUNT_ID.toString()));
+            .andExpect(jsonPath("$.balanceAccountId").value(DEFAULT_BALANCE_ACCOUNT_ID.toString()))
+            .andExpect(jsonPath("$.legalEntityId").value(DEFAULT_LEGAL_ENTITY_ID.toString()));
     }
 
     @Test
@@ -258,11 +316,13 @@ public class LedgerAccountResourceIntTest {
             .orderedBy(UPDATED_ORDERED_BY)
             .level(UPDATED_LEVEL)
             .isleaf(UPDATED_ISLEAF)
-            .balanceAccountId(UPDATED_BALANCE_ACCOUNT_ID);
+            .balanceAccountId(UPDATED_BALANCE_ACCOUNT_ID)
+            .legalEntityId(UPDATED_LEGAL_ENTITY_ID);
+        LedgerAccountDTO ledgerAccountDTO = ledgerAccountMapper.toDto(updatedLedgerAccount);
 
         restLedgerAccountMockMvc.perform(put("/api/ledger-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedLedgerAccount)))
+            .content(TestUtil.convertObjectToJsonBytes(ledgerAccountDTO)))
             .andExpect(status().isOk());
 
         // Validate the LedgerAccount in the database
@@ -276,6 +336,7 @@ public class LedgerAccountResourceIntTest {
         assertThat(testLedgerAccount.getLevel()).isEqualTo(UPDATED_LEVEL);
         assertThat(testLedgerAccount.isIsleaf()).isEqualTo(UPDATED_ISLEAF);
         assertThat(testLedgerAccount.getBalanceAccountId()).isEqualTo(UPDATED_BALANCE_ACCOUNT_ID);
+        assertThat(testLedgerAccount.getLegalEntityId()).isEqualTo(UPDATED_LEGAL_ENTITY_ID);
     }
 
     @Test
@@ -284,11 +345,12 @@ public class LedgerAccountResourceIntTest {
         int databaseSizeBeforeUpdate = ledgerAccountRepository.findAll().size();
 
         // Create the LedgerAccount
+        LedgerAccountDTO ledgerAccountDTO = ledgerAccountMapper.toDto(ledgerAccount);
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restLedgerAccountMockMvc.perform(put("/api/ledger-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(ledgerAccount)))
+            .content(TestUtil.convertObjectToJsonBytes(ledgerAccountDTO)))
             .andExpect(status().isCreated());
 
         // Validate the LedgerAccount in the database
@@ -326,5 +388,28 @@ public class LedgerAccountResourceIntTest {
         assertThat(ledgerAccount1).isNotEqualTo(ledgerAccount2);
         ledgerAccount1.setId(null);
         assertThat(ledgerAccount1).isNotEqualTo(ledgerAccount2);
+    }
+
+    @Test
+    @Transactional
+    public void dtoEqualsVerifier() throws Exception {
+        TestUtil.equalsVerifier(LedgerAccountDTO.class);
+        LedgerAccountDTO ledgerAccountDTO1 = new LedgerAccountDTO();
+        ledgerAccountDTO1.setId(1L);
+        LedgerAccountDTO ledgerAccountDTO2 = new LedgerAccountDTO();
+        assertThat(ledgerAccountDTO1).isNotEqualTo(ledgerAccountDTO2);
+        ledgerAccountDTO2.setId(ledgerAccountDTO1.getId());
+        assertThat(ledgerAccountDTO1).isEqualTo(ledgerAccountDTO2);
+        ledgerAccountDTO2.setId(2L);
+        assertThat(ledgerAccountDTO1).isNotEqualTo(ledgerAccountDTO2);
+        ledgerAccountDTO1.setId(null);
+        assertThat(ledgerAccountDTO1).isNotEqualTo(ledgerAccountDTO2);
+    }
+
+    @Test
+    @Transactional
+    public void testEntityFromId() {
+        assertThat(ledgerAccountMapper.fromId(42L).getId()).isEqualTo(42);
+        assertThat(ledgerAccountMapper.fromId(null)).isNull();
     }
 }

@@ -36,8 +36,9 @@ public class LedgerAccount implements Serializable {
     @Column(name = "jhi_key", length = 60, nullable = false)
     private String key;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "account_type")
+    @Column(name = "account_type", nullable = false)
     private LedgerAccountType accountType;
 
     @Column(name = "ordered_by")
@@ -51,6 +52,10 @@ public class LedgerAccount implements Serializable {
 
     @Column(name = "balance_account_id")
     private String balanceAccountId;
+
+    @NotNull
+    @Column(name = "legal_entity_id", nullable = false)
+    private String legalEntityId;
 
     @ManyToOne
     private ChartOfAccounts chartOfAccounts;
@@ -158,6 +163,19 @@ public class LedgerAccount implements Serializable {
         this.balanceAccountId = balanceAccountId;
     }
 
+    public String getLegalEntityId() {
+        return legalEntityId;
+    }
+
+    public LedgerAccount legalEntityId(String legalEntityId) {
+        this.legalEntityId = legalEntityId;
+        return this;
+    }
+
+    public void setLegalEntityId(String legalEntityId) {
+        this.legalEntityId = legalEntityId;
+    }
+
     public ChartOfAccounts getChartOfAccounts() {
         return chartOfAccounts;
     }
@@ -216,6 +234,7 @@ public class LedgerAccount implements Serializable {
             ", level=" + getLevel() +
             ", isleaf='" + isIsleaf() + "'" +
             ", balanceAccountId='" + getBalanceAccountId() + "'" +
+            ", legalEntityId='" + getLegalEntityId() + "'" +
             "}";
     }
 }

@@ -44,12 +44,29 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.accountingStandard" for="field_accountingStandard">Accounting Standard</label>
-            <select class="form-control" name="accountingStandard" [(ngModel)]="chartOfAccounts.accountingStandard" id="field_accountingStandard" >
+            <select class="form-control" name="accountingStandard" [(ngModel)]="chartOfAccounts.accountingStandard" id="field_accountingStandard"  required>
                 <option value="IFRS">{{'ledgerApp.AccountingStandard.IFRS' | translate}}</option>
                 <option value="HGB">{{'ledgerApp.AccountingStandard.HGB' | translate}}</option>
                 <option value="ACUDBU">{{'ledgerApp.AccountingStandard.ACUDBU' | translate}}</option>
                 <option value="RRVEBK">{{'ledgerApp.AccountingStandard.RRVEBK' | translate}}</option>
             </select>
+            <div [hidden]="!(editForm.controls.accountingStandard?.dirty && editForm.controls.accountingStandard?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.accountingStandard?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.baseCurrencyIso" for="field_baseCurrencyIso">Base Currency Iso</label>
+            <input type="text" class="form-control" name="baseCurrencyIso" id="field_baseCurrencyIso"
+                [(ngModel)]="chartOfAccounts.baseCurrencyIso" required/>
+            <div [hidden]="!(editForm.controls.baseCurrencyIso?.dirty && editForm.controls.baseCurrencyIso?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.baseCurrencyIso?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.isMain" for="field_isMain">Is Main</label>
@@ -59,12 +76,13 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.legalEntityId" for="field_legalEntityId">Legal Entity Id</label>
             <input type="text" class="form-control" name="legalEntityId" id="field_legalEntityId"
-                [(ngModel)]="chartOfAccounts.legalEntityId" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.positionKeepingId" for="field_positionKeepingId">Position Keeping Id</label>
-            <input type="text" class="form-control" name="positionKeepingId" id="field_positionKeepingId"
-                [(ngModel)]="chartOfAccounts.positionKeepingId" />
+                [(ngModel)]="chartOfAccounts.legalEntityId" required/>
+            <div [hidden]="!(editForm.controls.legalEntityId?.dirty && editForm.controls.legalEntityId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.legalEntityId?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
         </div>
 
     </div>

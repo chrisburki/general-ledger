@@ -32,16 +32,20 @@
         <dd>
             <span>{{ledgerAccount.balanceAccountId}}</span>
         </dd>
+        <dt><span jhiTranslate="ledgerApp.ledgerAccount.legalEntityId">Legal Entity Id</span></dt>
+        <dd>
+            <span>{{ledgerAccount.legalEntityId}}</span>
+        </dd>
         <dt><span jhiTranslate="ledgerApp.ledgerAccount.chartOfAccounts">Chart Of Accounts</span></dt>
         <dd>
-            <div *ngIf="ledgerAccount.chartOfAccounts">
-                <a [routerLink]="['/chart-of-accounts', ledgerAccount.chartOfAccounts?.id]">{{ledgerAccount.chartOfAccounts?.id}}</a>
+            <div *ngIf="ledgerAccount.chartOfAccountsId">
+                <a [routerLink]="['/chart-of-accounts', ledgerAccount.chartOfAccountsId]">{{ledgerAccount.chartOfAccountsId}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="ledgerApp.ledgerAccount.upperAccount">Upper Account</span></dt>
         <dd>
-            <div *ngIf="ledgerAccount.upperAccount">
-                <a [routerLink]="['/ledger-account', ledgerAccount.upperAccount?.id]">{{ledgerAccount.upperAccount?.id}}</a>
+            <div *ngIf="ledgerAccount.upperAccountId">
+                <a [routerLink]="['/ledger-account', ledgerAccount.upperAccountId]">{{ledgerAccount.upperAccountId}}</a>
             </div>
         </dd>
     </dl>

@@ -1,0 +1,64 @@
+
+<div *ngIf="voucherPosition">
+    <h2><span jhiTranslate="ledgerApp.voucherPosition.detail.title">Voucher Position</span> {{voucherPosition.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ledgerApp.voucherPosition.name">Name</span></dt>
+        <dd>
+            <span>{{voucherPosition.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherPosition.key">Key</span></dt>
+        <dd>
+            <span>{{voucherPosition.key}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherPosition.currencyIso">Currency Iso</span></dt>
+        <dd>
+            <span>{{voucherPosition.currencyIso}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherPosition.positionId">Position Id</span></dt>
+        <dd>
+            <span>{{voucherPosition.positionId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherPosition.positionKeepingId">Position Keeping Id</span></dt>
+        <dd>
+            <span>{{voucherPosition.positionKeepingId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherPosition.legalEntityId">Legal Entity Id</span></dt>
+        <dd>
+            <span>{{voucherPosition.legalEntityId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherPosition.financialInstrumentType">Financial Instrument Type</span></dt>
+        <dd>
+            <div *ngIf="voucherPosition.financialInstrumentTypeId">
+                <a [routerLink]="['/financial-instrument-type', voucherPosition.financialInstrumentTypeId]">{{voucherPosition.financialInstrumentTypeId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherPosition.accountType">Account Type</span></dt>
+        <dd>
+            <div *ngIf="voucherPosition.accountTypeId">
+                <a [routerLink]="['/voucher-account-type', voucherPosition.accountTypeId]">{{voucherPosition.accountTypeId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherPosition.subLedgerType">Sub Ledger Type</span></dt>
+        <dd>
+            <div *ngIf="voucherPosition.subLedgerTypeId">
+                <a [routerLink]="['/sub-ledger-type', voucherPosition.subLedgerTypeId]">{{voucherPosition.subLedgerTypeId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'voucher-position/'+ voucherPosition.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

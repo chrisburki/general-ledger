@@ -15,26 +15,26 @@
     <div class="table-responsive" *ngIf="chartOfAccounts">
         <table class="table table-striped">
             <thead>
-            <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="ledgerApp.chartOfAccounts.name">Name</span></th>
-            <th><span jhiTranslate="ledgerApp.chartOfAccounts.key">Key</span></th>
-            <th><span jhiTranslate="ledgerApp.chartOfAccounts.accountingStandard">Accounting Standard</span></th>
-            <th><span jhiTranslate="ledgerApp.chartOfAccounts.isMain">Is Main</span></th>
-            <th><span jhiTranslate="ledgerApp.chartOfAccounts.legalEntityId">Legal Entity Id</span></th>
-            <th><span jhiTranslate="ledgerApp.chartOfAccounts.positionKeepingId">Position Keeping Id</span></th>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="ledgerApp.chartOfAccounts.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="key"><span jhiTranslate="ledgerApp.chartOfAccounts.key">Key</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="accountingStandard"><span jhiTranslate="ledgerApp.chartOfAccounts.accountingStandard">Accounting Standard</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="baseCurrencyIso"><span jhiTranslate="ledgerApp.chartOfAccounts.baseCurrencyIso">Base Currency Iso</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="isMain"><span jhiTranslate="ledgerApp.chartOfAccounts.isMain">Is Main</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="legalEntityId"><span jhiTranslate="ledgerApp.chartOfAccounts.legalEntityId">Legal Entity Id</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
-            <tbody>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let chartOfAccounts of chartOfAccounts ;trackBy: trackId">
                 <td><a [routerLink]="['../chart-of-accounts', chartOfAccounts.id ]">{{chartOfAccounts.id}}</a></td>
                 <td>{{chartOfAccounts.name}}</td>
                 <td>{{chartOfAccounts.key}}</td>
                 <td jhiTranslate="{{'ledgerApp.AccountingStandard.' + chartOfAccounts.accountingStandard}}">{{chartOfAccounts.accountingStandard}}</td>
+                <td>{{chartOfAccounts.baseCurrencyIso}}</td>
                 <td>{{chartOfAccounts.isMain}}</td>
                 <td>{{chartOfAccounts.legalEntityId}}</td>
-                <td>{{chartOfAccounts.positionKeepingId}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

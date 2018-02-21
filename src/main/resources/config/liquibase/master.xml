@@ -7,7 +7,20 @@
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180213205741_added_entity_ChartOfAccounts.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180213205742_added_entity_LedgerAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050720_added_entity_JournalPosting.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050721_added_entity_BalanceSheet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050722_added_entity_FinancialInstrumentType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050723_added_entity_VoucherAccountType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050724_added_entity_VoucherPosition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050725_added_entity_VoucherBooking.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050726_added_entity_VoucherValuation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221200206_added_entity_SubLedgerType.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180213205742_added_entity_constraints_LedgerAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050720_added_entity_constraints_JournalPosting.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050721_added_entity_constraints_BalanceSheet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050724_added_entity_constraints_VoucherPosition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050725_added_entity_constraints_VoucherBooking.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180221050726_added_entity_constraints_VoucherValuation.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

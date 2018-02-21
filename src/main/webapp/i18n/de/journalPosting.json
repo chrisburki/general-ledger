@@ -1,0 +1,33 @@
+
+{
+    "ledgerApp": {
+        "journalPosting" : {
+            "home": {
+                "title": "Journal Postings",
+                "createLabel": "Journal Posting erstellen",
+                "createOrEditLabel": "Journal Posting erstellen oder bearbeiten"
+            },
+            "created": "Journal Posting erstellt mit ID {{ param }}",
+            "updated": "Journal Posting aktualisiert mit ID {{ param }}",
+            "deleted": "Journal Posting gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Journal Posting {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Journal Posting"
+            },
+            "bookDate": "Book Date",
+            "documentNumber": "Document Number",
+            "amount": "Amount",
+            "currencyIso": "Currency Iso",
+            "amountCurrency": "Amount Currency",
+            "bookingText": "Booking Text",
+            "globalSequenceNumber": "Global Sequence Number",
+            "legalEntityId": "Legal Entity Id",
+            "voucherBooking": "Voucher Booking",
+            "voucherValuation": "Voucher Valuation",
+            "debitAccount": "Debit Account",
+            "creditAccount": "Credit Account"
+        }
+    }
+}

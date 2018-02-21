@@ -1,0 +1,90 @@
+<div>
+    <h2>
+        <span jhiTranslate="ledgerApp.voucherValuation.home.title">Voucher Valuations</span>
+        <button class="btn btn-primary float-right jh-create-entity create-voucher-valuation" [routerLink]="['/', { outlets: { popup: ['voucher-valuation-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ledgerApp.voucherValuation.home.createLabel">
+            Create new Voucher Valuation
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="voucherValuations">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="amount"><span jhiTranslate="ledgerApp.voucherValuation.amount">Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="currencyIso"><span jhiTranslate="ledgerApp.voucherValuation.currencyIso">Currency Iso</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="amountBaseCurrency"><span jhiTranslate="ledgerApp.voucherValuation.amountBaseCurrency">Amount Base Currency</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateType"><span jhiTranslate="ledgerApp.voucherValuation.dateType">Date Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="globalSequenceNumber"><span jhiTranslate="ledgerApp.voucherValuation.globalSequenceNumber">Global Sequence Number</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="positionKeepingId"><span jhiTranslate="ledgerApp.voucherValuation.positionKeepingId">Position Keeping Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="legalEntityId"><span jhiTranslate="ledgerApp.voucherValuation.legalEntityId">Legal Entity Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="journalPostingId"><span jhiTranslate="ledgerApp.voucherValuation.journalPosting">Journal Posting</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="positionId"><span jhiTranslate="ledgerApp.voucherValuation.position">Position</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let voucherValuation of voucherValuations ;trackBy: trackId">
+                <td><a [routerLink]="['../voucher-valuation', voucherValuation.id ]">{{voucherValuation.id}}</a></td>
+                <td>{{voucherValuation.amount}}</td>
+                <td>{{voucherValuation.currencyIso}}</td>
+                <td>{{voucherValuation.amountBaseCurrency}}</td>
+                <td jhiTranslate="{{'ledgerApp.VoucherDateType.' + voucherValuation.dateType}}">{{voucherValuation.dateType}}</td>
+                <td>{{voucherValuation.globalSequenceNumber}}</td>
+                <td>{{voucherValuation.positionKeepingId}}</td>
+                <td>{{voucherValuation.legalEntityId}}</td>
+                <td>
+                    <div *ngIf="voucherValuation.journalPostingId">
+                        <a [routerLink]="['../journal-posting', voucherValuation.journalPostingId  ]" >{{voucherValuation.journalPostingId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="voucherValuation.positionId">
+                        <a [routerLink]="['../voucher-position', voucherValuation.positionId  ]" >{{voucherValuation.positionId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../voucher-valuation', voucherValuation.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'voucher-valuation/'+ voucherValuation.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'voucher-valuation/'+ voucherValuation.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="voucherValuations && voucherValuations.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

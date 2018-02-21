@@ -1,0 +1,109 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myVoucherValuationLabel" jhiTranslate="ledgerApp.voucherValuation.home.createOrEditLabel">Create or edit a Voucher Valuation</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!voucherValuation.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="voucherValuation.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherValuation.amount" for="field_amount">Amount</label>
+            <input type="number" class="form-control" name="amount" id="field_amount"
+                [(ngModel)]="voucherValuation.amount" required/>
+            <div [hidden]="!(editForm.controls.amount?.dirty && editForm.controls.amount?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.amount?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.amount?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherValuation.currencyIso" for="field_currencyIso">Currency Iso</label>
+            <input type="text" class="form-control" name="currencyIso" id="field_currencyIso"
+                [(ngModel)]="voucherValuation.currencyIso" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherValuation.amountBaseCurrency" for="field_amountBaseCurrency">Amount Base Currency</label>
+            <input type="number" class="form-control" name="amountBaseCurrency" id="field_amountBaseCurrency"
+                [(ngModel)]="voucherValuation.amountBaseCurrency" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherValuation.dateType" for="field_dateType">Date Type</label>
+            <select class="form-control" name="dateType" [(ngModel)]="voucherValuation.dateType" id="field_dateType"  required>
+                <option value="DONE">{{'ledgerApp.VoucherDateType.DONE' | translate}}</option>
+                <option value="VALUE">{{'ledgerApp.VoucherDateType.VALUE' | translate}}</option>
+                <option value="TRANSACTION">{{'ledgerApp.VoucherDateType.TRANSACTION' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.dateType?.dirty && editForm.controls.dateType?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.dateType?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherValuation.globalSequenceNumber" for="field_globalSequenceNumber">Global Sequence Number</label>
+            <input type="number" class="form-control" name="globalSequenceNumber" id="field_globalSequenceNumber"
+                [(ngModel)]="voucherValuation.globalSequenceNumber" required/>
+            <div [hidden]="!(editForm.controls.globalSequenceNumber?.dirty && editForm.controls.globalSequenceNumber?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.globalSequenceNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.globalSequenceNumber?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherValuation.positionKeepingId" for="field_positionKeepingId">Position Keeping Id</label>
+            <input type="text" class="form-control" name="positionKeepingId" id="field_positionKeepingId"
+                [(ngModel)]="voucherValuation.positionKeepingId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherValuation.legalEntityId" for="field_legalEntityId">Legal Entity Id</label>
+            <input type="text" class="form-control" name="legalEntityId" id="field_legalEntityId"
+                [(ngModel)]="voucherValuation.legalEntityId" required/>
+            <div [hidden]="!(editForm.controls.legalEntityId?.dirty && editForm.controls.legalEntityId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.legalEntityId?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherValuation.journalPosting" for="field_journalPosting">Journal Posting</label>
+            <select class="form-control" id="field_journalPosting" name="journalPosting" [(ngModel)]="voucherValuation.journalPostingId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="journalPostingOption.id" *ngFor="let journalPostingOption of journalpostings; trackBy: trackJournalPostingById">{{journalPostingOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherValuation.position" for="field_position">Position</label>
+            <select class="form-control" id="field_position" name="position" [(ngModel)]="voucherValuation.positionId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="voucherPositionOption.id" *ngFor="let voucherPositionOption of voucherpositions; trackBy: trackVoucherPositionById">{{voucherPositionOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

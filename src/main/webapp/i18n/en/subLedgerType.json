@@ -1,0 +1,23 @@
+
+{
+    "ledgerApp": {
+        "subLedgerType" : {
+            "home": {
+                "title": "Sub Ledger Types",
+                "createLabel": "Create a new Sub Ledger Type",
+                "createOrEditLabel": "Create or edit a Sub Ledger Type"
+            },
+            "created": "A new Sub Ledger Type is created with identifier {{ param }}",
+            "updated": "A Sub Ledger Type is updated with identifier {{ param }}",
+            "deleted": "A Sub Ledger Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Sub Ledger Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Sub Ledger Type"
+            },
+            "category": "Category",
+            "name": "Name"
+        }
+    }
+}

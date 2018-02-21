@@ -1,0 +1,60 @@
+<div>
+    <h2>
+        <span jhiTranslate="ledgerApp.financialInstrumentType.home.title">Financial Instrument Types</span>
+        <button class="btn btn-primary float-right jh-create-entity create-financial-instrument-type" [routerLink]="['/', { outlets: { popup: ['financial-instrument-type-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ledgerApp.financialInstrumentType.home.createLabel">
+            Create new Financial Instrument Type
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="financialInstrumentTypes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="ledgerApp.financialInstrumentType.category">Category</span></th>
+            <th><span jhiTranslate="ledgerApp.financialInstrumentType.name">Name</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let financialInstrumentType of financialInstrumentTypes ;trackBy: trackId">
+                <td><a [routerLink]="['../financial-instrument-type', financialInstrumentType.id ]">{{financialInstrumentType.id}}</a></td>
+                <td>{{financialInstrumentType.category}}</td>
+                <td>{{financialInstrumentType.name}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../financial-instrument-type', financialInstrumentType.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'financial-instrument-type/'+ financialInstrumentType.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'financial-instrument-type/'+ financialInstrumentType.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

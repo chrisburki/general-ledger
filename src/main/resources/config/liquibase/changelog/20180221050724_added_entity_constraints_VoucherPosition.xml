@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity VoucherPosition.
+    -->
+    <changeSet id="20180221050724-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="financial_instrument_type_id"
+                                 baseTableName="voucher_position"
+                                 constraintName="fk_voucher_position_financial_instrument_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="financial_instrument_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="account_type_id"
+                                 baseTableName="voucher_position"
+                                 constraintName="fk_voucher_position_account_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="voucher_account_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="sub_ledger_type_id"
+                                 baseTableName="voucher_position"
+                                 constraintName="fk_voucher_position_sub_ledger_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sub_ledger_type"/>
+
+    </changeSet>
+</databaseChangeLog>

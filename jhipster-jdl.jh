@@ -1,0 +1,171 @@
+KEY_MAX_LENGTH = 60
+NAME_MAX_LENGTH = 200
+
+enum AccountingStandard {
+    IFRS, HGB, ACUDBU, RRVEBK
+}
+
+entity ChartOfAccounts {
+    name String required maxlength(NAME_MAX_LENGTH),
+    key String required maxlength(KEY_MAX_LENGTH),
+    accountingStandard AccountingStandard required,
+    baseCurrencyIso String required,
+    isMain Boolean,
+	legalEntityId String required
+}
+
+enum LedgerAccountType {
+    ASSETS, LIABILITIES, INCOME, EXPENSE, OFFBALANCE
+}
+
+entity LedgerAccount {
+    name String required maxlength(NAME_MAX_LENGTH),
+    key String required maxlength(KEY_MAX_LENGTH),
+    accountType LedgerAccountType required
+    orderedBy String,
+    level Integer,
+    is_leaf Boolean,
+    balanceAccountId String,
+	legalEntityId String required
+}
+
+entity JournalPosting {
+    bookDate LocalDate required,
+    documentNumber String required,
+    amount Double required,
+    currencyIso String,
+    amountCurrency Double,
+    bookingText String,
+    globalSequenceNumber Long required,
+	legalEntityId String required
+}
+
+entity BalanceSheet {
+    description String,
+    balanceDate LocalDate required,
+    amount Double required,
+    deltaAmountDebit Double required,
+    deltaAmountCredit Double required,
+    currencyIso String,
+    amountCurrency Double,
+    deltaAmountDebitCurrency Double,
+    deltaAmountCreditCurrency Double,
+    isFinal Boolean,
+	legalEntityId String required
+}
+
+entity SubLedgerType {
+    category String required,
+    name String
+}
+
+entity FinancialInstrumentType {
+    category String required,
+    name String
+}
+
+entity VoucherAccountType {
+    category String required,
+    name String
+}
+
+entity VoucherPosition {
+    name String required maxlength(NAME_MAX_LENGTH),
+    key String maxlength(KEY_MAX_LENGTH),
+    currencyIso String required,
+    positionId String required,
+    positionKeepingId String,
+    legalEntityId String required
+}
+
+entity VoucherBooking {
+    doneDate LocalDate required,
+    valueDate LocalDate,
+    transactionDate LocalDate,
+    quantity Double,
+    amount Double required,
+    currencyIso String required,
+    amountBaseCurrency Double,
+    bookingText String,
+    globalSequenceNumber Long required,
+    transactionId String,
+    eventId String,
+    bookingId String required,
+    positionKeepingId String,
+	legalEntityId String required
+}
+
+enum VoucherDateType {
+    DONE, VALUE, TRANSACTION
+}
+
+entity VoucherValuation {
+    amount Double required,
+    currencyIso String,
+    amountBaseCurrency Double,
+    dateType VoucherDateType required,
+    globalSequenceNumber Long required,
+    positionKeepingId String,
+	legalEntityId String required
+}
+
+relationship ManyToOne {
+	LedgerAccount{chartOfAccounts} to ChartOfAccounts
+}
+
+relationship ManyToOne {
+	LedgerAccount{upperAccount} to LedgerAccount
+}
+
+relationship ManyToOne {
+	JournalPosting{debitAccount} to LedgerAccount
+}
+
+relationship ManyToOne {
+	JournalPosting{creditAccount} to LedgerAccount
+}
+
+relationship ManyToOne {
+	BalanceSheet{chartOfAccounts} to ChartOfAccounts
+}
+
+relationship ManyToOne {
+	BalanceSheet{account} to LedgerAccount
+}
+
+relationship ManyToOne {
+	VoucherPosition{financialInstrumentType} to FinancialInstrumentType
+}
+
+relationship ManyToOne {
+	VoucherPosition{accountType} to VoucherAccountType
+}
+
+relationship ManyToOne {
+	VoucherPosition{subLedgerType} to SubLedgerType
+}
+
+relationship ManyToOne {
+	VoucherBooking{position} to VoucherPosition
+}
+
+relationship ManyToOne {
+	VoucherValuation{position} to VoucherPosition
+}
+
+relationship OneToMany {
+	JournalPosting{voucherBooking} to VoucherBooking
+}
+
+relationship OneToMany {
+	JournalPosting{voucherValuation} to VoucherValuation
+}
+
+// Set pagination options
+paginate ChartOfAccounts, LedgerAccount, BalanceSheet with infinite-scroll
+paginate JournalPosting, VoucherPosition, VoucherBooking, VoucherValuation with pagination
+
+dto all with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except FinanicalIstrumentType, VoucherAccountType, SubLedgerType

@@ -9,6 +9,14 @@
                 "main": "Entitäten",
                 "chartOfAccounts": "Chart Of Accounts",
                 "ledgerAccount": "Ledger Account",
+                "journalPosting": "Journal Posting",
+                "balanceSheet": "Balance Sheet",
+                "financialInstrumentType": "Financial Instrument Type",
+                "voucherAccountType": "Voucher Account Type",
+                "voucherPosition": "Voucher Position",
+                "voucherBooking": "Voucher Booking",
+                "voucherValuation": "Voucher Valuation",
+                "subLedgerType": "Sub Ledger Type",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

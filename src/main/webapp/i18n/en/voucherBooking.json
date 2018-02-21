@@ -1,0 +1,37 @@
+
+{
+    "ledgerApp": {
+        "voucherBooking" : {
+            "home": {
+                "title": "Voucher Bookings",
+                "createLabel": "Create a new Voucher Booking",
+                "createOrEditLabel": "Create or edit a Voucher Booking"
+            },
+            "created": "A new Voucher Booking is created with identifier {{ param }}",
+            "updated": "A Voucher Booking is updated with identifier {{ param }}",
+            "deleted": "A Voucher Booking is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Voucher Booking {{ id }}?"
+            },
+            "detail": {
+                "title": "Voucher Booking"
+            },
+            "doneDate": "Done Date",
+            "valueDate": "Value Date",
+            "transactionDate": "Transaction Date",
+            "quantity": "Quantity",
+            "amount": "Amount",
+            "currencyIso": "Currency Iso",
+            "amountBaseCurrency": "Amount Base Currency",
+            "bookingText": "Booking Text",
+            "globalSequenceNumber": "Global Sequence Number",
+            "transactionId": "Transaction Id",
+            "eventId": "Event Id",
+            "bookingId": "Booking Id",
+            "positionKeepingId": "Position Keeping Id",
+            "legalEntityId": "Legal Entity Id",
+            "journalPosting": "Journal Posting",
+            "position": "Position"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+
+{
+    "ledgerApp": {
+        "voucherValuation" : {
+            "home": {
+                "title": "Voucher Valuations",
+                "createLabel": "Voucher Valuation erstellen",
+                "createOrEditLabel": "Voucher Valuation erstellen oder bearbeiten"
+            },
+            "created": "Voucher Valuation erstellt mit ID {{ param }}",
+            "updated": "Voucher Valuation aktualisiert mit ID {{ param }}",
+            "deleted": "Voucher Valuation gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Voucher Valuation {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Voucher Valuation"
+            },
+            "amount": "Amount",
+            "currencyIso": "Currency Iso",
+            "amountBaseCurrency": "Amount Base Currency",
+            "dateType": "Date Type",
+            "globalSequenceNumber": "Global Sequence Number",
+            "positionKeepingId": "Position Keeping Id",
+            "legalEntityId": "Legal Entity Id",
+            "journalPosting": "Journal Posting",
+            "position": "Position"
+        }
+    }
+}

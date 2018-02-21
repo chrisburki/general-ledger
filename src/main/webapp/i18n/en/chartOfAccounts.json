@@ -19,9 +19,9 @@
             "name": "Name",
             "key": "Key",
             "accountingStandard": "Accounting Standard",
+            "baseCurrencyIso": "Base Currency Iso",
             "isMain": "Is Main",
-            "legalEntityId": "Legal Entity Id",
-            "positionKeepingId": "Position Keeping Id"
+            "legalEntityId": "Legal Entity Id"
         }
     }
 }

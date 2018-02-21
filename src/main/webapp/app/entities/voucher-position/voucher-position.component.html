@@ -1,0 +1,94 @@
+<div>
+    <h2>
+        <span jhiTranslate="ledgerApp.voucherPosition.home.title">Voucher Positions</span>
+        <button class="btn btn-primary float-right jh-create-entity create-voucher-position" [routerLink]="['/', { outlets: { popup: ['voucher-position-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ledgerApp.voucherPosition.home.createLabel">
+            Create new Voucher Position
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="voucherPositions">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="ledgerApp.voucherPosition.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="key"><span jhiTranslate="ledgerApp.voucherPosition.key">Key</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="currencyIso"><span jhiTranslate="ledgerApp.voucherPosition.currencyIso">Currency Iso</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="positionId"><span jhiTranslate="ledgerApp.voucherPosition.positionId">Position Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="positionKeepingId"><span jhiTranslate="ledgerApp.voucherPosition.positionKeepingId">Position Keeping Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="legalEntityId"><span jhiTranslate="ledgerApp.voucherPosition.legalEntityId">Legal Entity Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="financialInstrumentTypeId"><span jhiTranslate="ledgerApp.voucherPosition.financialInstrumentType">Financial Instrument Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="accountTypeId"><span jhiTranslate="ledgerApp.voucherPosition.accountType">Account Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="subLedgerTypeId"><span jhiTranslate="ledgerApp.voucherPosition.subLedgerType">Sub Ledger Type</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let voucherPosition of voucherPositions ;trackBy: trackId">
+                <td><a [routerLink]="['../voucher-position', voucherPosition.id ]">{{voucherPosition.id}}</a></td>
+                <td>{{voucherPosition.name}}</td>
+                <td>{{voucherPosition.key}}</td>
+                <td>{{voucherPosition.currencyIso}}</td>
+                <td>{{voucherPosition.positionId}}</td>
+                <td>{{voucherPosition.positionKeepingId}}</td>
+                <td>{{voucherPosition.legalEntityId}}</td>
+                <td>
+                    <div *ngIf="voucherPosition.financialInstrumentTypeId">
+                        <a [routerLink]="['../financial-instrument-type', voucherPosition.financialInstrumentTypeId  ]" >{{voucherPosition.financialInstrumentTypeId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="voucherPosition.accountTypeId">
+                        <a [routerLink]="['../voucher-account-type', voucherPosition.accountTypeId  ]" >{{voucherPosition.accountTypeId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="voucherPosition.subLedgerTypeId">
+                        <a [routerLink]="['../sub-ledger-type', voucherPosition.subLedgerTypeId  ]" >{{voucherPosition.subLedgerTypeId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../voucher-position', voucherPosition.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'voucher-position/'+ voucherPosition.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'voucher-position/'+ voucherPosition.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="voucherPositions && voucherPositions.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

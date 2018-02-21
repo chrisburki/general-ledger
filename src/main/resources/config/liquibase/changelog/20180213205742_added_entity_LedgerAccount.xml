@@ -30,7 +30,7 @@
             </column>
 
             <column name="account_type" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="ordered_by" type="varchar(255)">
@@ -47,6 +47,10 @@
 
             <column name="balance_account_id" type="varchar(255)">
                 <constraints nullable="true" />
+            </column>
+
+            <column name="legal_entity_id" type="varchar(255)">
+                <constraints nullable="false" />
             </column>
 
             <column name="chart_of_accounts_id" type="bigint">

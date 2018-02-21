@@ -1,0 +1,66 @@
+
+<div *ngIf="journalPosting">
+    <h2><span jhiTranslate="ledgerApp.journalPosting.detail.title">Journal Posting</span> {{journalPosting.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ledgerApp.journalPosting.bookDate">Book Date</span></dt>
+        <dd>
+            <span>{{journalPosting.bookDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.journalPosting.documentNumber">Document Number</span></dt>
+        <dd>
+            <span>{{journalPosting.documentNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.journalPosting.amount">Amount</span></dt>
+        <dd>
+            <span>{{journalPosting.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.journalPosting.currencyIso">Currency Iso</span></dt>
+        <dd>
+            <span>{{journalPosting.currencyIso}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.journalPosting.amountCurrency">Amount Currency</span></dt>
+        <dd>
+            <span>{{journalPosting.amountCurrency}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.journalPosting.bookingText">Booking Text</span></dt>
+        <dd>
+            <span>{{journalPosting.bookingText}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.journalPosting.globalSequenceNumber">Global Sequence Number</span></dt>
+        <dd>
+            <span>{{journalPosting.globalSequenceNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.journalPosting.legalEntityId">Legal Entity Id</span></dt>
+        <dd>
+            <span>{{journalPosting.legalEntityId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.journalPosting.debitAccount">Debit Account</span></dt>
+        <dd>
+            <div *ngIf="journalPosting.debitAccountId">
+                <a [routerLink]="['/ledger-account', journalPosting.debitAccountId]">{{journalPosting.debitAccountId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.journalPosting.creditAccount">Credit Account</span></dt>
+        <dd>
+            <div *ngIf="journalPosting.creditAccountId">
+                <a [routerLink]="['/ledger-account', journalPosting.creditAccountId]">{{journalPosting.creditAccountId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'journal-posting/'+ journalPosting.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

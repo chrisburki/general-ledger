@@ -1,0 +1,62 @@
+
+<div *ngIf="voucherValuation">
+    <h2><span jhiTranslate="ledgerApp.voucherValuation.detail.title">Voucher Valuation</span> {{voucherValuation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ledgerApp.voucherValuation.amount">Amount</span></dt>
+        <dd>
+            <span>{{voucherValuation.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherValuation.currencyIso">Currency Iso</span></dt>
+        <dd>
+            <span>{{voucherValuation.currencyIso}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherValuation.amountBaseCurrency">Amount Base Currency</span></dt>
+        <dd>
+            <span>{{voucherValuation.amountBaseCurrency}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherValuation.dateType">Date Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'ledgerApp.VoucherDateType.' + voucherValuation.dateType}}">{{voucherValuation.dateType}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherValuation.globalSequenceNumber">Global Sequence Number</span></dt>
+        <dd>
+            <span>{{voucherValuation.globalSequenceNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherValuation.positionKeepingId">Position Keeping Id</span></dt>
+        <dd>
+            <span>{{voucherValuation.positionKeepingId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherValuation.legalEntityId">Legal Entity Id</span></dt>
+        <dd>
+            <span>{{voucherValuation.legalEntityId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherValuation.journalPosting">Journal Posting</span></dt>
+        <dd>
+            <div *ngIf="voucherValuation.journalPostingId">
+                <a [routerLink]="['/journal-posting', voucherValuation.journalPostingId]">{{voucherValuation.journalPostingId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherValuation.position">Position</span></dt>
+        <dd>
+            <div *ngIf="voucherValuation.positionId">
+                <a [routerLink]="['/voucher-position', voucherValuation.positionId]">{{voucherValuation.positionId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'voucher-valuation/'+ voucherValuation.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,90 @@
+
+<div *ngIf="voucherBooking">
+    <h2><span jhiTranslate="ledgerApp.voucherBooking.detail.title">Voucher Booking</span> {{voucherBooking.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.doneDate">Done Date</span></dt>
+        <dd>
+            <span>{{voucherBooking.doneDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.valueDate">Value Date</span></dt>
+        <dd>
+            <span>{{voucherBooking.valueDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.transactionDate">Transaction Date</span></dt>
+        <dd>
+            <span>{{voucherBooking.transactionDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{voucherBooking.quantity}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.amount">Amount</span></dt>
+        <dd>
+            <span>{{voucherBooking.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.currencyIso">Currency Iso</span></dt>
+        <dd>
+            <span>{{voucherBooking.currencyIso}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.amountBaseCurrency">Amount Base Currency</span></dt>
+        <dd>
+            <span>{{voucherBooking.amountBaseCurrency}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.bookingText">Booking Text</span></dt>
+        <dd>
+            <span>{{voucherBooking.bookingText}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.globalSequenceNumber">Global Sequence Number</span></dt>
+        <dd>
+            <span>{{voucherBooking.globalSequenceNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.transactionId">Transaction Id</span></dt>
+        <dd>
+            <span>{{voucherBooking.transactionId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.eventId">Event Id</span></dt>
+        <dd>
+            <span>{{voucherBooking.eventId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.bookingId">Booking Id</span></dt>
+        <dd>
+            <span>{{voucherBooking.bookingId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.positionKeepingId">Position Keeping Id</span></dt>
+        <dd>
+            <span>{{voucherBooking.positionKeepingId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.legalEntityId">Legal Entity Id</span></dt>
+        <dd>
+            <span>{{voucherBooking.legalEntityId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.journalPosting">Journal Posting</span></dt>
+        <dd>
+            <div *ngIf="voucherBooking.journalPostingId">
+                <a [routerLink]="['/journal-posting', voucherBooking.journalPostingId]">{{voucherBooking.journalPostingId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherBooking.position">Position</span></dt>
+        <dd>
+            <div *ngIf="voucherBooking.positionId">
+                <a [routerLink]="['/voucher-position', voucherBooking.positionId]">{{voucherBooking.positionId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'voucher-booking/'+ voucherBooking.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

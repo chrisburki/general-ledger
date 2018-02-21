@@ -18,8 +18,9 @@ export class LedgerAccount implements BaseEntity {
         public level?: number,
         public isleaf?: boolean,
         public balanceAccountId?: string,
-        public chartOfAccounts?: BaseEntity,
-        public upperAccount?: BaseEntity,
+        public legalEntityId?: string,
+        public chartOfAccountsId?: number,
+        public upperAccountId?: number,
     ) {
         this.isleaf = false;
     }

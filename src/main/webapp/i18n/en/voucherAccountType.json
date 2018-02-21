@@ -1,0 +1,23 @@
+
+{
+    "ledgerApp": {
+        "voucherAccountType" : {
+            "home": {
+                "title": "Voucher Account Types",
+                "createLabel": "Create a new Voucher Account Type",
+                "createOrEditLabel": "Create or edit a Voucher Account Type"
+            },
+            "created": "A new Voucher Account Type is created with identifier {{ param }}",
+            "updated": "A Voucher Account Type is updated with identifier {{ param }}",
+            "deleted": "A Voucher Account Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Voucher Account Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Voucher Account Type"
+            },
+            "category": "Category",
+            "name": "Name"
+        }
+    }
+}

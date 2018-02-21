@@ -1,0 +1,84 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "voucherBooking",
+            "otherEntityName": "voucherBooking",
+            "otherEntityRelationshipName": "journalPosting"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "voucherValuation",
+            "otherEntityName": "voucherValuation",
+            "otherEntityRelationshipName": "journalPosting"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "debitAccount",
+            "otherEntityName": "ledgerAccount",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "creditAccount",
+            "otherEntityName": "ledgerAccount",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "bookDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "documentNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "currencyIso",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "amountCurrency",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "bookingText",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "globalSequenceNumber",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "legalEntityId",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180221050720",
+    "entityTableName": "journal_posting",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

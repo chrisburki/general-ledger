@@ -4,6 +4,9 @@ import com.avaloq.ledger.LedgerApp;
 
 import com.avaloq.ledger.domain.ChartOfAccounts;
 import com.avaloq.ledger.repository.ChartOfAccountsRepository;
+import com.avaloq.ledger.service.ChartOfAccountsService;
+import com.avaloq.ledger.service.dto.ChartOfAccountsDTO;
+import com.avaloq.ledger.service.mapper.ChartOfAccountsMapper;
 import com.avaloq.ledger.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -48,17 +51,23 @@ public class ChartOfAccountsResourceIntTest {
     private static final AccountingStandard DEFAULT_ACCOUNTING_STANDARD = AccountingStandard.IFRS;
     private static final AccountingStandard UPDATED_ACCOUNTING_STANDARD = AccountingStandard.HGB;
 
+    private static final String DEFAULT_BASE_CURRENCY_ISO = "AAAAAAAAAA";
+    private static final String UPDATED_BASE_CURRENCY_ISO = "BBBBBBBBBB";
+
     private static final Boolean DEFAULT_IS_MAIN = false;
     private static final Boolean UPDATED_IS_MAIN = true;
 
     private static final String DEFAULT_LEGAL_ENTITY_ID = "AAAAAAAAAA";
     private static final String UPDATED_LEGAL_ENTITY_ID = "BBBBBBBBBB";
 
-    private static final String DEFAULT_POSITION_KEEPING_ID = "AAAAAAAAAA";
-    private static final String UPDATED_POSITION_KEEPING_ID = "BBBBBBBBBB";
-
     @Autowired
     private ChartOfAccountsRepository chartOfAccountsRepository;
+
+    @Autowired
+    private ChartOfAccountsMapper chartOfAccountsMapper;
+
+    @Autowired
+    private ChartOfAccountsService chartOfAccountsService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -79,7 +88,7 @@ public class ChartOfAccountsResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ChartOfAccountsResource chartOfAccountsResource = new ChartOfAccountsResource(chartOfAccountsRepository);
+        final ChartOfAccountsResource chartOfAccountsResource = new ChartOfAccountsResource(chartOfAccountsService);
         this.restChartOfAccountsMockMvc = MockMvcBuilders.standaloneSetup(chartOfAccountsResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -98,9 +107,9 @@ public class ChartOfAccountsResourceIntTest {
             .name(DEFAULT_NAME)
             .key(DEFAULT_KEY)
             .accountingStandard(DEFAULT_ACCOUNTING_STANDARD)
+            .baseCurrencyIso(DEFAULT_BASE_CURRENCY_ISO)
             .isMain(DEFAULT_IS_MAIN)
-            .legalEntityId(DEFAULT_LEGAL_ENTITY_ID)
-            .positionKeepingId(DEFAULT_POSITION_KEEPING_ID);
+            .legalEntityId(DEFAULT_LEGAL_ENTITY_ID);
         return chartOfAccounts;
     }
 
@@ -115,9 +124,10 @@ public class ChartOfAccountsResourceIntTest {
         int databaseSizeBeforeCreate = chartOfAccountsRepository.findAll().size();
 
         // Create the ChartOfAccounts
+        ChartOfAccountsDTO chartOfAccountsDTO = chartOfAccountsMapper.toDto(chartOfAccounts);
         restChartOfAccountsMockMvc.perform(post("/api/chart-of-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(chartOfAccounts)))
+            .content(TestUtil.convertObjectToJsonBytes(chartOfAccountsDTO)))
             .andExpect(status().isCreated());
 
         // Validate the ChartOfAccounts in the database
@@ -127,9 +137,9 @@ public class ChartOfAccountsResourceIntTest {
         assertThat(testChartOfAccounts.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testChartOfAccounts.getKey()).isEqualTo(DEFAULT_KEY);
         assertThat(testChartOfAccounts.getAccountingStandard()).isEqualTo(DEFAULT_ACCOUNTING_STANDARD);
+        assertThat(testChartOfAccounts.getBaseCurrencyIso()).isEqualTo(DEFAULT_BASE_CURRENCY_ISO);
         assertThat(testChartOfAccounts.isIsMain()).isEqualTo(DEFAULT_IS_MAIN);
         assertThat(testChartOfAccounts.getLegalEntityId()).isEqualTo(DEFAULT_LEGAL_ENTITY_ID);
-        assertThat(testChartOfAccounts.getPositionKeepingId()).isEqualTo(DEFAULT_POSITION_KEEPING_ID);
     }
 
     @Test
@@ -139,11 +149,12 @@ public class ChartOfAccountsResourceIntTest {
 
         // Create the ChartOfAccounts with an existing ID
         chartOfAccounts.setId(1L);
+        ChartOfAccountsDTO chartOfAccountsDTO = chartOfAccountsMapper.toDto(chartOfAccounts);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restChartOfAccountsMockMvc.perform(post("/api/chart-of-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(chartOfAccounts)))
+            .content(TestUtil.convertObjectToJsonBytes(chartOfAccountsDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the ChartOfAccounts in the database
@@ -159,10 +170,11 @@ public class ChartOfAccountsResourceIntTest {
         chartOfAccounts.setName(null);
 
         // Create the ChartOfAccounts, which fails.
+        ChartOfAccountsDTO chartOfAccountsDTO = chartOfAccountsMapper.toDto(chartOfAccounts);
 
         restChartOfAccountsMockMvc.perform(post("/api/chart-of-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(chartOfAccounts)))
+            .content(TestUtil.convertObjectToJsonBytes(chartOfAccountsDTO)))
             .andExpect(status().isBadRequest());
 
         List<ChartOfAccounts> chartOfAccountsList = chartOfAccountsRepository.findAll();
@@ -177,10 +189,68 @@ public class ChartOfAccountsResourceIntTest {
         chartOfAccounts.setKey(null);
 
         // Create the ChartOfAccounts, which fails.
+        ChartOfAccountsDTO chartOfAccountsDTO = chartOfAccountsMapper.toDto(chartOfAccounts);
 
         restChartOfAccountsMockMvc.perform(post("/api/chart-of-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(chartOfAccounts)))
+            .content(TestUtil.convertObjectToJsonBytes(chartOfAccountsDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<ChartOfAccounts> chartOfAccountsList = chartOfAccountsRepository.findAll();
+        assertThat(chartOfAccountsList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkAccountingStandardIsRequired() throws Exception {
+        int databaseSizeBeforeTest = chartOfAccountsRepository.findAll().size();
+        // set the field null
+        chartOfAccounts.setAccountingStandard(null);
+
+        // Create the ChartOfAccounts, which fails.
+        ChartOfAccountsDTO chartOfAccountsDTO = chartOfAccountsMapper.toDto(chartOfAccounts);
+
+        restChartOfAccountsMockMvc.perform(post("/api/chart-of-accounts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(chartOfAccountsDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<ChartOfAccounts> chartOfAccountsList = chartOfAccountsRepository.findAll();
+        assertThat(chartOfAccountsList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkBaseCurrencyIsoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = chartOfAccountsRepository.findAll().size();
+        // set the field null
+        chartOfAccounts.setBaseCurrencyIso(null);
+
+        // Create the ChartOfAccounts, which fails.
+        ChartOfAccountsDTO chartOfAccountsDTO = chartOfAccountsMapper.toDto(chartOfAccounts);
+
+        restChartOfAccountsMockMvc.perform(post("/api/chart-of-accounts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(chartOfAccountsDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<ChartOfAccounts> chartOfAccountsList = chartOfAccountsRepository.findAll();
+        assertThat(chartOfAccountsList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkLegalEntityIdIsRequired() throws Exception {
+        int databaseSizeBeforeTest = chartOfAccountsRepository.findAll().size();
+        // set the field null
+        chartOfAccounts.setLegalEntityId(null);
+
+        // Create the ChartOfAccounts, which fails.
+        ChartOfAccountsDTO chartOfAccountsDTO = chartOfAccountsMapper.toDto(chartOfAccounts);
+
+        restChartOfAccountsMockMvc.perform(post("/api/chart-of-accounts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(chartOfAccountsDTO)))
             .andExpect(status().isBadRequest());
 
         List<ChartOfAccounts> chartOfAccountsList = chartOfAccountsRepository.findAll();
@@ -201,9 +271,9 @@ public class ChartOfAccountsResourceIntTest {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].key").value(hasItem(DEFAULT_KEY.toString())))
             .andExpect(jsonPath("$.[*].accountingStandard").value(hasItem(DEFAULT_ACCOUNTING_STANDARD.toString())))
+            .andExpect(jsonPath("$.[*].baseCurrencyIso").value(hasItem(DEFAULT_BASE_CURRENCY_ISO.toString())))
             .andExpect(jsonPath("$.[*].isMain").value(hasItem(DEFAULT_IS_MAIN.booleanValue())))
-            .andExpect(jsonPath("$.[*].legalEntityId").value(hasItem(DEFAULT_LEGAL_ENTITY_ID.toString())))
-            .andExpect(jsonPath("$.[*].positionKeepingId").value(hasItem(DEFAULT_POSITION_KEEPING_ID.toString())));
+            .andExpect(jsonPath("$.[*].legalEntityId").value(hasItem(DEFAULT_LEGAL_ENTITY_ID.toString())));
     }
 
     @Test
@@ -220,9 +290,9 @@ public class ChartOfAccountsResourceIntTest {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.key").value(DEFAULT_KEY.toString()))
             .andExpect(jsonPath("$.accountingStandard").value(DEFAULT_ACCOUNTING_STANDARD.toString()))
+            .andExpect(jsonPath("$.baseCurrencyIso").value(DEFAULT_BASE_CURRENCY_ISO.toString()))
             .andExpect(jsonPath("$.isMain").value(DEFAULT_IS_MAIN.booleanValue()))
-            .andExpect(jsonPath("$.legalEntityId").value(DEFAULT_LEGAL_ENTITY_ID.toString()))
-            .andExpect(jsonPath("$.positionKeepingId").value(DEFAULT_POSITION_KEEPING_ID.toString()));
+            .andExpect(jsonPath("$.legalEntityId").value(DEFAULT_LEGAL_ENTITY_ID.toString()));
     }
 
     @Test
@@ -248,13 +318,14 @@ public class ChartOfAccountsResourceIntTest {
             .name(UPDATED_NAME)
             .key(UPDATED_KEY)
             .accountingStandard(UPDATED_ACCOUNTING_STANDARD)
+            .baseCurrencyIso(UPDATED_BASE_CURRENCY_ISO)
             .isMain(UPDATED_IS_MAIN)
-            .legalEntityId(UPDATED_LEGAL_ENTITY_ID)
-            .positionKeepingId(UPDATED_POSITION_KEEPING_ID);
+            .legalEntityId(UPDATED_LEGAL_ENTITY_ID);
+        ChartOfAccountsDTO chartOfAccountsDTO = chartOfAccountsMapper.toDto(updatedChartOfAccounts);
 
         restChartOfAccountsMockMvc.perform(put("/api/chart-of-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedChartOfAccounts)))
+            .content(TestUtil.convertObjectToJsonBytes(chartOfAccountsDTO)))
             .andExpect(status().isOk());
 
         // Validate the ChartOfAccounts in the database
@@ -264,9 +335,9 @@ public class ChartOfAccountsResourceIntTest {
         assertThat(testChartOfAccounts.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testChartOfAccounts.getKey()).isEqualTo(UPDATED_KEY);
         assertThat(testChartOfAccounts.getAccountingStandard()).isEqualTo(UPDATED_ACCOUNTING_STANDARD);
+        assertThat(testChartOfAccounts.getBaseCurrencyIso()).isEqualTo(UPDATED_BASE_CURRENCY_ISO);
         assertThat(testChartOfAccounts.isIsMain()).isEqualTo(UPDATED_IS_MAIN);
         assertThat(testChartOfAccounts.getLegalEntityId()).isEqualTo(UPDATED_LEGAL_ENTITY_ID);
-        assertThat(testChartOfAccounts.getPositionKeepingId()).isEqualTo(UPDATED_POSITION_KEEPING_ID);
     }
 
     @Test
@@ -275,11 +346,12 @@ public class ChartOfAccountsResourceIntTest {
         int databaseSizeBeforeUpdate = chartOfAccountsRepository.findAll().size();
 
         // Create the ChartOfAccounts
+        ChartOfAccountsDTO chartOfAccountsDTO = chartOfAccountsMapper.toDto(chartOfAccounts);
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restChartOfAccountsMockMvc.perform(put("/api/chart-of-accounts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(chartOfAccounts)))
+            .content(TestUtil.convertObjectToJsonBytes(chartOfAccountsDTO)))
             .andExpect(status().isCreated());
 
         // Validate the ChartOfAccounts in the database
@@ -317,5 +389,28 @@ public class ChartOfAccountsResourceIntTest {
         assertThat(chartOfAccounts1).isNotEqualTo(chartOfAccounts2);
         chartOfAccounts1.setId(null);
         assertThat(chartOfAccounts1).isNotEqualTo(chartOfAccounts2);
+    }
+
+    @Test
+    @Transactional
+    public void dtoEqualsVerifier() throws Exception {
+        TestUtil.equalsVerifier(ChartOfAccountsDTO.class);
+        ChartOfAccountsDTO chartOfAccountsDTO1 = new ChartOfAccountsDTO();
+        chartOfAccountsDTO1.setId(1L);
+        ChartOfAccountsDTO chartOfAccountsDTO2 = new ChartOfAccountsDTO();
+        assertThat(chartOfAccountsDTO1).isNotEqualTo(chartOfAccountsDTO2);
+        chartOfAccountsDTO2.setId(chartOfAccountsDTO1.getId());
+        assertThat(chartOfAccountsDTO1).isEqualTo(chartOfAccountsDTO2);
+        chartOfAccountsDTO2.setId(2L);
+        assertThat(chartOfAccountsDTO1).isNotEqualTo(chartOfAccountsDTO2);
+        chartOfAccountsDTO1.setId(null);
+        assertThat(chartOfAccountsDTO1).isNotEqualTo(chartOfAccountsDTO2);
+    }
+
+    @Test
+    @Transactional
+    public void testEntityFromId() {
+        assertThat(chartOfAccountsMapper.fromId(42L).getId()).isEqualTo(42);
+        assertThat(chartOfAccountsMapper.fromId(null)).isNull();
     }
 }

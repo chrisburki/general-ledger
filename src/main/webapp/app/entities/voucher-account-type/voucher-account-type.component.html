@@ -1,0 +1,60 @@
+<div>
+    <h2>
+        <span jhiTranslate="ledgerApp.voucherAccountType.home.title">Voucher Account Types</span>
+        <button class="btn btn-primary float-right jh-create-entity create-voucher-account-type" [routerLink]="['/', { outlets: { popup: ['voucher-account-type-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="ledgerApp.voucherAccountType.home.createLabel">
+            Create new Voucher Account Type
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="voucherAccountTypes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="ledgerApp.voucherAccountType.category">Category</span></th>
+            <th><span jhiTranslate="ledgerApp.voucherAccountType.name">Name</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let voucherAccountType of voucherAccountTypes ;trackBy: trackId">
+                <td><a [routerLink]="['../voucher-account-type', voucherAccountType.id ]">{{voucherAccountType.id}}</a></td>
+                <td>{{voucherAccountType.category}}</td>
+                <td>{{voucherAccountType.name}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../voucher-account-type', voucherAccountType.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'voucher-account-type/'+ voucherAccountType.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'voucher-account-type/'+ voucherAccountType.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

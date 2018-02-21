@@ -13,9 +13,9 @@ export class ChartOfAccounts implements BaseEntity {
         public name?: string,
         public key?: string,
         public accountingStandard?: AccountingStandard,
+        public baseCurrencyIso?: string,
         public isMain?: boolean,
         public legalEntityId?: string,
-        public positionKeepingId?: string,
     ) {
         this.isMain = false;
     }
