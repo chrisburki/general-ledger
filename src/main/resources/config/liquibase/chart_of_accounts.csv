@@ -1,2 +1,2 @@
 id;name;jhi_key;accounting_standard;base_currency_iso;is_main;legal_entity_id
-1;BUC Ledger;BUC;EUR;IFRS;true;AAA
+1;BUC Ledger;BUC;IFRS;EUR;true;AAA

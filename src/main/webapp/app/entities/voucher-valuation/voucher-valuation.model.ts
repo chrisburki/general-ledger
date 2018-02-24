@@ -18,6 +18,7 @@ export class VoucherValuation implements BaseEntity {
         public legalEntityId?: string,
         public journalPostingId?: number,
         public positionId?: number,
+        public valuationTypeId?: number,
     ) {
     }
 }

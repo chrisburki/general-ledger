@@ -37,6 +37,8 @@ public class VoucherValuationDTO implements Serializable {
 
     private Long positionId;
 
+    private Long valuationTypeId;
+
     public Long getId() {
         return id;
     }
@@ -115,6 +117,14 @@ public class VoucherValuationDTO implements Serializable {
 
     public void setPositionId(Long voucherPositionId) {
         this.positionId = voucherPositionId;
+    }
+
+    public Long getValuationTypeId() {
+        return valuationTypeId;
+    }
+
+    public void setValuationTypeId(Long voucherValuationTypeId) {
+        this.valuationTypeId = voucherValuationTypeId;
     }
 
     @Override

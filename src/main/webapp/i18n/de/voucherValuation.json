@@ -24,7 +24,8 @@
             "positionKeepingId": "Position Keeping Id",
             "legalEntityId": "Legal Entity Id",
             "journalPosting": "Journal Posting",
-            "position": "Position"
+            "position": "Position",
+            "valuationType": "Valuation Type"
         }
     }
 }

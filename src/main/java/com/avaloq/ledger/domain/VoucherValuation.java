@@ -58,6 +58,9 @@ public class VoucherValuation implements Serializable {
     @ManyToOne
     private VoucherPosition position;
 
+    @ManyToOne
+    private VoucherValuationType valuationType;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -182,6 +185,19 @@ public class VoucherValuation implements Serializable {
 
     public void setPosition(VoucherPosition voucherPosition) {
         this.position = voucherPosition;
+    }
+
+    public VoucherValuationType getValuationType() {
+        return valuationType;
+    }
+
+    public VoucherValuation valuationType(VoucherValuationType voucherValuationType) {
+        this.valuationType = voucherValuationType;
+        return this;
+    }
+
+    public void setValuationType(VoucherValuationType voucherValuationType) {
+        this.valuationType = voucherValuationType;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

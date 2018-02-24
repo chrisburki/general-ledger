@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="voucher_position"/>
 
+        <addForeignKeyConstraint baseColumnNames="valuation_type_id"
+                                 baseTableName="voucher_valuation"
+                                 constraintName="fk_voucher_valuation_valuation_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="voucher_valuation_type"/>
+
     </changeSet>
 </databaseChangeLog>

@@ -26,6 +26,7 @@
             <th jhiSortBy="legalEntityId"><span jhiTranslate="ledgerApp.voucherValuation.legalEntityId">Legal Entity Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="journalPostingId"><span jhiTranslate="ledgerApp.voucherValuation.journalPosting">Journal Posting</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="positionId"><span jhiTranslate="ledgerApp.voucherValuation.position">Position</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="valuationTypeId"><span jhiTranslate="ledgerApp.voucherValuation.valuationType">Valuation Type</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -47,6 +48,11 @@
                 <td>
                     <div *ngIf="voucherValuation.positionId">
                         <a [routerLink]="['../voucher-position', voucherValuation.positionId  ]" >{{voucherValuation.positionId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="voucherValuation.valuationTypeId">
+                        <a [routerLink]="['../voucher-valuation-type', voucherValuation.valuationTypeId  ]" >{{voucherValuation.valuationTypeId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

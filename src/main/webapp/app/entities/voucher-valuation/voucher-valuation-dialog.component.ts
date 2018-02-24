@@ -11,6 +11,7 @@ import { VoucherValuationPopupService } from './voucher-valuation-popup.service'
 import { VoucherValuationService } from './voucher-valuation.service';
 import { JournalPosting, JournalPostingService } from '../journal-posting';
 import { VoucherPosition, VoucherPositionService } from '../voucher-position';
+import { VoucherValuationType, VoucherValuationTypeService } from '../voucher-valuation-type';
 
 @Component({
     selector: 'jhi-voucher-valuation-dialog',
@@ -25,12 +26,15 @@ export class VoucherValuationDialogComponent implements OnInit {
 
     voucherpositions: VoucherPosition[];
 
+    vouchervaluationtypes: VoucherValuationType[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private voucherValuationService: VoucherValuationService,
         private journalPostingService: JournalPostingService,
         private voucherPositionService: VoucherPositionService,
+        private voucherValuationTypeService: VoucherValuationTypeService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -41,6 +45,8 @@ export class VoucherValuationDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<JournalPosting[]>) => { this.journalpostings = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.voucherPositionService.query()
             .subscribe((res: HttpResponse<VoucherPosition[]>) => { this.voucherpositions = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.voucherValuationTypeService.query()
+            .subscribe((res: HttpResponse<VoucherValuationType[]>) => { this.vouchervaluationtypes = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -82,6 +88,10 @@ export class VoucherValuationDialogComponent implements OnInit {
     }
 
     trackVoucherPositionById(index: number, item: VoucherPosition) {
+        return item.id;
+    }
+
+    trackVoucherValuationTypeById(index: number, item: VoucherValuationType) {
         return item.id;
     }
 }

@@ -44,6 +44,12 @@
                 <a [routerLink]="['/voucher-position', voucherValuation.positionId]">{{voucherValuation.positionId}}</a>
             </div>
         </dd>
+        <dt><span jhiTranslate="ledgerApp.voucherValuation.valuationType">Valuation Type</span></dt>
+        <dd>
+            <div *ngIf="voucherValuation.valuationTypeId">
+                <a [routerLink]="['/voucher-valuation-type', voucherValuation.valuationTypeId]">{{voucherValuation.valuationTypeId}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

@@ -54,6 +54,7 @@ public class CacheConfiguration {
             cm.createCache(com.avaloq.ledger.domain.VoucherBooking.class.getName(), jcacheConfiguration);
             cm.createCache(com.avaloq.ledger.domain.VoucherValuation.class.getName(), jcacheConfiguration);
             cm.createCache(com.avaloq.ledger.domain.SubLedgerType.class.getName(), jcacheConfiguration);
+            cm.createCache(com.avaloq.ledger.domain.VoucherValuationType.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

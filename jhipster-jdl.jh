@@ -99,6 +99,11 @@ enum VoucherDateType {
     DONE, VALUE, TRANSACTION
 }
 
+entity VoucherValuationType {
+    category String required,
+    name String
+}
+
 entity VoucherValuation {
     amount Double required,
     currencyIso String,
@@ -153,6 +158,10 @@ relationship ManyToOne {
 	VoucherValuation{position} to VoucherPosition
 }
 
+relationship ManyToOne {
+	VoucherValuation{valuationType} to VoucherValuationType
+}
+
 relationship OneToMany {
 	JournalPosting{voucherBooking} to VoucherBooking
 }
@@ -168,4 +177,4 @@ paginate JournalPosting, VoucherPosition, VoucherBooking, VoucherValuation with 
 dto all with mapstruct
 
 // Set service options to all except few
-service all with serviceImpl except FinanicalIstrumentType, VoucherAccountType, SubLedgerType
+service all with serviceImpl except FinanicalIstrumentType, VoucherAccountType, SubLedgerType, VoucherValuationType

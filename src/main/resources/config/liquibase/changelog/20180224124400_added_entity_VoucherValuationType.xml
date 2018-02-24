@@ -14,46 +14,24 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity ChartOfAccounts.
+        Added the entity VoucherValuationType.
     -->
-    <changeSet id="20180213205741-1" author="jhipster">
-        <createTable tableName="chart_of_accounts">
+    <changeSet id="20180224124400-1" author="jhipster">
+        <createTable tableName="voucher_valuation_type">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(200)">
+            <column name="category" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
-            <column name="jhi_key" type="varchar(60)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="accounting_standard" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="base_currency_iso" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="is_main" type="boolean">
+            <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
-            </column>
-
-            <column name="legal_entity_id" type="varchar(255)">
-                <constraints nullable="false" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-
-    </changeSet>
-    <changeSet id="20180213205741-2" author="jhipster">
-        <loadData encoding="UTF-8"
-                  file="config/liquibase/chart_of_accounts.csv"
-                  separator=";"
-                  tableName="chart_of_accounts"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

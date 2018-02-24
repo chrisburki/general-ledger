@@ -1,0 +1,23 @@
+
+{
+    "ledgerApp": {
+        "voucherValuationType" : {
+            "home": {
+                "title": "Voucher Valuation Types",
+                "createLabel": "Voucher Valuation Type erstellen",
+                "createOrEditLabel": "Voucher Valuation Type erstellen oder bearbeiten"
+            },
+            "created": "Voucher Valuation Type erstellt mit ID {{ param }}",
+            "updated": "Voucher Valuation Type aktualisiert mit ID {{ param }}",
+            "deleted": "Voucher Valuation Type gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Voucher Valuation Type {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Voucher Valuation Type"
+            },
+            "category": "Category",
+            "name": "Name"
+        }
+    }
+}

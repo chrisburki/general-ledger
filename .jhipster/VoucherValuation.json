@@ -12,6 +12,12 @@
             "relationshipName": "position",
             "otherEntityName": "voucherPosition",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "valuationType",
+            "otherEntityName": "voucherValuationType",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

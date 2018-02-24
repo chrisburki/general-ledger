@@ -15,6 +15,7 @@
     <include file="config/liquibase/changelog/20180221050725_added_entity_VoucherBooking.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180221050726_added_entity_VoucherValuation.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180221200206_added_entity_SubLedgerType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180224124400_added_entity_VoucherValuationType.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180213205742_added_entity_constraints_LedgerAccount.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180221050720_added_entity_constraints_JournalPosting.xml" relativeToChangelogFile="false"/>

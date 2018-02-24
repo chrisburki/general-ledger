@@ -6,41 +6,35 @@ import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { LedgerTestModule } from '../../../test.module';
-import { VoucherValuationDialogComponent } from '../../../../../../main/webapp/app/entities/voucher-valuation/voucher-valuation-dialog.component';
-import { VoucherValuationService } from '../../../../../../main/webapp/app/entities/voucher-valuation/voucher-valuation.service';
-import { VoucherValuation } from '../../../../../../main/webapp/app/entities/voucher-valuation/voucher-valuation.model';
-import { JournalPostingService } from '../../../../../../main/webapp/app/entities/journal-posting';
-import { VoucherPositionService } from '../../../../../../main/webapp/app/entities/voucher-position';
-import { VoucherValuationTypeService } from '../../../../../../main/webapp/app/entities/voucher-valuation-type';
+import { VoucherValuationTypeDialogComponent } from '../../../../../../main/webapp/app/entities/voucher-valuation-type/voucher-valuation-type-dialog.component';
+import { VoucherValuationTypeService } from '../../../../../../main/webapp/app/entities/voucher-valuation-type/voucher-valuation-type.service';
+import { VoucherValuationType } from '../../../../../../main/webapp/app/entities/voucher-valuation-type/voucher-valuation-type.model';
 
 describe('Component Tests', () => {
 
-    describe('VoucherValuation Management Dialog Component', () => {
-        let comp: VoucherValuationDialogComponent;
-        let fixture: ComponentFixture<VoucherValuationDialogComponent>;
-        let service: VoucherValuationService;
+    describe('VoucherValuationType Management Dialog Component', () => {
+        let comp: VoucherValuationTypeDialogComponent;
+        let fixture: ComponentFixture<VoucherValuationTypeDialogComponent>;
+        let service: VoucherValuationTypeService;
         let mockEventManager: any;
         let mockActiveModal: any;
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 imports: [LedgerTestModule],
-                declarations: [VoucherValuationDialogComponent],
+                declarations: [VoucherValuationTypeDialogComponent],
                 providers: [
-                    JournalPostingService,
-                    VoucherPositionService,
-                    VoucherValuationTypeService,
-                    VoucherValuationService
+                    VoucherValuationTypeService
                 ]
             })
-            .overrideTemplate(VoucherValuationDialogComponent, '')
+            .overrideTemplate(VoucherValuationTypeDialogComponent, '')
             .compileComponents();
         }));
 
         beforeEach(() => {
-            fixture = TestBed.createComponent(VoucherValuationDialogComponent);
+            fixture = TestBed.createComponent(VoucherValuationTypeDialogComponent);
             comp = fixture.componentInstance;
-            service = fixture.debugElement.injector.get(VoucherValuationService);
+            service = fixture.debugElement.injector.get(VoucherValuationTypeService);
             mockEventManager = fixture.debugElement.injector.get(JhiEventManager);
             mockActiveModal = fixture.debugElement.injector.get(NgbActiveModal);
         });
@@ -50,9 +44,9 @@ describe('Component Tests', () => {
                 inject([],
                     fakeAsync(() => {
                         // GIVEN
-                        const entity = new VoucherValuation(123);
+                        const entity = new VoucherValuationType(123);
                         spyOn(service, 'update').and.returnValue(Observable.of(new HttpResponse({body: entity})));
-                        comp.voucherValuation = entity;
+                        comp.voucherValuationType = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async
@@ -60,7 +54,7 @@ describe('Component Tests', () => {
                         // THEN
                         expect(service.update).toHaveBeenCalledWith(entity);
                         expect(comp.isSaving).toEqual(false);
-                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'voucherValuationListModification', content: 'OK'});
+                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'voucherValuationTypeListModification', content: 'OK'});
                         expect(mockActiveModal.dismissSpy).toHaveBeenCalled();
                     })
                 )
@@ -70,9 +64,9 @@ describe('Component Tests', () => {
                 inject([],
                     fakeAsync(() => {
                         // GIVEN
-                        const entity = new VoucherValuation();
+                        const entity = new VoucherValuationType();
                         spyOn(service, 'create').and.returnValue(Observable.of(new HttpResponse({body: entity})));
-                        comp.voucherValuation = entity;
+                        comp.voucherValuationType = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async
@@ -80,7 +74,7 @@ describe('Component Tests', () => {
                         // THEN
                         expect(service.create).toHaveBeenCalledWith(entity);
                         expect(comp.isSaving).toEqual(false);
-                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'voucherValuationListModification', content: 'OK'});
+                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'voucherValuationTypeListModification', content: 'OK'});
                         expect(mockActiveModal.dismissSpy).toHaveBeenCalled();
                     })
                 )

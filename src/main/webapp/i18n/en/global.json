@@ -17,6 +17,7 @@
                 "voucherBooking": "Voucher Booking",
                 "voucherValuation": "Voucher Valuation",
                 "subLedgerType": "Sub Ledger Type",
+                "voucherValuationType": "Voucher Valuation Type",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
