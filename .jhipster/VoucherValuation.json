@@ -52,6 +52,10 @@
             ]
         },
         {
+            "fieldName": "businessUseCase",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "positionKeepingId",
             "fieldType": "String"
         },

@@ -45,6 +45,9 @@ public class VoucherValuation implements Serializable {
     @Column(name = "global_sequence_number", nullable = false)
     private Long globalSequenceNumber;
 
+    @Column(name = "business_use_case")
+    private String businessUseCase;
+
     @Column(name = "position_keeping_id")
     private String positionKeepingId;
 
@@ -133,6 +136,19 @@ public class VoucherValuation implements Serializable {
 
     public void setGlobalSequenceNumber(Long globalSequenceNumber) {
         this.globalSequenceNumber = globalSequenceNumber;
+    }
+
+    public String getBusinessUseCase() {
+        return businessUseCase;
+    }
+
+    public VoucherValuation businessUseCase(String businessUseCase) {
+        this.businessUseCase = businessUseCase;
+        return this;
+    }
+
+    public void setBusinessUseCase(String businessUseCase) {
+        this.businessUseCase = businessUseCase;
     }
 
     public String getPositionKeepingId() {
@@ -230,6 +246,7 @@ public class VoucherValuation implements Serializable {
             ", amountBaseCurrency=" + getAmountBaseCurrency() +
             ", dateType='" + getDateType() + "'" +
             ", globalSequenceNumber=" + getGlobalSequenceNumber() +
+            ", businessUseCase='" + getBusinessUseCase() + "'" +
             ", positionKeepingId='" + getPositionKeepingId() + "'" +
             ", legalEntityId='" + getLegalEntityId() + "'" +
             "}";

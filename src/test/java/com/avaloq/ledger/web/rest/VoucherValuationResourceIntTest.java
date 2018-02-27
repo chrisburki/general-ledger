@@ -57,6 +57,9 @@ public class VoucherValuationResourceIntTest {
     private static final Long DEFAULT_GLOBAL_SEQUENCE_NUMBER = 1L;
     private static final Long UPDATED_GLOBAL_SEQUENCE_NUMBER = 2L;
 
+    private static final String DEFAULT_BUSINESS_USE_CASE = "AAAAAAAAAA";
+    private static final String UPDATED_BUSINESS_USE_CASE = "BBBBBBBBBB";
+
     private static final String DEFAULT_POSITION_KEEPING_ID = "AAAAAAAAAA";
     private static final String UPDATED_POSITION_KEEPING_ID = "BBBBBBBBBB";
 
@@ -112,6 +115,7 @@ public class VoucherValuationResourceIntTest {
             .amountBaseCurrency(DEFAULT_AMOUNT_BASE_CURRENCY)
             .dateType(DEFAULT_DATE_TYPE)
             .globalSequenceNumber(DEFAULT_GLOBAL_SEQUENCE_NUMBER)
+            .businessUseCase(DEFAULT_BUSINESS_USE_CASE)
             .positionKeepingId(DEFAULT_POSITION_KEEPING_ID)
             .legalEntityId(DEFAULT_LEGAL_ENTITY_ID);
         return voucherValuation;
@@ -143,6 +147,7 @@ public class VoucherValuationResourceIntTest {
         assertThat(testVoucherValuation.getAmountBaseCurrency()).isEqualTo(DEFAULT_AMOUNT_BASE_CURRENCY);
         assertThat(testVoucherValuation.getDateType()).isEqualTo(DEFAULT_DATE_TYPE);
         assertThat(testVoucherValuation.getGlobalSequenceNumber()).isEqualTo(DEFAULT_GLOBAL_SEQUENCE_NUMBER);
+        assertThat(testVoucherValuation.getBusinessUseCase()).isEqualTo(DEFAULT_BUSINESS_USE_CASE);
         assertThat(testVoucherValuation.getPositionKeepingId()).isEqualTo(DEFAULT_POSITION_KEEPING_ID);
         assertThat(testVoucherValuation.getLegalEntityId()).isEqualTo(DEFAULT_LEGAL_ENTITY_ID);
     }
@@ -259,6 +264,7 @@ public class VoucherValuationResourceIntTest {
             .andExpect(jsonPath("$.[*].amountBaseCurrency").value(hasItem(DEFAULT_AMOUNT_BASE_CURRENCY.doubleValue())))
             .andExpect(jsonPath("$.[*].dateType").value(hasItem(DEFAULT_DATE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].globalSequenceNumber").value(hasItem(DEFAULT_GLOBAL_SEQUENCE_NUMBER.intValue())))
+            .andExpect(jsonPath("$.[*].businessUseCase").value(hasItem(DEFAULT_BUSINESS_USE_CASE.toString())))
             .andExpect(jsonPath("$.[*].positionKeepingId").value(hasItem(DEFAULT_POSITION_KEEPING_ID.toString())))
             .andExpect(jsonPath("$.[*].legalEntityId").value(hasItem(DEFAULT_LEGAL_ENTITY_ID.toString())));
     }
@@ -279,6 +285,7 @@ public class VoucherValuationResourceIntTest {
             .andExpect(jsonPath("$.amountBaseCurrency").value(DEFAULT_AMOUNT_BASE_CURRENCY.doubleValue()))
             .andExpect(jsonPath("$.dateType").value(DEFAULT_DATE_TYPE.toString()))
             .andExpect(jsonPath("$.globalSequenceNumber").value(DEFAULT_GLOBAL_SEQUENCE_NUMBER.intValue()))
+            .andExpect(jsonPath("$.businessUseCase").value(DEFAULT_BUSINESS_USE_CASE.toString()))
             .andExpect(jsonPath("$.positionKeepingId").value(DEFAULT_POSITION_KEEPING_ID.toString()))
             .andExpect(jsonPath("$.legalEntityId").value(DEFAULT_LEGAL_ENTITY_ID.toString()));
     }
@@ -308,6 +315,7 @@ public class VoucherValuationResourceIntTest {
             .amountBaseCurrency(UPDATED_AMOUNT_BASE_CURRENCY)
             .dateType(UPDATED_DATE_TYPE)
             .globalSequenceNumber(UPDATED_GLOBAL_SEQUENCE_NUMBER)
+            .businessUseCase(UPDATED_BUSINESS_USE_CASE)
             .positionKeepingId(UPDATED_POSITION_KEEPING_ID)
             .legalEntityId(UPDATED_LEGAL_ENTITY_ID);
         VoucherValuationDTO voucherValuationDTO = voucherValuationMapper.toDto(updatedVoucherValuation);
@@ -326,6 +334,7 @@ public class VoucherValuationResourceIntTest {
         assertThat(testVoucherValuation.getAmountBaseCurrency()).isEqualTo(UPDATED_AMOUNT_BASE_CURRENCY);
         assertThat(testVoucherValuation.getDateType()).isEqualTo(UPDATED_DATE_TYPE);
         assertThat(testVoucherValuation.getGlobalSequenceNumber()).isEqualTo(UPDATED_GLOBAL_SEQUENCE_NUMBER);
+        assertThat(testVoucherValuation.getBusinessUseCase()).isEqualTo(UPDATED_BUSINESS_USE_CASE);
         assertThat(testVoucherValuation.getPositionKeepingId()).isEqualTo(UPDATED_POSITION_KEEPING_ID);
         assertThat(testVoucherValuation.getLegalEntityId()).isEqualTo(UPDATED_LEGAL_ENTITY_ID);
     }

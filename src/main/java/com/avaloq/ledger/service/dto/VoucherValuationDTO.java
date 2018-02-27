@@ -28,6 +28,8 @@ public class VoucherValuationDTO implements Serializable {
     @NotNull
     private Long globalSequenceNumber;
 
+    private String businessUseCase;
+
     private String positionKeepingId;
 
     @NotNull
@@ -85,6 +87,14 @@ public class VoucherValuationDTO implements Serializable {
 
     public void setGlobalSequenceNumber(Long globalSequenceNumber) {
         this.globalSequenceNumber = globalSequenceNumber;
+    }
+
+    public String getBusinessUseCase() {
+        return businessUseCase;
+    }
+
+    public void setBusinessUseCase(String businessUseCase) {
+        this.businessUseCase = businessUseCase;
     }
 
     public String getPositionKeepingId() {
@@ -157,6 +167,7 @@ public class VoucherValuationDTO implements Serializable {
             ", amountBaseCurrency=" + getAmountBaseCurrency() +
             ", dateType='" + getDateType() + "'" +
             ", globalSequenceNumber=" + getGlobalSequenceNumber() +
+            ", businessUseCase='" + getBusinessUseCase() + "'" +
             ", positionKeepingId='" + getPositionKeepingId() + "'" +
             ", legalEntityId='" + getLegalEntityId() + "'" +
             "}";

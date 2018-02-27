@@ -54,6 +54,5 @@
                   file="config/liquibase/chart_of_accounts.csv"
                   separator=";"
                   tableName="chart_of_accounts"/>
-    </changeSet>
-    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+    </changeSet>    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

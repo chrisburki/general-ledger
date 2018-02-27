@@ -76,6 +76,12 @@ public class VoucherBookingResourceIntTest {
     private static final String DEFAULT_EVENT_ID = "AAAAAAAAAA";
     private static final String UPDATED_EVENT_ID = "BBBBBBBBBB";
 
+    private static final String DEFAULT_TRANSACTION_TYPE = "AAAAAAAAAA";
+    private static final String UPDATED_TRANSACTION_TYPE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_BUSINESS_USE_CASE = "AAAAAAAAAA";
+    private static final String UPDATED_BUSINESS_USE_CASE = "BBBBBBBBBB";
+
     private static final String DEFAULT_BOOKING_ID = "AAAAAAAAAA";
     private static final String UPDATED_BOOKING_ID = "BBBBBBBBBB";
 
@@ -140,6 +146,8 @@ public class VoucherBookingResourceIntTest {
             .globalSequenceNumber(DEFAULT_GLOBAL_SEQUENCE_NUMBER)
             .transactionId(DEFAULT_TRANSACTION_ID)
             .eventId(DEFAULT_EVENT_ID)
+            .transactionType(DEFAULT_TRANSACTION_TYPE)
+            .businessUseCase(DEFAULT_BUSINESS_USE_CASE)
             .bookingId(DEFAULT_BOOKING_ID)
             .positionKeepingId(DEFAULT_POSITION_KEEPING_ID)
             .legalEntityId(DEFAULT_LEGAL_ENTITY_ID);
@@ -178,6 +186,8 @@ public class VoucherBookingResourceIntTest {
         assertThat(testVoucherBooking.getGlobalSequenceNumber()).isEqualTo(DEFAULT_GLOBAL_SEQUENCE_NUMBER);
         assertThat(testVoucherBooking.getTransactionId()).isEqualTo(DEFAULT_TRANSACTION_ID);
         assertThat(testVoucherBooking.getEventId()).isEqualTo(DEFAULT_EVENT_ID);
+        assertThat(testVoucherBooking.getTransactionType()).isEqualTo(DEFAULT_TRANSACTION_TYPE);
+        assertThat(testVoucherBooking.getBusinessUseCase()).isEqualTo(DEFAULT_BUSINESS_USE_CASE);
         assertThat(testVoucherBooking.getBookingId()).isEqualTo(DEFAULT_BOOKING_ID);
         assertThat(testVoucherBooking.getPositionKeepingId()).isEqualTo(DEFAULT_POSITION_KEEPING_ID);
         assertThat(testVoucherBooking.getLegalEntityId()).isEqualTo(DEFAULT_LEGAL_ENTITY_ID);
@@ -339,6 +349,8 @@ public class VoucherBookingResourceIntTest {
             .andExpect(jsonPath("$.[*].globalSequenceNumber").value(hasItem(DEFAULT_GLOBAL_SEQUENCE_NUMBER.intValue())))
             .andExpect(jsonPath("$.[*].transactionId").value(hasItem(DEFAULT_TRANSACTION_ID.toString())))
             .andExpect(jsonPath("$.[*].eventId").value(hasItem(DEFAULT_EVENT_ID.toString())))
+            .andExpect(jsonPath("$.[*].transactionType").value(hasItem(DEFAULT_TRANSACTION_TYPE.toString())))
+            .andExpect(jsonPath("$.[*].businessUseCase").value(hasItem(DEFAULT_BUSINESS_USE_CASE.toString())))
             .andExpect(jsonPath("$.[*].bookingId").value(hasItem(DEFAULT_BOOKING_ID.toString())))
             .andExpect(jsonPath("$.[*].positionKeepingId").value(hasItem(DEFAULT_POSITION_KEEPING_ID.toString())))
             .andExpect(jsonPath("$.[*].legalEntityId").value(hasItem(DEFAULT_LEGAL_ENTITY_ID.toString())));
@@ -366,6 +378,8 @@ public class VoucherBookingResourceIntTest {
             .andExpect(jsonPath("$.globalSequenceNumber").value(DEFAULT_GLOBAL_SEQUENCE_NUMBER.intValue()))
             .andExpect(jsonPath("$.transactionId").value(DEFAULT_TRANSACTION_ID.toString()))
             .andExpect(jsonPath("$.eventId").value(DEFAULT_EVENT_ID.toString()))
+            .andExpect(jsonPath("$.transactionType").value(DEFAULT_TRANSACTION_TYPE.toString()))
+            .andExpect(jsonPath("$.businessUseCase").value(DEFAULT_BUSINESS_USE_CASE.toString()))
             .andExpect(jsonPath("$.bookingId").value(DEFAULT_BOOKING_ID.toString()))
             .andExpect(jsonPath("$.positionKeepingId").value(DEFAULT_POSITION_KEEPING_ID.toString()))
             .andExpect(jsonPath("$.legalEntityId").value(DEFAULT_LEGAL_ENTITY_ID.toString()));
@@ -402,6 +416,8 @@ public class VoucherBookingResourceIntTest {
             .globalSequenceNumber(UPDATED_GLOBAL_SEQUENCE_NUMBER)
             .transactionId(UPDATED_TRANSACTION_ID)
             .eventId(UPDATED_EVENT_ID)
+            .transactionType(UPDATED_TRANSACTION_TYPE)
+            .businessUseCase(UPDATED_BUSINESS_USE_CASE)
             .bookingId(UPDATED_BOOKING_ID)
             .positionKeepingId(UPDATED_POSITION_KEEPING_ID)
             .legalEntityId(UPDATED_LEGAL_ENTITY_ID);
@@ -427,6 +443,8 @@ public class VoucherBookingResourceIntTest {
         assertThat(testVoucherBooking.getGlobalSequenceNumber()).isEqualTo(UPDATED_GLOBAL_SEQUENCE_NUMBER);
         assertThat(testVoucherBooking.getTransactionId()).isEqualTo(UPDATED_TRANSACTION_ID);
         assertThat(testVoucherBooking.getEventId()).isEqualTo(UPDATED_EVENT_ID);
+        assertThat(testVoucherBooking.getTransactionType()).isEqualTo(UPDATED_TRANSACTION_TYPE);
+        assertThat(testVoucherBooking.getBusinessUseCase()).isEqualTo(UPDATED_BUSINESS_USE_CASE);
         assertThat(testVoucherBooking.getBookingId()).isEqualTo(UPDATED_BOOKING_ID);
         assertThat(testVoucherBooking.getPositionKeepingId()).isEqualTo(UPDATED_POSITION_KEEPING_ID);
         assertThat(testVoucherBooking.getLegalEntityId()).isEqualTo(UPDATED_LEGAL_ENTITY_ID);

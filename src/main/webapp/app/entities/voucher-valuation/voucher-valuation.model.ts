@@ -14,6 +14,7 @@ export class VoucherValuation implements BaseEntity {
         public amountBaseCurrency?: number,
         public dateType?: VoucherDateType,
         public globalSequenceNumber?: number,
+        public businessUseCase?: string,
         public positionKeepingId?: string,
         public legalEntityId?: string,
         public journalPostingId?: number,

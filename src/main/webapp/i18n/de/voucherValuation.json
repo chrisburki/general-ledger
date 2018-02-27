@@ -21,6 +21,7 @@
             "amountBaseCurrency": "Amount Base Currency",
             "dateType": "Date Type",
             "globalSequenceNumber": "Global Sequence Number",
+            "businessUseCase": "Business Use Case",
             "positionKeepingId": "Position Keeping Id",
             "legalEntityId": "Legal Entity Id",
             "journalPosting": "Journal Posting",

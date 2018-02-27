@@ -62,6 +62,12 @@ public class VoucherBooking implements Serializable {
     @Column(name = "event_id")
     private String eventId;
 
+    @Column(name = "transaction_type")
+    private String transactionType;
+
+    @Column(name = "business_use_case")
+    private String businessUseCase;
+
     @NotNull
     @Column(name = "booking_id", nullable = false)
     private String bookingId;
@@ -231,6 +237,32 @@ public class VoucherBooking implements Serializable {
         this.eventId = eventId;
     }
 
+    public String getTransactionType() {
+        return transactionType;
+    }
+
+    public VoucherBooking transactionType(String transactionType) {
+        this.transactionType = transactionType;
+        return this;
+    }
+
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
+    }
+
+    public String getBusinessUseCase() {
+        return businessUseCase;
+    }
+
+    public VoucherBooking businessUseCase(String businessUseCase) {
+        this.businessUseCase = businessUseCase;
+        return this;
+    }
+
+    public void setBusinessUseCase(String businessUseCase) {
+        this.businessUseCase = businessUseCase;
+    }
+
     public String getBookingId() {
         return bookingId;
     }
@@ -332,6 +364,8 @@ public class VoucherBooking implements Serializable {
             ", globalSequenceNumber=" + getGlobalSequenceNumber() +
             ", transactionId='" + getTransactionId() + "'" +
             ", eventId='" + getEventId() + "'" +
+            ", transactionType='" + getTransactionType() + "'" +
+            ", businessUseCase='" + getBusinessUseCase() + "'" +
             ", bookingId='" + getBookingId() + "'" +
             ", positionKeepingId='" + getPositionKeepingId() + "'" +
             ", legalEntityId='" + getLegalEntityId() + "'" +

@@ -115,6 +115,16 @@
                 [(ngModel)]="voucherBooking.eventId" />
         </div>
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherBooking.transactionType" for="field_transactionType">Transaction Type</label>
+            <input type="text" class="form-control" name="transactionType" id="field_transactionType"
+                [(ngModel)]="voucherBooking.transactionType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherBooking.businessUseCase" for="field_businessUseCase">Business Use Case</label>
+            <input type="text" class="form-control" name="businessUseCase" id="field_businessUseCase"
+                [(ngModel)]="voucherBooking.businessUseCase" />
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="ledgerApp.voucherBooking.bookingId" for="field_bookingId">Booking Id</label>
             <input type="text" class="form-control" name="bookingId" id="field_bookingId"
                 [(ngModel)]="voucherBooking.bookingId" required/>

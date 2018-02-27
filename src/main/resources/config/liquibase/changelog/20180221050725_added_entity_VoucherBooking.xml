@@ -65,6 +65,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="transaction_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="business_use_case" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="booking_id" type="varchar(255)">
                 <constraints nullable="false" />
             </column>

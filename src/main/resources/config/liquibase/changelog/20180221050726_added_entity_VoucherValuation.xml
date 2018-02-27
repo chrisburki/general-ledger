@@ -41,6 +41,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="business_use_case" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="position_keeping_id" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

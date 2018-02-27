@@ -90,6 +90,8 @@ entity VoucherBooking {
     globalSequenceNumber Long required,
     transactionId String,
     eventId String,
+    transactionType String,
+    businessUseCase String,
     bookingId String required,
     positionKeepingId String,
 	legalEntityId String required
@@ -110,6 +112,7 @@ entity VoucherValuation {
     amountBaseCurrency Double,
     dateType VoucherDateType required,
     globalSequenceNumber Long required,
+    businessUseCase String,
     positionKeepingId String,
 	legalEntityId String required
 }

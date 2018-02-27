@@ -72,6 +72,14 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "transactionType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "businessUseCase",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "bookingId",
             "fieldType": "String",
             "fieldValidateRules": [

@@ -41,6 +41,10 @@ public class VoucherBookingDTO implements Serializable {
 
     private String eventId;
 
+    private String transactionType;
+
+    private String businessUseCase;
+
     @NotNull
     private String bookingId;
 
@@ -149,6 +153,22 @@ public class VoucherBookingDTO implements Serializable {
         this.eventId = eventId;
     }
 
+    public String getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
+    }
+
+    public String getBusinessUseCase() {
+        return businessUseCase;
+    }
+
+    public void setBusinessUseCase(String businessUseCase) {
+        this.businessUseCase = businessUseCase;
+    }
+
     public String getBookingId() {
         return bookingId;
     }
@@ -225,6 +245,8 @@ public class VoucherBookingDTO implements Serializable {
             ", globalSequenceNumber=" + getGlobalSequenceNumber() +
             ", transactionId='" + getTransactionId() + "'" +
             ", eventId='" + getEventId() + "'" +
+            ", transactionType='" + getTransactionType() + "'" +
+            ", businessUseCase='" + getBusinessUseCase() + "'" +
             ", bookingId='" + getBookingId() + "'" +
             ", positionKeepingId='" + getPositionKeepingId() + "'" +
             ", legalEntityId='" + getLegalEntityId() + "'" +

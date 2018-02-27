@@ -27,6 +27,8 @@
             "globalSequenceNumber": "Global Sequence Number",
             "transactionId": "Transaction Id",
             "eventId": "Event Id",
+            "transactionType": "Transaction Type",
+            "businessUseCase": "Business Use Case",
             "bookingId": "Booking Id",
             "positionKeepingId": "Position Keeping Id",
             "legalEntityId": "Legal Entity Id",

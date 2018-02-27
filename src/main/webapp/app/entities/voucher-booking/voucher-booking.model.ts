@@ -14,6 +14,8 @@ export class VoucherBooking implements BaseEntity {
         public globalSequenceNumber?: number,
         public transactionId?: string,
         public eventId?: string,
+        public transactionType?: string,
+        public businessUseCase?: string,
         public bookingId?: string,
         public positionKeepingId?: string,
         public legalEntityId?: string,
