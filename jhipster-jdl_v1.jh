@@ -1,0 +1,46 @@
+KEY_MAX_LENGTH = 60
+NAME_MAX_LENGTH = 200
+
+
+enum AccountingStandard {
+    IFRS, HGB, ACUDBU, RRVEBK
+}
+
+entity ChartOfAccounts {
+    name String required maxlength(NAME_MAX_LENGTH),
+    key String required maxlength(KEY_MAX_LENGTH),
+    accountingStandard AccountingStandard
+    isMain Boolean,
+	legalEntityId String,
+    positionKeepingId String
+}
+
+enum LedgerAccountType {
+    ASSETS, LIABILITIES, INCOME, EXPENSE, OFFBALANCE
+}
+
+entity LedgerAccount {
+    name String required maxlength(NAME_MAX_LENGTH),
+    key String required maxlength(KEY_MAX_LENGTH),
+    accountType LedgerAccountType
+    orderedBy String,
+    level Integer,
+    is_leaf Boolean,
+    balanceAccountId String
+}
+
+entity JournalPosting {
+    bookDate LocalDate
+    documentNumber String,
+    amount Double,
+    bookingText String
+}
+
+
+relationship ManyToOne {
+	LedgerAccount{chartOfAccounts} to ChartOfAccounts
+}
+
+relationship ManyToOne {
+	LedgerAccount{upperAccount} to LedgerAccount
+}

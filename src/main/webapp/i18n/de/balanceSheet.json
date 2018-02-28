@@ -17,18 +17,12 @@
                 "title": "Balance Sheet"
             },
             "description": "Description",
+            "key": "Key",
             "balanceDate": "Balance Date",
-            "amount": "Amount",
-            "deltaAmountDebit": "Delta Amount Debit",
-            "deltaAmountCredit": "Delta Amount Credit",
-            "currencyIso": "Currency Iso",
-            "amountCurrency": "Amount Currency",
-            "deltaAmountDebitCurrency": "Delta Amount Debit Currency",
-            "deltaAmountCreditCurrency": "Delta Amount Credit Currency",
-            "isFinal": "Is Final",
+            "balanceDateType": "Balance Date Type",
+            "globalSequenceNumber": "Global Sequence Number",
             "legalEntityId": "Legal Entity Id",
-            "chartOfAccounts": "Chart Of Accounts",
-            "account": "Account"
+            "chartOfAccounts": "Chart Of Accounts"
         }
     }
 }

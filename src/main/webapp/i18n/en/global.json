@@ -18,6 +18,7 @@
                 "voucherValuation": "Voucher Valuation",
                 "subLedgerType": "Sub Ledger Type",
                 "voucherValuationType": "Voucher Valuation Type",
+                "balanceSheetItem": "Balance Sheet Item",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

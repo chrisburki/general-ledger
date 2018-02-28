@@ -1,0 +1,74 @@
+
+<div *ngIf="balanceSheetItem">
+    <h2><span jhiTranslate="ledgerApp.balanceSheetItem.detail.title">Balance Sheet Item</span> {{balanceSheetItem.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.balanceDate">Balance Date</span></dt>
+        <dd>
+            <span>{{balanceSheetItem.balanceDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.amount">Amount</span></dt>
+        <dd>
+            <span>{{balanceSheetItem.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.deltaAmountDebit">Delta Amount Debit</span></dt>
+        <dd>
+            <span>{{balanceSheetItem.deltaAmountDebit}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.deltaAmountCredit">Delta Amount Credit</span></dt>
+        <dd>
+            <span>{{balanceSheetItem.deltaAmountCredit}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.currencyIso">Currency Iso</span></dt>
+        <dd>
+            <span>{{balanceSheetItem.currencyIso}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.amountCurrency">Amount Currency</span></dt>
+        <dd>
+            <span>{{balanceSheetItem.amountCurrency}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.deltaAmountDebitCurrency">Delta Amount Debit Currency</span></dt>
+        <dd>
+            <span>{{balanceSheetItem.deltaAmountDebitCurrency}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.deltaAmountCreditCurrency">Delta Amount Credit Currency</span></dt>
+        <dd>
+            <span>{{balanceSheetItem.deltaAmountCreditCurrency}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.isFinal">Is Final</span></dt>
+        <dd>
+            <span>{{balanceSheetItem.isFinal}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.legalEntityId">Legal Entity Id</span></dt>
+        <dd>
+            <span>{{balanceSheetItem.legalEntityId}}</span>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.balanceSheet">Balance Sheet</span></dt>
+        <dd>
+            <div *ngIf="balanceSheetItem.balanceSheetId">
+                <a [routerLink]="['/balance-sheet', balanceSheetItem.balanceSheetId]">{{balanceSheetItem.balanceSheetId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheetItem.account">Account</span></dt>
+        <dd>
+            <div *ngIf="balanceSheetItem.accountId">
+                <a [routerLink]="['/ledger-account', balanceSheetItem.accountId]">{{balanceSheetItem.accountId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'balance-sheet-item/'+ balanceSheetItem.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

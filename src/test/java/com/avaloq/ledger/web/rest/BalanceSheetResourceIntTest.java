@@ -34,6 +34,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.avaloq.ledger.domain.enumeration.BalanceDateType;
 /**
  * Test class for the BalanceSheetResource REST controller.
  *
@@ -46,32 +47,17 @@ public class BalanceSheetResourceIntTest {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
+    private static final String DEFAULT_KEY = "AAAAAAAAAA";
+    private static final String UPDATED_KEY = "BBBBBBBBBB";
+
     private static final LocalDate DEFAULT_BALANCE_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_BALANCE_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Double DEFAULT_AMOUNT = 1D;
-    private static final Double UPDATED_AMOUNT = 2D;
+    private static final BalanceDateType DEFAULT_BALANCE_DATE_TYPE = BalanceDateType.DONE;
+    private static final BalanceDateType UPDATED_BALANCE_DATE_TYPE = BalanceDateType.BOOK;
 
-    private static final Double DEFAULT_DELTA_AMOUNT_DEBIT = 1D;
-    private static final Double UPDATED_DELTA_AMOUNT_DEBIT = 2D;
-
-    private static final Double DEFAULT_DELTA_AMOUNT_CREDIT = 1D;
-    private static final Double UPDATED_DELTA_AMOUNT_CREDIT = 2D;
-
-    private static final String DEFAULT_CURRENCY_ISO = "AAAAAAAAAA";
-    private static final String UPDATED_CURRENCY_ISO = "BBBBBBBBBB";
-
-    private static final Double DEFAULT_AMOUNT_CURRENCY = 1D;
-    private static final Double UPDATED_AMOUNT_CURRENCY = 2D;
-
-    private static final Double DEFAULT_DELTA_AMOUNT_DEBIT_CURRENCY = 1D;
-    private static final Double UPDATED_DELTA_AMOUNT_DEBIT_CURRENCY = 2D;
-
-    private static final Double DEFAULT_DELTA_AMOUNT_CREDIT_CURRENCY = 1D;
-    private static final Double UPDATED_DELTA_AMOUNT_CREDIT_CURRENCY = 2D;
-
-    private static final Boolean DEFAULT_IS_FINAL = false;
-    private static final Boolean UPDATED_IS_FINAL = true;
+    private static final Long DEFAULT_GLOBAL_SEQUENCE_NUMBER = 1L;
+    private static final Long UPDATED_GLOBAL_SEQUENCE_NUMBER = 2L;
 
     private static final String DEFAULT_LEGAL_ENTITY_ID = "AAAAAAAAAA";
     private static final String UPDATED_LEGAL_ENTITY_ID = "BBBBBBBBBB";
@@ -121,15 +107,10 @@ public class BalanceSheetResourceIntTest {
     public static BalanceSheet createEntity(EntityManager em) {
         BalanceSheet balanceSheet = new BalanceSheet()
             .description(DEFAULT_DESCRIPTION)
+            .key(DEFAULT_KEY)
             .balanceDate(DEFAULT_BALANCE_DATE)
-            .amount(DEFAULT_AMOUNT)
-            .deltaAmountDebit(DEFAULT_DELTA_AMOUNT_DEBIT)
-            .deltaAmountCredit(DEFAULT_DELTA_AMOUNT_CREDIT)
-            .currencyIso(DEFAULT_CURRENCY_ISO)
-            .amountCurrency(DEFAULT_AMOUNT_CURRENCY)
-            .deltaAmountDebitCurrency(DEFAULT_DELTA_AMOUNT_DEBIT_CURRENCY)
-            .deltaAmountCreditCurrency(DEFAULT_DELTA_AMOUNT_CREDIT_CURRENCY)
-            .isFinal(DEFAULT_IS_FINAL)
+            .balanceDateType(DEFAULT_BALANCE_DATE_TYPE)
+            .globalSequenceNumber(DEFAULT_GLOBAL_SEQUENCE_NUMBER)
             .legalEntityId(DEFAULT_LEGAL_ENTITY_ID);
         return balanceSheet;
     }
@@ -156,15 +137,10 @@ public class BalanceSheetResourceIntTest {
         assertThat(balanceSheetList).hasSize(databaseSizeBeforeCreate + 1);
         BalanceSheet testBalanceSheet = balanceSheetList.get(balanceSheetList.size() - 1);
         assertThat(testBalanceSheet.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testBalanceSheet.getKey()).isEqualTo(DEFAULT_KEY);
         assertThat(testBalanceSheet.getBalanceDate()).isEqualTo(DEFAULT_BALANCE_DATE);
-        assertThat(testBalanceSheet.getAmount()).isEqualTo(DEFAULT_AMOUNT);
-        assertThat(testBalanceSheet.getDeltaAmountDebit()).isEqualTo(DEFAULT_DELTA_AMOUNT_DEBIT);
-        assertThat(testBalanceSheet.getDeltaAmountCredit()).isEqualTo(DEFAULT_DELTA_AMOUNT_CREDIT);
-        assertThat(testBalanceSheet.getCurrencyIso()).isEqualTo(DEFAULT_CURRENCY_ISO);
-        assertThat(testBalanceSheet.getAmountCurrency()).isEqualTo(DEFAULT_AMOUNT_CURRENCY);
-        assertThat(testBalanceSheet.getDeltaAmountDebitCurrency()).isEqualTo(DEFAULT_DELTA_AMOUNT_DEBIT_CURRENCY);
-        assertThat(testBalanceSheet.getDeltaAmountCreditCurrency()).isEqualTo(DEFAULT_DELTA_AMOUNT_CREDIT_CURRENCY);
-        assertThat(testBalanceSheet.isIsFinal()).isEqualTo(DEFAULT_IS_FINAL);
+        assertThat(testBalanceSheet.getBalanceDateType()).isEqualTo(DEFAULT_BALANCE_DATE_TYPE);
+        assertThat(testBalanceSheet.getGlobalSequenceNumber()).isEqualTo(DEFAULT_GLOBAL_SEQUENCE_NUMBER);
         assertThat(testBalanceSheet.getLegalEntityId()).isEqualTo(DEFAULT_LEGAL_ENTITY_ID);
     }
 
@@ -190,6 +166,25 @@ public class BalanceSheetResourceIntTest {
 
     @Test
     @Transactional
+    public void checkKeyIsRequired() throws Exception {
+        int databaseSizeBeforeTest = balanceSheetRepository.findAll().size();
+        // set the field null
+        balanceSheet.setKey(null);
+
+        // Create the BalanceSheet, which fails.
+        BalanceSheetDTO balanceSheetDTO = balanceSheetMapper.toDto(balanceSheet);
+
+        restBalanceSheetMockMvc.perform(post("/api/balance-sheets")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(balanceSheetDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<BalanceSheet> balanceSheetList = balanceSheetRepository.findAll();
+        assertThat(balanceSheetList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void checkBalanceDateIsRequired() throws Exception {
         int databaseSizeBeforeTest = balanceSheetRepository.findAll().size();
         // set the field null
@@ -209,10 +204,10 @@ public class BalanceSheetResourceIntTest {
 
     @Test
     @Transactional
-    public void checkAmountIsRequired() throws Exception {
+    public void checkBalanceDateTypeIsRequired() throws Exception {
         int databaseSizeBeforeTest = balanceSheetRepository.findAll().size();
         // set the field null
-        balanceSheet.setAmount(null);
+        balanceSheet.setBalanceDateType(null);
 
         // Create the BalanceSheet, which fails.
         BalanceSheetDTO balanceSheetDTO = balanceSheetMapper.toDto(balanceSheet);
@@ -228,29 +223,10 @@ public class BalanceSheetResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDeltaAmountDebitIsRequired() throws Exception {
+    public void checkGlobalSequenceNumberIsRequired() throws Exception {
         int databaseSizeBeforeTest = balanceSheetRepository.findAll().size();
         // set the field null
-        balanceSheet.setDeltaAmountDebit(null);
-
-        // Create the BalanceSheet, which fails.
-        BalanceSheetDTO balanceSheetDTO = balanceSheetMapper.toDto(balanceSheet);
-
-        restBalanceSheetMockMvc.perform(post("/api/balance-sheets")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(balanceSheetDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<BalanceSheet> balanceSheetList = balanceSheetRepository.findAll();
-        assertThat(balanceSheetList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkDeltaAmountCreditIsRequired() throws Exception {
-        int databaseSizeBeforeTest = balanceSheetRepository.findAll().size();
-        // set the field null
-        balanceSheet.setDeltaAmountCredit(null);
+        balanceSheet.setGlobalSequenceNumber(null);
 
         // Create the BalanceSheet, which fails.
         BalanceSheetDTO balanceSheetDTO = balanceSheetMapper.toDto(balanceSheet);
@@ -295,15 +271,10 @@ public class BalanceSheetResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(balanceSheet.getId().intValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+            .andExpect(jsonPath("$.[*].key").value(hasItem(DEFAULT_KEY.toString())))
             .andExpect(jsonPath("$.[*].balanceDate").value(hasItem(DEFAULT_BALANCE_DATE.toString())))
-            .andExpect(jsonPath("$.[*].amount").value(hasItem(DEFAULT_AMOUNT.doubleValue())))
-            .andExpect(jsonPath("$.[*].deltaAmountDebit").value(hasItem(DEFAULT_DELTA_AMOUNT_DEBIT.doubleValue())))
-            .andExpect(jsonPath("$.[*].deltaAmountCredit").value(hasItem(DEFAULT_DELTA_AMOUNT_CREDIT.doubleValue())))
-            .andExpect(jsonPath("$.[*].currencyIso").value(hasItem(DEFAULT_CURRENCY_ISO.toString())))
-            .andExpect(jsonPath("$.[*].amountCurrency").value(hasItem(DEFAULT_AMOUNT_CURRENCY.doubleValue())))
-            .andExpect(jsonPath("$.[*].deltaAmountDebitCurrency").value(hasItem(DEFAULT_DELTA_AMOUNT_DEBIT_CURRENCY.doubleValue())))
-            .andExpect(jsonPath("$.[*].deltaAmountCreditCurrency").value(hasItem(DEFAULT_DELTA_AMOUNT_CREDIT_CURRENCY.doubleValue())))
-            .andExpect(jsonPath("$.[*].isFinal").value(hasItem(DEFAULT_IS_FINAL.booleanValue())))
+            .andExpect(jsonPath("$.[*].balanceDateType").value(hasItem(DEFAULT_BALANCE_DATE_TYPE.toString())))
+            .andExpect(jsonPath("$.[*].globalSequenceNumber").value(hasItem(DEFAULT_GLOBAL_SEQUENCE_NUMBER.intValue())))
             .andExpect(jsonPath("$.[*].legalEntityId").value(hasItem(DEFAULT_LEGAL_ENTITY_ID.toString())));
     }
 
@@ -319,15 +290,10 @@ public class BalanceSheetResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(balanceSheet.getId().intValue()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
+            .andExpect(jsonPath("$.key").value(DEFAULT_KEY.toString()))
             .andExpect(jsonPath("$.balanceDate").value(DEFAULT_BALANCE_DATE.toString()))
-            .andExpect(jsonPath("$.amount").value(DEFAULT_AMOUNT.doubleValue()))
-            .andExpect(jsonPath("$.deltaAmountDebit").value(DEFAULT_DELTA_AMOUNT_DEBIT.doubleValue()))
-            .andExpect(jsonPath("$.deltaAmountCredit").value(DEFAULT_DELTA_AMOUNT_CREDIT.doubleValue()))
-            .andExpect(jsonPath("$.currencyIso").value(DEFAULT_CURRENCY_ISO.toString()))
-            .andExpect(jsonPath("$.amountCurrency").value(DEFAULT_AMOUNT_CURRENCY.doubleValue()))
-            .andExpect(jsonPath("$.deltaAmountDebitCurrency").value(DEFAULT_DELTA_AMOUNT_DEBIT_CURRENCY.doubleValue()))
-            .andExpect(jsonPath("$.deltaAmountCreditCurrency").value(DEFAULT_DELTA_AMOUNT_CREDIT_CURRENCY.doubleValue()))
-            .andExpect(jsonPath("$.isFinal").value(DEFAULT_IS_FINAL.booleanValue()))
+            .andExpect(jsonPath("$.balanceDateType").value(DEFAULT_BALANCE_DATE_TYPE.toString()))
+            .andExpect(jsonPath("$.globalSequenceNumber").value(DEFAULT_GLOBAL_SEQUENCE_NUMBER.intValue()))
             .andExpect(jsonPath("$.legalEntityId").value(DEFAULT_LEGAL_ENTITY_ID.toString()));
     }
 
@@ -352,15 +318,10 @@ public class BalanceSheetResourceIntTest {
         em.detach(updatedBalanceSheet);
         updatedBalanceSheet
             .description(UPDATED_DESCRIPTION)
+            .key(UPDATED_KEY)
             .balanceDate(UPDATED_BALANCE_DATE)
-            .amount(UPDATED_AMOUNT)
-            .deltaAmountDebit(UPDATED_DELTA_AMOUNT_DEBIT)
-            .deltaAmountCredit(UPDATED_DELTA_AMOUNT_CREDIT)
-            .currencyIso(UPDATED_CURRENCY_ISO)
-            .amountCurrency(UPDATED_AMOUNT_CURRENCY)
-            .deltaAmountDebitCurrency(UPDATED_DELTA_AMOUNT_DEBIT_CURRENCY)
-            .deltaAmountCreditCurrency(UPDATED_DELTA_AMOUNT_CREDIT_CURRENCY)
-            .isFinal(UPDATED_IS_FINAL)
+            .balanceDateType(UPDATED_BALANCE_DATE_TYPE)
+            .globalSequenceNumber(UPDATED_GLOBAL_SEQUENCE_NUMBER)
             .legalEntityId(UPDATED_LEGAL_ENTITY_ID);
         BalanceSheetDTO balanceSheetDTO = balanceSheetMapper.toDto(updatedBalanceSheet);
 
@@ -374,15 +335,10 @@ public class BalanceSheetResourceIntTest {
         assertThat(balanceSheetList).hasSize(databaseSizeBeforeUpdate);
         BalanceSheet testBalanceSheet = balanceSheetList.get(balanceSheetList.size() - 1);
         assertThat(testBalanceSheet.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testBalanceSheet.getKey()).isEqualTo(UPDATED_KEY);
         assertThat(testBalanceSheet.getBalanceDate()).isEqualTo(UPDATED_BALANCE_DATE);
-        assertThat(testBalanceSheet.getAmount()).isEqualTo(UPDATED_AMOUNT);
-        assertThat(testBalanceSheet.getDeltaAmountDebit()).isEqualTo(UPDATED_DELTA_AMOUNT_DEBIT);
-        assertThat(testBalanceSheet.getDeltaAmountCredit()).isEqualTo(UPDATED_DELTA_AMOUNT_CREDIT);
-        assertThat(testBalanceSheet.getCurrencyIso()).isEqualTo(UPDATED_CURRENCY_ISO);
-        assertThat(testBalanceSheet.getAmountCurrency()).isEqualTo(UPDATED_AMOUNT_CURRENCY);
-        assertThat(testBalanceSheet.getDeltaAmountDebitCurrency()).isEqualTo(UPDATED_DELTA_AMOUNT_DEBIT_CURRENCY);
-        assertThat(testBalanceSheet.getDeltaAmountCreditCurrency()).isEqualTo(UPDATED_DELTA_AMOUNT_CREDIT_CURRENCY);
-        assertThat(testBalanceSheet.isIsFinal()).isEqualTo(UPDATED_IS_FINAL);
+        assertThat(testBalanceSheet.getBalanceDateType()).isEqualTo(UPDATED_BALANCE_DATE_TYPE);
+        assertThat(testBalanceSheet.getGlobalSequenceNumber()).isEqualTo(UPDATED_GLOBAL_SEQUENCE_NUMBER);
         assertThat(testBalanceSheet.getLegalEntityId()).isEqualTo(UPDATED_LEGAL_ENTITY_ID);
     }
 

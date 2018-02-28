@@ -1,0 +1,33 @@
+
+{
+    "ledgerApp": {
+        "balanceSheetItem" : {
+            "home": {
+                "title": "Balance Sheet Items",
+                "createLabel": "Balance Sheet Item erstellen",
+                "createOrEditLabel": "Balance Sheet Item erstellen oder bearbeiten"
+            },
+            "created": "Balance Sheet Item erstellt mit ID {{ param }}",
+            "updated": "Balance Sheet Item aktualisiert mit ID {{ param }}",
+            "deleted": "Balance Sheet Item gelöscht mit ID {{ param }}",
+            "delete": {
+                "question": "Soll Balance Sheet Item {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Balance Sheet Item"
+            },
+            "balanceDate": "Balance Date",
+            "amount": "Amount",
+            "deltaAmountDebit": "Delta Amount Debit",
+            "deltaAmountCredit": "Delta Amount Credit",
+            "currencyIso": "Currency Iso",
+            "amountCurrency": "Amount Currency",
+            "deltaAmountDebitCurrency": "Delta Amount Debit Currency",
+            "deltaAmountCreditCurrency": "Delta Amount Credit Currency",
+            "isFinal": "Is Final",
+            "legalEntityId": "Legal Entity Id",
+            "balanceSheet": "Balance Sheet",
+            "account": "Account"
+        }
+    }
+}

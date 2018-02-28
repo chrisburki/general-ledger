@@ -10,7 +10,6 @@ import { BalanceSheetDialogComponent } from '../../../../../../main/webapp/app/e
 import { BalanceSheetService } from '../../../../../../main/webapp/app/entities/balance-sheet/balance-sheet.service';
 import { BalanceSheet } from '../../../../../../main/webapp/app/entities/balance-sheet/balance-sheet.model';
 import { ChartOfAccountsService } from '../../../../../../main/webapp/app/entities/chart-of-accounts';
-import { LedgerAccountService } from '../../../../../../main/webapp/app/entities/ledger-account';
 
 describe('Component Tests', () => {
 
@@ -27,7 +26,6 @@ describe('Component Tests', () => {
                 declarations: [BalanceSheetDialogComponent],
                 providers: [
                     ChartOfAccountsService,
-                    LedgerAccountService,
                     BalanceSheetService
                 ]
             })

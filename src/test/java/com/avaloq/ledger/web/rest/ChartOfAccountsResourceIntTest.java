@@ -240,25 +240,6 @@ public class ChartOfAccountsResourceIntTest {
 
     @Test
     @Transactional
-    public void checkLegalEntityIdIsRequired() throws Exception {
-        int databaseSizeBeforeTest = chartOfAccountsRepository.findAll().size();
-        // set the field null
-        chartOfAccounts.setLegalEntityId(null);
-
-        // Create the ChartOfAccounts, which fails.
-        ChartOfAccountsDTO chartOfAccountsDTO = chartOfAccountsMapper.toDto(chartOfAccounts);
-
-        restChartOfAccountsMockMvc.perform(post("/api/chart-of-accounts")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(chartOfAccountsDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<ChartOfAccounts> chartOfAccountsList = chartOfAccountsRepository.findAll();
-        assertThat(chartOfAccountsList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllChartOfAccounts() throws Exception {
         // Initialize the database
         chartOfAccountsRepository.saveAndFlush(chartOfAccounts);

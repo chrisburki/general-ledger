@@ -48,8 +48,7 @@ public class ChartOfAccounts implements Serializable {
     @Column(name = "is_main")
     private Boolean isMain;
 
-    @NotNull
-    @Column(name = "legal_entity_id", nullable = false)
+    @Column(name = "legal_entity_id")
     private String legalEntityId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

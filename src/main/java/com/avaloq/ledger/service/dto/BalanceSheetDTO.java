@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
+import com.avaloq.ledger.domain.enumeration.BalanceDateType;
 
 /**
  * A DTO for the BalanceSheet entity.
@@ -18,33 +19,22 @@ public class BalanceSheetDTO implements Serializable {
     private String description;
 
     @NotNull
+    @Size(max = 60)
+    private String key;
+
+    @NotNull
     private LocalDate balanceDate;
 
     @NotNull
-    private Double amount;
+    private BalanceDateType balanceDateType;
 
     @NotNull
-    private Double deltaAmountDebit;
-
-    @NotNull
-    private Double deltaAmountCredit;
-
-    private String currencyIso;
-
-    private Double amountCurrency;
-
-    private Double deltaAmountDebitCurrency;
-
-    private Double deltaAmountCreditCurrency;
-
-    private Boolean isFinal;
+    private Long globalSequenceNumber;
 
     @NotNull
     private String legalEntityId;
 
     private Long chartOfAccountsId;
-
-    private Long accountId;
 
     public Long getId() {
         return id;
@@ -62,6 +52,14 @@ public class BalanceSheetDTO implements Serializable {
         this.description = description;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     public LocalDate getBalanceDate() {
         return balanceDate;
     }
@@ -70,68 +68,20 @@ public class BalanceSheetDTO implements Serializable {
         this.balanceDate = balanceDate;
     }
 
-    public Double getAmount() {
-        return amount;
+    public BalanceDateType getBalanceDateType() {
+        return balanceDateType;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setBalanceDateType(BalanceDateType balanceDateType) {
+        this.balanceDateType = balanceDateType;
     }
 
-    public Double getDeltaAmountDebit() {
-        return deltaAmountDebit;
+    public Long getGlobalSequenceNumber() {
+        return globalSequenceNumber;
     }
 
-    public void setDeltaAmountDebit(Double deltaAmountDebit) {
-        this.deltaAmountDebit = deltaAmountDebit;
-    }
-
-    public Double getDeltaAmountCredit() {
-        return deltaAmountCredit;
-    }
-
-    public void setDeltaAmountCredit(Double deltaAmountCredit) {
-        this.deltaAmountCredit = deltaAmountCredit;
-    }
-
-    public String getCurrencyIso() {
-        return currencyIso;
-    }
-
-    public void setCurrencyIso(String currencyIso) {
-        this.currencyIso = currencyIso;
-    }
-
-    public Double getAmountCurrency() {
-        return amountCurrency;
-    }
-
-    public void setAmountCurrency(Double amountCurrency) {
-        this.amountCurrency = amountCurrency;
-    }
-
-    public Double getDeltaAmountDebitCurrency() {
-        return deltaAmountDebitCurrency;
-    }
-
-    public void setDeltaAmountDebitCurrency(Double deltaAmountDebitCurrency) {
-        this.deltaAmountDebitCurrency = deltaAmountDebitCurrency;
-    }
-
-    public Double getDeltaAmountCreditCurrency() {
-        return deltaAmountCreditCurrency;
-    }
-
-    public void setDeltaAmountCreditCurrency(Double deltaAmountCreditCurrency) {
-        this.deltaAmountCreditCurrency = deltaAmountCreditCurrency;
-    }
-
-    public Boolean isIsFinal() {
-        return isFinal;
-    }
-
-    public void setIsFinal(Boolean isFinal) {
-        this.isFinal = isFinal;
+    public void setGlobalSequenceNumber(Long globalSequenceNumber) {
+        this.globalSequenceNumber = globalSequenceNumber;
     }
 
     public String getLegalEntityId() {
@@ -148,14 +98,6 @@ public class BalanceSheetDTO implements Serializable {
 
     public void setChartOfAccountsId(Long chartOfAccountsId) {
         this.chartOfAccountsId = chartOfAccountsId;
-    }
-
-    public Long getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(Long ledgerAccountId) {
-        this.accountId = ledgerAccountId;
     }
 
     @Override
@@ -184,15 +126,10 @@ public class BalanceSheetDTO implements Serializable {
         return "BalanceSheetDTO{" +
             "id=" + getId() +
             ", description='" + getDescription() + "'" +
+            ", key='" + getKey() + "'" +
             ", balanceDate='" + getBalanceDate() + "'" +
-            ", amount=" + getAmount() +
-            ", deltaAmountDebit=" + getDeltaAmountDebit() +
-            ", deltaAmountCredit=" + getDeltaAmountCredit() +
-            ", currencyIso='" + getCurrencyIso() + "'" +
-            ", amountCurrency=" + getAmountCurrency() +
-            ", deltaAmountDebitCurrency=" + getDeltaAmountDebitCurrency() +
-            ", deltaAmountCreditCurrency=" + getDeltaAmountCreditCurrency() +
-            ", isFinal='" + isIsFinal() + "'" +
+            ", balanceDateType='" + getBalanceDateType() + "'" +
+            ", globalSequenceNumber=" + getGlobalSequenceNumber() +
             ", legalEntityId='" + getLegalEntityId() + "'" +
             "}";
     }

@@ -6,18 +6,21 @@
             "relationshipName": "chartOfAccounts",
             "otherEntityName": "chartOfAccounts",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "account",
-            "otherEntityName": "ledgerAccount",
-            "otherEntityField": "id"
         }
     ],
     "fields": [
         {
             "fieldName": "description",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "key",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
         },
         {
             "fieldName": "balanceDate",
@@ -27,45 +30,19 @@
             ]
         },
         {
-            "fieldName": "amount",
-            "fieldType": "Double",
+            "fieldName": "balanceDateType",
+            "fieldType": "BalanceDateType",
+            "fieldValues": "DONE,BOOK,VALUE,TRANSACTION",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "deltaAmountDebit",
-            "fieldType": "Double",
+            "fieldName": "globalSequenceNumber",
+            "fieldType": "Long",
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "deltaAmountCredit",
-            "fieldType": "Double",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "currencyIso",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "amountCurrency",
-            "fieldType": "Double"
-        },
-        {
-            "fieldName": "deltaAmountDebitCurrency",
-            "fieldType": "Double"
-        },
-        {
-            "fieldName": "deltaAmountCreditCurrency",
-            "fieldType": "Double"
-        },
-        {
-            "fieldName": "isFinal",
-            "fieldType": "Boolean"
         },
         {
             "fieldName": "legalEntityId",

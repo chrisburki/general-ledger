@@ -4,6 +4,8 @@ import com.avaloq.ledger.service.dto.JournalPostingDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Date;
+
 /**
  * Service Interface for managing JournalPosting.
  */
@@ -39,4 +41,13 @@ public interface JournalPostingService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    /**
+     * Generate Journal Postings from Voucher.
+     *
+     * @param refDate the date per when to create a new balance sheet
+     * @param chartOfAccountKey key of the chart of account
+     * @return number of created entity
+     */
+    Long generateFromVoucher(Date refDate, String chartOfAccountKey);
 }

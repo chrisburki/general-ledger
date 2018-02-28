@@ -11,6 +11,7 @@ import { LedgerVoucherBookingModule } from './voucher-booking/voucher-booking.mo
 import { LedgerVoucherValuationModule } from './voucher-valuation/voucher-valuation.module';
 import { LedgerSubLedgerTypeModule } from './sub-ledger-type/sub-ledger-type.module';
 import { LedgerVoucherValuationTypeModule } from './voucher-valuation-type/voucher-valuation-type.module';
+import { LedgerBalanceSheetItemModule } from './balance-sheet-item/balance-sheet-item.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -26,6 +27,7 @@ import { LedgerVoucherValuationTypeModule } from './voucher-valuation-type/vouch
         LedgerVoucherValuationModule,
         LedgerSubLedgerTypeModule,
         LedgerVoucherValuationTypeModule,
+        LedgerBalanceSheetItemModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

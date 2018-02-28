@@ -25,6 +25,7 @@ export class VoucherBookingDialogComponent implements OnInit {
 
     voucherpositions: VoucherPosition[];
     doneDateDp: any;
+    bookDateDp: any;
     valueDateDp: any;
     transactionDateDp: any;
 

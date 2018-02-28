@@ -10,7 +10,6 @@ import { BalanceSheet } from './balance-sheet.model';
 import { BalanceSheetPopupService } from './balance-sheet-popup.service';
 import { BalanceSheetService } from './balance-sheet.service';
 import { ChartOfAccounts, ChartOfAccountsService } from '../chart-of-accounts';
-import { LedgerAccount, LedgerAccountService } from '../ledger-account';
 
 @Component({
     selector: 'jhi-balance-sheet-dialog',
@@ -22,8 +21,6 @@ export class BalanceSheetDialogComponent implements OnInit {
     isSaving: boolean;
 
     chartofaccounts: ChartOfAccounts[];
-
-    ledgeraccounts: LedgerAccount[];
     balanceDateDp: any;
 
     constructor(
@@ -31,7 +28,6 @@ export class BalanceSheetDialogComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private balanceSheetService: BalanceSheetService,
         private chartOfAccountsService: ChartOfAccountsService,
-        private ledgerAccountService: LedgerAccountService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -40,8 +36,6 @@ export class BalanceSheetDialogComponent implements OnInit {
         this.isSaving = false;
         this.chartOfAccountsService.query()
             .subscribe((res: HttpResponse<ChartOfAccounts[]>) => { this.chartofaccounts = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
-        this.ledgerAccountService.query()
-            .subscribe((res: HttpResponse<LedgerAccount[]>) => { this.ledgeraccounts = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -79,10 +73,6 @@ export class BalanceSheetDialogComponent implements OnInit {
     }
 
     trackChartOfAccountsById(index: number, item: ChartOfAccounts) {
-        return item.id;
-    }
-
-    trackLedgerAccountById(index: number, item: LedgerAccount) {
         return item.id;
     }
 }

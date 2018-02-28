@@ -2,6 +2,7 @@ import { BaseEntity } from './../../shared';
 
 export const enum VoucherDateType {
     'DONE',
+    'BOOK',
     'VALUE',
     'TRANSACTION'
 }

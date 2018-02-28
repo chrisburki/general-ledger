@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity BalanceSheetItem.
+    -->
+    <changeSet id="20180228210239-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="balance_sheet_id"
+                                 baseTableName="balance_sheet_item"
+                                 constraintName="fk_balance_sheet_item_balance_sheet_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="balance_sheet"/>
+
+        <addForeignKeyConstraint baseColumnNames="account_id"
+                                 baseTableName="balance_sheet_item"
+                                 constraintName="fk_balance_sheet_item_account_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ledger_account"/>
+
+    </changeSet>
+</databaseChangeLog>

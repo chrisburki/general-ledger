@@ -18,6 +18,8 @@ public class VoucherBookingDTO implements Serializable {
     @NotNull
     private LocalDate doneDate;
 
+    private LocalDate bookDate;
+
     private LocalDate valueDate;
 
     private LocalDate transactionDate;
@@ -71,6 +73,14 @@ public class VoucherBookingDTO implements Serializable {
 
     public void setDoneDate(LocalDate doneDate) {
         this.doneDate = doneDate;
+    }
+
+    public LocalDate getBookDate() {
+        return bookDate;
+    }
+
+    public void setBookDate(LocalDate bookDate) {
+        this.bookDate = bookDate;
     }
 
     public LocalDate getValueDate() {
@@ -235,6 +245,7 @@ public class VoucherBookingDTO implements Serializable {
         return "VoucherBookingDTO{" +
             "id=" + getId() +
             ", doneDate='" + getDoneDate() + "'" +
+            ", bookDate='" + getBookDate() + "'" +
             ", valueDate='" + getValueDate() + "'" +
             ", transactionDate='" + getTransactionDate() + "'" +
             ", quantity=" + getQuantity() +

@@ -14,11 +14,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="chart_of_accounts"/>
 
-        <addForeignKeyConstraint baseColumnNames="account_id"
-                                 baseTableName="balance_sheet"
-                                 constraintName="fk_balance_sheet_account_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="ledger_account"/>
-
     </changeSet>
 </databaseChangeLog>

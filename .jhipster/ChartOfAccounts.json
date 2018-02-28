@@ -41,10 +41,7 @@
         },
         {
             "fieldName": "legalEntityId",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20180213205741",

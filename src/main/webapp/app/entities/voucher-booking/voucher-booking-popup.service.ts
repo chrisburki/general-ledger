@@ -36,6 +36,13 @@ export class VoucherBookingPopupService {
                                 day: voucherBooking.doneDate.getDate()
                             };
                         }
+                        if (voucherBooking.bookDate) {
+                            voucherBooking.bookDate = {
+                                year: voucherBooking.bookDate.getFullYear(),
+                                month: voucherBooking.bookDate.getMonth() + 1,
+                                day: voucherBooking.bookDate.getDate()
+                            };
+                        }
                         if (voucherBooking.valueDate) {
                             voucherBooking.valueDate = {
                                 year: voucherBooking.valueDate.getFullYear(),

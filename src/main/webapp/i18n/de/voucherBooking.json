@@ -17,6 +17,7 @@
                 "title": "Voucher Booking"
             },
             "doneDate": "Done Date",
+            "bookDate": "Book Date",
             "valueDate": "Value Date",
             "transactionDate": "Transaction Date",
             "quantity": "Quantity",

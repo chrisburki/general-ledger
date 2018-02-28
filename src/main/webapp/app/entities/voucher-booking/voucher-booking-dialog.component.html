@@ -29,6 +29,16 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.voucherBooking.bookDate" for="field_bookDate">Book Date</label>
+            <div class="input-group">
+                <input id="field_bookDate" type="text" class="form-control" name="bookDate" ngbDatepicker  #bookDateDp="ngbDatepicker" [(ngModel)]="voucherBooking.bookDate"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="bookDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="ledgerApp.voucherBooking.valueDate" for="field_valueDate">Value Date</label>
             <div class="input-group">
                 <input id="field_valueDate" type="text" class="form-control" name="valueDate" ngbDatepicker  #valueDateDp="ngbDatepicker" [(ngModel)]="voucherBooking.valueDate"

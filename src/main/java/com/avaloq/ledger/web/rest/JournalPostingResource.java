@@ -1,5 +1,6 @@
 package com.avaloq.ledger.web.rest;
 
+import com.avaloq.ledger.web.rest.vm.JournalPostingGenerateVM;
 import com.codahale.metrics.annotation.Timed;
 import com.avaloq.ledger.service.JournalPostingService;
 import com.avaloq.ledger.web.rest.errors.BadRequestAlertException;
@@ -11,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -124,4 +127,36 @@ public class JournalPostingResource {
         journalPostingService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    /**
+     * POST  /journal-postings/balance-sheet : Create a new balance Sheet.
+     *
+     * @param refDate the date per when to create a new balance sheet
+     * @param chartOfAccountKey key of the chart of account
+     * @return the ResponseEntity with status 201 (Created), or with status 400 (Bad Request) if an error occurs
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/journal-postings/balance-sheet")
+    @Timed
+    public ResponseEntity<JournalPostingGenerateVM> createJournalPosting(
+        @Valid @RequestBody @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam(value="refDate") Date refDate,
+        @Valid @RequestBody @RequestParam(value="chartOfAccount") String chartOfAccountKey
+    ) throws URISyntaxException {
+        log.debug("REST request to save JournalPosting : reference date: ", refDate, ", chart of account: ",chartOfAccountKey);
+        if (refDate == null) {
+            throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid reference date (parameter date)", ENTITY_NAME, "missing refdate");
+        }
+        if (chartOfAccountKey == null) {
+            throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid reference chartOfAccountKey (parameter chartofaccount)", ENTITY_NAME, "missing chartofaccount");
+        }
+
+        // service call
+        Long count = journalPostingService.generateFromVoucher(refDate,chartOfAccountKey);
+
+        // result
+        JournalPostingGenerateVM journalPostingGenerateVM = new JournalPostingGenerateVM("created", count, refDate, chartOfAccountKey);
+        String referenceText = "reference date: " + refDate + ", chart of account: " + chartOfAccountKey;
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, journalPostingGenerateVM.toString())).body(journalPostingGenerateVM);
+    }
+
 }

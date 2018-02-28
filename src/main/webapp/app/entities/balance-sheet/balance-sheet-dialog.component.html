@@ -18,6 +18,21 @@
                 [(ngModel)]="balanceSheet.description" />
         </div>
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.key" for="field_key">Key</label>
+            <input type="text" class="form-control" name="key" id="field_key"
+                [(ngModel)]="balanceSheet.key" required maxlength="60"/>
+            <div [hidden]="!(editForm.controls.key?.dirty && editForm.controls.key?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.key?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.key?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.balanceDate" for="field_balanceDate">Balance Date</label>
             <div class="input-group">
                 <input id="field_balanceDate" type="text" class="form-control" name="balanceDate" ngbDatepicker  #balanceDateDp="ngbDatepicker" [(ngModel)]="balanceSheet.balanceDate"
@@ -34,74 +49,34 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.amount" for="field_amount">Amount</label>
-            <input type="number" class="form-control" name="amount" id="field_amount"
-                [(ngModel)]="balanceSheet.amount" required/>
-            <div [hidden]="!(editForm.controls.amount?.dirty && editForm.controls.amount?.invalid)">
+            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.balanceDateType" for="field_balanceDateType">Balance Date Type</label>
+            <select class="form-control" name="balanceDateType" [(ngModel)]="balanceSheet.balanceDateType" id="field_balanceDateType"  required>
+                <option value="DONE">{{'ledgerApp.BalanceDateType.DONE' | translate}}</option>
+                <option value="BOOK">{{'ledgerApp.BalanceDateType.BOOK' | translate}}</option>
+                <option value="VALUE">{{'ledgerApp.BalanceDateType.VALUE' | translate}}</option>
+                <option value="TRANSACTION">{{'ledgerApp.BalanceDateType.TRANSACTION' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.balanceDateType?.dirty && editForm.controls.balanceDateType?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.amount?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.balanceDateType?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.amount?.errors?.number" jhiTranslate="entity.validation.number">
-                    This field should be a number.
                 </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.deltaAmountDebit" for="field_deltaAmountDebit">Delta Amount Debit</label>
-            <input type="number" class="form-control" name="deltaAmountDebit" id="field_deltaAmountDebit"
-                [(ngModel)]="balanceSheet.deltaAmountDebit" required/>
-            <div [hidden]="!(editForm.controls.deltaAmountDebit?.dirty && editForm.controls.deltaAmountDebit?.invalid)">
+            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.globalSequenceNumber" for="field_globalSequenceNumber">Global Sequence Number</label>
+            <input type="number" class="form-control" name="globalSequenceNumber" id="field_globalSequenceNumber"
+                [(ngModel)]="balanceSheet.globalSequenceNumber" required/>
+            <div [hidden]="!(editForm.controls.globalSequenceNumber?.dirty && editForm.controls.globalSequenceNumber?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.deltaAmountDebit?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.globalSequenceNumber?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
                 <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.deltaAmountDebit?.errors?.number" jhiTranslate="entity.validation.number">
+                    [hidden]="!editForm.controls.globalSequenceNumber?.errors?.number" jhiTranslate="entity.validation.number">
                     This field should be a number.
                 </small>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.deltaAmountCredit" for="field_deltaAmountCredit">Delta Amount Credit</label>
-            <input type="number" class="form-control" name="deltaAmountCredit" id="field_deltaAmountCredit"
-                [(ngModel)]="balanceSheet.deltaAmountCredit" required/>
-            <div [hidden]="!(editForm.controls.deltaAmountCredit?.dirty && editForm.controls.deltaAmountCredit?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.deltaAmountCredit?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-                <small class="form-text text-danger"
-                    [hidden]="!editForm.controls.deltaAmountCredit?.errors?.number" jhiTranslate="entity.validation.number">
-                    This field should be a number.
-                </small>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.currencyIso" for="field_currencyIso">Currency Iso</label>
-            <input type="text" class="form-control" name="currencyIso" id="field_currencyIso"
-                [(ngModel)]="balanceSheet.currencyIso" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.amountCurrency" for="field_amountCurrency">Amount Currency</label>
-            <input type="number" class="form-control" name="amountCurrency" id="field_amountCurrency"
-                [(ngModel)]="balanceSheet.amountCurrency" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.deltaAmountDebitCurrency" for="field_deltaAmountDebitCurrency">Delta Amount Debit Currency</label>
-            <input type="number" class="form-control" name="deltaAmountDebitCurrency" id="field_deltaAmountDebitCurrency"
-                [(ngModel)]="balanceSheet.deltaAmountDebitCurrency" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.deltaAmountCreditCurrency" for="field_deltaAmountCreditCurrency">Delta Amount Credit Currency</label>
-            <input type="number" class="form-control" name="deltaAmountCreditCurrency" id="field_deltaAmountCreditCurrency"
-                [(ngModel)]="balanceSheet.deltaAmountCreditCurrency" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.isFinal" for="field_isFinal">Is Final</label>
-            <input type="checkbox" class="form-control" name="isFinal" id="field_isFinal"
-                [(ngModel)]="balanceSheet.isFinal" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.legalEntityId" for="field_legalEntityId">Legal Entity Id</label>
@@ -120,13 +95,6 @@
             <select class="form-control" id="field_chartOfAccounts" name="chartOfAccounts" [(ngModel)]="balanceSheet.chartOfAccountsId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="chartOfAccountsOption.id" *ngFor="let chartOfAccountsOption of chartofaccounts; trackBy: trackChartOfAccountsById">{{chartOfAccountsOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="ledgerApp.balanceSheet.account" for="field_account">Account</label>
-            <select class="form-control" id="field_account" name="account" [(ngModel)]="balanceSheet.accountId" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="ledgerAccountOption.id" *ngFor="let ledgerAccountOption of ledgeraccounts; trackBy: trackLedgerAccountById">{{ledgerAccountOption.id}}</option>
             </select>
         </div>
     </div>

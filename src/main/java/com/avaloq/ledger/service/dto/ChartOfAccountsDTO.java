@@ -29,7 +29,6 @@ public class ChartOfAccountsDTO implements Serializable {
 
     private Boolean isMain;
 
-    @NotNull
     private String legalEntityId;
 
     public Long getId() {

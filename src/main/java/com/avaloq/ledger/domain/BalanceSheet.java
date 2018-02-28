@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.avaloq.ledger.domain.enumeration.BalanceDateType;
+
 /**
  * A BalanceSheet.
  */
@@ -29,35 +31,22 @@ public class BalanceSheet implements Serializable {
     private String description;
 
     @NotNull
+    @Size(max = 60)
+    @Column(name = "jhi_key", length = 60, nullable = false)
+    private String key;
+
+    @NotNull
     @Column(name = "balance_date", nullable = false)
     private LocalDate balanceDate;
 
     @NotNull
-    @Column(name = "amount", nullable = false)
-    private Double amount;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "balance_date_type", nullable = false)
+    private BalanceDateType balanceDateType;
 
     @NotNull
-    @Column(name = "delta_amount_debit", nullable = false)
-    private Double deltaAmountDebit;
-
-    @NotNull
-    @Column(name = "delta_amount_credit", nullable = false)
-    private Double deltaAmountCredit;
-
-    @Column(name = "currency_iso")
-    private String currencyIso;
-
-    @Column(name = "amount_currency")
-    private Double amountCurrency;
-
-    @Column(name = "delta_amount_debit_currency")
-    private Double deltaAmountDebitCurrency;
-
-    @Column(name = "delta_amount_credit_currency")
-    private Double deltaAmountCreditCurrency;
-
-    @Column(name = "is_final")
-    private Boolean isFinal;
+    @Column(name = "global_sequence_number", nullable = false)
+    private Long globalSequenceNumber;
 
     @NotNull
     @Column(name = "legal_entity_id", nullable = false)
@@ -65,9 +54,6 @@ public class BalanceSheet implements Serializable {
 
     @ManyToOne
     private ChartOfAccounts chartOfAccounts;
-
-    @ManyToOne
-    private LedgerAccount account;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -91,6 +77,19 @@ public class BalanceSheet implements Serializable {
         this.description = description;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public BalanceSheet key(String key) {
+        this.key = key;
+        return this;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     public LocalDate getBalanceDate() {
         return balanceDate;
     }
@@ -104,108 +103,30 @@ public class BalanceSheet implements Serializable {
         this.balanceDate = balanceDate;
     }
 
-    public Double getAmount() {
-        return amount;
+    public BalanceDateType getBalanceDateType() {
+        return balanceDateType;
     }
 
-    public BalanceSheet amount(Double amount) {
-        this.amount = amount;
+    public BalanceSheet balanceDateType(BalanceDateType balanceDateType) {
+        this.balanceDateType = balanceDateType;
         return this;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setBalanceDateType(BalanceDateType balanceDateType) {
+        this.balanceDateType = balanceDateType;
     }
 
-    public Double getDeltaAmountDebit() {
-        return deltaAmountDebit;
+    public Long getGlobalSequenceNumber() {
+        return globalSequenceNumber;
     }
 
-    public BalanceSheet deltaAmountDebit(Double deltaAmountDebit) {
-        this.deltaAmountDebit = deltaAmountDebit;
+    public BalanceSheet globalSequenceNumber(Long globalSequenceNumber) {
+        this.globalSequenceNumber = globalSequenceNumber;
         return this;
     }
 
-    public void setDeltaAmountDebit(Double deltaAmountDebit) {
-        this.deltaAmountDebit = deltaAmountDebit;
-    }
-
-    public Double getDeltaAmountCredit() {
-        return deltaAmountCredit;
-    }
-
-    public BalanceSheet deltaAmountCredit(Double deltaAmountCredit) {
-        this.deltaAmountCredit = deltaAmountCredit;
-        return this;
-    }
-
-    public void setDeltaAmountCredit(Double deltaAmountCredit) {
-        this.deltaAmountCredit = deltaAmountCredit;
-    }
-
-    public String getCurrencyIso() {
-        return currencyIso;
-    }
-
-    public BalanceSheet currencyIso(String currencyIso) {
-        this.currencyIso = currencyIso;
-        return this;
-    }
-
-    public void setCurrencyIso(String currencyIso) {
-        this.currencyIso = currencyIso;
-    }
-
-    public Double getAmountCurrency() {
-        return amountCurrency;
-    }
-
-    public BalanceSheet amountCurrency(Double amountCurrency) {
-        this.amountCurrency = amountCurrency;
-        return this;
-    }
-
-    public void setAmountCurrency(Double amountCurrency) {
-        this.amountCurrency = amountCurrency;
-    }
-
-    public Double getDeltaAmountDebitCurrency() {
-        return deltaAmountDebitCurrency;
-    }
-
-    public BalanceSheet deltaAmountDebitCurrency(Double deltaAmountDebitCurrency) {
-        this.deltaAmountDebitCurrency = deltaAmountDebitCurrency;
-        return this;
-    }
-
-    public void setDeltaAmountDebitCurrency(Double deltaAmountDebitCurrency) {
-        this.deltaAmountDebitCurrency = deltaAmountDebitCurrency;
-    }
-
-    public Double getDeltaAmountCreditCurrency() {
-        return deltaAmountCreditCurrency;
-    }
-
-    public BalanceSheet deltaAmountCreditCurrency(Double deltaAmountCreditCurrency) {
-        this.deltaAmountCreditCurrency = deltaAmountCreditCurrency;
-        return this;
-    }
-
-    public void setDeltaAmountCreditCurrency(Double deltaAmountCreditCurrency) {
-        this.deltaAmountCreditCurrency = deltaAmountCreditCurrency;
-    }
-
-    public Boolean isIsFinal() {
-        return isFinal;
-    }
-
-    public BalanceSheet isFinal(Boolean isFinal) {
-        this.isFinal = isFinal;
-        return this;
-    }
-
-    public void setIsFinal(Boolean isFinal) {
-        this.isFinal = isFinal;
+    public void setGlobalSequenceNumber(Long globalSequenceNumber) {
+        this.globalSequenceNumber = globalSequenceNumber;
     }
 
     public String getLegalEntityId() {
@@ -232,19 +153,6 @@ public class BalanceSheet implements Serializable {
 
     public void setChartOfAccounts(ChartOfAccounts chartOfAccounts) {
         this.chartOfAccounts = chartOfAccounts;
-    }
-
-    public LedgerAccount getAccount() {
-        return account;
-    }
-
-    public BalanceSheet account(LedgerAccount ledgerAccount) {
-        this.account = ledgerAccount;
-        return this;
-    }
-
-    public void setAccount(LedgerAccount ledgerAccount) {
-        this.account = ledgerAccount;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -273,15 +181,10 @@ public class BalanceSheet implements Serializable {
         return "BalanceSheet{" +
             "id=" + getId() +
             ", description='" + getDescription() + "'" +
+            ", key='" + getKey() + "'" +
             ", balanceDate='" + getBalanceDate() + "'" +
-            ", amount=" + getAmount() +
-            ", deltaAmountDebit=" + getDeltaAmountDebit() +
-            ", deltaAmountCredit=" + getDeltaAmountCredit() +
-            ", currencyIso='" + getCurrencyIso() + "'" +
-            ", amountCurrency=" + getAmountCurrency() +
-            ", deltaAmountDebitCurrency=" + getDeltaAmountDebitCurrency() +
-            ", deltaAmountCreditCurrency=" + getDeltaAmountCreditCurrency() +
-            ", isFinal='" + isIsFinal() + "'" +
+            ", balanceDateType='" + getBalanceDateType() + "'" +
+            ", globalSequenceNumber=" + getGlobalSequenceNumber() +
             ", legalEntityId='" + getLegalEntityId() + "'" +
             "}";
     }

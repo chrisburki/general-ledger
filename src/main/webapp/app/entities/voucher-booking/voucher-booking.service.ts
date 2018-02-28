@@ -65,6 +65,8 @@ export class VoucherBookingService {
         const copy: VoucherBooking = Object.assign({}, voucherBooking);
         copy.doneDate = this.dateUtils
             .convertLocalDateFromServer(voucherBooking.doneDate);
+        copy.bookDate = this.dateUtils
+            .convertLocalDateFromServer(voucherBooking.bookDate);
         copy.valueDate = this.dateUtils
             .convertLocalDateFromServer(voucherBooking.valueDate);
         copy.transactionDate = this.dateUtils
@@ -79,6 +81,8 @@ export class VoucherBookingService {
         const copy: VoucherBooking = Object.assign({}, voucherBooking);
         copy.doneDate = this.dateUtils
             .convertLocalDateToServer(voucherBooking.doneDate);
+        copy.bookDate = this.dateUtils
+            .convertLocalDateToServer(voucherBooking.bookDate);
         copy.valueDate = this.dateUtils
             .convertLocalDateToServer(voucherBooking.valueDate);
         copy.transactionDate = this.dateUtils

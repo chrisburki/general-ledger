@@ -76,13 +76,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="ledgerApp.chartOfAccounts.legalEntityId" for="field_legalEntityId">Legal Entity Id</label>
             <input type="text" class="form-control" name="legalEntityId" id="field_legalEntityId"
-                [(ngModel)]="chartOfAccounts.legalEntityId" required/>
-            <div [hidden]="!(editForm.controls.legalEntityId?.dirty && editForm.controls.legalEntityId?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.legalEntityId?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-            </div>
+                [(ngModel)]="chartOfAccounts.legalEntityId" />
         </div>
 
     </div>

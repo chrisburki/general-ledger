@@ -25,6 +25,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="book_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
             <column name="value_date" type="date">
                 <constraints nullable="true" />
             </column>

@@ -18,6 +18,7 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="doneDate"><span jhiTranslate="ledgerApp.voucherBooking.doneDate">Done Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="bookDate"><span jhiTranslate="ledgerApp.voucherBooking.bookDate">Book Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="valueDate"><span jhiTranslate="ledgerApp.voucherBooking.valueDate">Value Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="transactionDate"><span jhiTranslate="ledgerApp.voucherBooking.transactionDate">Transaction Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="quantity"><span jhiTranslate="ledgerApp.voucherBooking.quantity">Quantity</span> <span class="fa fa-sort"></span></th>
@@ -42,6 +43,7 @@
             <tr *ngFor="let voucherBooking of voucherBookings ;trackBy: trackId">
                 <td><a [routerLink]="['../voucher-booking', voucherBooking.id ]">{{voucherBooking.id}}</a></td>
                 <td>{{voucherBooking.doneDate | date:'mediumDate'}}</td>
+                <td>{{voucherBooking.bookDate | date:'mediumDate'}}</td>
                 <td>{{voucherBooking.valueDate | date:'mediumDate'}}</td>
                 <td>{{voucherBooking.transactionDate | date:'mediumDate'}}</td>
                 <td>{{voucherBooking.quantity}}</td>

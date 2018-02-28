@@ -52,7 +52,7 @@ public class VoucherValuationResourceIntTest {
     private static final Double UPDATED_AMOUNT_BASE_CURRENCY = 2D;
 
     private static final VoucherDateType DEFAULT_DATE_TYPE = VoucherDateType.DONE;
-    private static final VoucherDateType UPDATED_DATE_TYPE = VoucherDateType.VALUE;
+    private static final VoucherDateType UPDATED_DATE_TYPE = VoucherDateType.BOOK;
 
     private static final Long DEFAULT_GLOBAL_SEQUENCE_NUMBER = 1L;
     private static final Long UPDATED_GLOBAL_SEQUENCE_NUMBER = 2L;

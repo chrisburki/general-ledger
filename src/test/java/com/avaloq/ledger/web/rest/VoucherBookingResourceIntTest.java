@@ -46,6 +46,9 @@ public class VoucherBookingResourceIntTest {
     private static final LocalDate DEFAULT_DONE_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DONE_DATE = LocalDate.now(ZoneId.systemDefault());
 
+    private static final LocalDate DEFAULT_BOOK_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_BOOK_DATE = LocalDate.now(ZoneId.systemDefault());
+
     private static final LocalDate DEFAULT_VALUE_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_VALUE_DATE = LocalDate.now(ZoneId.systemDefault());
 
@@ -136,6 +139,7 @@ public class VoucherBookingResourceIntTest {
     public static VoucherBooking createEntity(EntityManager em) {
         VoucherBooking voucherBooking = new VoucherBooking()
             .doneDate(DEFAULT_DONE_DATE)
+            .bookDate(DEFAULT_BOOK_DATE)
             .valueDate(DEFAULT_VALUE_DATE)
             .transactionDate(DEFAULT_TRANSACTION_DATE)
             .quantity(DEFAULT_QUANTITY)
@@ -176,6 +180,7 @@ public class VoucherBookingResourceIntTest {
         assertThat(voucherBookingList).hasSize(databaseSizeBeforeCreate + 1);
         VoucherBooking testVoucherBooking = voucherBookingList.get(voucherBookingList.size() - 1);
         assertThat(testVoucherBooking.getDoneDate()).isEqualTo(DEFAULT_DONE_DATE);
+        assertThat(testVoucherBooking.getBookDate()).isEqualTo(DEFAULT_BOOK_DATE);
         assertThat(testVoucherBooking.getValueDate()).isEqualTo(DEFAULT_VALUE_DATE);
         assertThat(testVoucherBooking.getTransactionDate()).isEqualTo(DEFAULT_TRANSACTION_DATE);
         assertThat(testVoucherBooking.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
@@ -339,6 +344,7 @@ public class VoucherBookingResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(voucherBooking.getId().intValue())))
             .andExpect(jsonPath("$.[*].doneDate").value(hasItem(DEFAULT_DONE_DATE.toString())))
+            .andExpect(jsonPath("$.[*].bookDate").value(hasItem(DEFAULT_BOOK_DATE.toString())))
             .andExpect(jsonPath("$.[*].valueDate").value(hasItem(DEFAULT_VALUE_DATE.toString())))
             .andExpect(jsonPath("$.[*].transactionDate").value(hasItem(DEFAULT_TRANSACTION_DATE.toString())))
             .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY.doubleValue())))
@@ -368,6 +374,7 @@ public class VoucherBookingResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(voucherBooking.getId().intValue()))
             .andExpect(jsonPath("$.doneDate").value(DEFAULT_DONE_DATE.toString()))
+            .andExpect(jsonPath("$.bookDate").value(DEFAULT_BOOK_DATE.toString()))
             .andExpect(jsonPath("$.valueDate").value(DEFAULT_VALUE_DATE.toString()))
             .andExpect(jsonPath("$.transactionDate").value(DEFAULT_TRANSACTION_DATE.toString()))
             .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY.doubleValue()))
@@ -406,6 +413,7 @@ public class VoucherBookingResourceIntTest {
         em.detach(updatedVoucherBooking);
         updatedVoucherBooking
             .doneDate(UPDATED_DONE_DATE)
+            .bookDate(UPDATED_BOOK_DATE)
             .valueDate(UPDATED_VALUE_DATE)
             .transactionDate(UPDATED_TRANSACTION_DATE)
             .quantity(UPDATED_QUANTITY)
@@ -433,6 +441,7 @@ public class VoucherBookingResourceIntTest {
         assertThat(voucherBookingList).hasSize(databaseSizeBeforeUpdate);
         VoucherBooking testVoucherBooking = voucherBookingList.get(voucherBookingList.size() - 1);
         assertThat(testVoucherBooking.getDoneDate()).isEqualTo(UPDATED_DONE_DATE);
+        assertThat(testVoucherBooking.getBookDate()).isEqualTo(UPDATED_BOOK_DATE);
         assertThat(testVoucherBooking.getValueDate()).isEqualTo(UPDATED_VALUE_DATE);
         assertThat(testVoucherBooking.getTransactionDate()).isEqualTo(UPDATED_TRANSACTION_DATE);
         assertThat(testVoucherBooking.getQuantity()).isEqualTo(UPDATED_QUANTITY);

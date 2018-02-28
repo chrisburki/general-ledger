@@ -41,6 +41,7 @@
             <label class="form-control-label" jhiTranslate="ledgerApp.voucherValuation.dateType" for="field_dateType">Date Type</label>
             <select class="form-control" name="dateType" [(ngModel)]="voucherValuation.dateType" id="field_dateType"  required>
                 <option value="DONE">{{'ledgerApp.VoucherDateType.DONE' | translate}}</option>
+                <option value="BOOK">{{'ledgerApp.VoucherDateType.BOOK' | translate}}</option>
                 <option value="VALUE">{{'ledgerApp.VoucherDateType.VALUE' | translate}}</option>
                 <option value="TRANSACTION">{{'ledgerApp.VoucherDateType.TRANSACTION' | translate}}</option>
             </select>

@@ -8,15 +8,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity BalanceSheet and its DTO BalanceSheetDTO.
  */
-@Mapper(componentModel = "spring", uses = {ChartOfAccountsMapper.class, LedgerAccountMapper.class})
+@Mapper(componentModel = "spring", uses = {ChartOfAccountsMapper.class})
 public interface BalanceSheetMapper extends EntityMapper<BalanceSheetDTO, BalanceSheet> {
 
     @Mapping(source = "chartOfAccounts.id", target = "chartOfAccountsId")
-    @Mapping(source = "account.id", target = "accountId")
     BalanceSheetDTO toDto(BalanceSheet balanceSheet);
 
     @Mapping(source = "chartOfAccountsId", target = "chartOfAccounts")
-    @Mapping(source = "accountId", target = "account")
     BalanceSheet toEntity(BalanceSheetDTO balanceSheetDTO);
 
     default BalanceSheet fromId(Long id) {

@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 
 /**
  * Service Implementation for managing JournalPosting.
@@ -82,5 +84,25 @@ public class JournalPostingServiceImpl implements JournalPostingService {
     public void delete(Long id) {
         log.debug("Request to delete JournalPosting : {}", id);
         journalPostingRepository.delete(id);
+    }
+
+    /**
+     * Generate Journal Postings from Voucher.
+     *
+     * @param refDate           the date per when to create a new balance sheet
+     * @param chartOfAccountKey key of the chart of account
+     * @return number of created entity
+     */
+    @Override
+    public Long generateFromVoucher(Date refDate, String chartOfAccountKey) {
+        // 1. select chart of account
+        // 2. check for existing balance-sheet
+        // 2a. if exists delete balance-sheet
+        // 2b. create new balance-sheet
+        // 3. select voucher bookings per date
+        // 4. apply posting rule & generate journal postings
+        // 5. select voucher valuation per date
+
+        return null;
     }
 }

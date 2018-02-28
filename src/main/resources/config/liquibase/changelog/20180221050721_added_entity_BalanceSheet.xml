@@ -25,40 +25,20 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="jhi_key" type="varchar(60)">
+                <constraints nullable="false" />
+            </column>
+
             <column name="balance_date" type="date">
                 <constraints nullable="false" />
             </column>
 
-            <column name="amount" type="double">
+            <column name="balance_date_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
-            <column name="delta_amount_debit" type="double">
+            <column name="global_sequence_number" type="bigint">
                 <constraints nullable="false" />
-            </column>
-
-            <column name="delta_amount_credit" type="double">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="currency_iso" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="amount_currency" type="double">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="delta_amount_debit_currency" type="double">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="delta_amount_credit_currency" type="double">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="is_final" type="boolean">
-                <constraints nullable="true" />
             </column>
 
             <column name="legal_entity_id" type="varchar(255)">
@@ -66,10 +46,6 @@
             </column>
 
             <column name="chart_of_accounts_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="account_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

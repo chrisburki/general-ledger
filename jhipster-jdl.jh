@@ -11,7 +11,7 @@ entity ChartOfAccounts {
     accountingStandard AccountingStandard required,
     baseCurrencyIso String required,
     isMain Boolean,
-	legalEntityId String required
+	legalEntityId String
 }
 
 enum LedgerAccountType {
@@ -40,8 +40,21 @@ entity JournalPosting {
 	legalEntityId String required
 }
 
+enum BalanceDateType {
+    DONE, BOOK, VALUE, TRANSACTION
+}
+
+
 entity BalanceSheet {
     description String,
+    key String required maxlength(KEY_MAX_LENGTH),
+    balanceDate LocalDate required,
+    balanceDateType BalanceDateType required,
+    globalSequenceNumber Long required,
+	legalEntityId String required    
+}
+
+entity BalanceSheetItem {
     balanceDate LocalDate required,
     amount Double required,
     deltaAmountDebit Double required,
@@ -80,6 +93,7 @@ entity VoucherPosition {
 
 entity VoucherBooking {
     doneDate LocalDate required,
+    bookDate LocalDate,
     valueDate LocalDate,
     transactionDate LocalDate,
     quantity Double,
@@ -98,7 +112,7 @@ entity VoucherBooking {
 }
 
 enum VoucherDateType {
-    DONE, VALUE, TRANSACTION
+    DONE, BOOK, VALUE, TRANSACTION
 }
 
 entity VoucherValuationType {
@@ -138,7 +152,11 @@ relationship ManyToOne {
 }
 
 relationship ManyToOne {
-	BalanceSheet{account} to LedgerAccount
+	BalanceSheetItem{balanceSheet} to BalanceSheet
+}
+
+relationship ManyToOne {
+	BalanceSheetItem{account} to LedgerAccount
 }
 
 relationship ManyToOne {
@@ -175,7 +193,7 @@ relationship OneToMany {
 
 // Set pagination options
 paginate ChartOfAccounts, LedgerAccount, BalanceSheet with infinite-scroll
-paginate JournalPosting, VoucherPosition, VoucherBooking, VoucherValuation with pagination
+paginate BalanceSheetItem, JournalPosting, VoucherPosition, VoucherBooking, VoucherValuation with pagination
 
 dto all with mapstruct
 

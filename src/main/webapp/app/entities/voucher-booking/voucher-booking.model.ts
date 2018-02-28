@@ -4,6 +4,7 @@ export class VoucherBooking implements BaseEntity {
     constructor(
         public id?: number,
         public doneDate?: any,
+        public bookDate?: any,
         public valueDate?: any,
         public transactionDate?: any,
         public quantity?: number,

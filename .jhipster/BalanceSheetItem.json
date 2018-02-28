@@ -1,0 +1,80 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "balanceSheet",
+            "otherEntityName": "balanceSheet",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "account",
+            "otherEntityName": "ledgerAccount",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "balanceDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "deltaAmountDebit",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "deltaAmountCredit",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "currencyIso",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "amountCurrency",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "deltaAmountDebitCurrency",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "deltaAmountCreditCurrency",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "isFinal",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "legalEntityId",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180228210239",
+    "entityTableName": "balance_sheet_item",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

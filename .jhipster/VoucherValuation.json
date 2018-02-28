@@ -39,7 +39,7 @@
         {
             "fieldName": "dateType",
             "fieldType": "VoucherDateType",
-            "fieldValues": "DONE,VALUE,TRANSACTION",
+            "fieldValues": "DONE,BOOK,VALUE,TRANSACTION",
             "fieldValidateRules": [
                 "required"
             ]

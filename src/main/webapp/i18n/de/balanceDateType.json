@@ -1,0 +1,11 @@
+{
+    "ledgerApp": {
+        "BalanceDateType" : {
+            "null": "",
+            "DONE": "DONE",
+            "BOOK": "BOOK",
+            "VALUE": "VALUE",
+            "TRANSACTION": "TRANSACTION"
+        }
+    }
+}

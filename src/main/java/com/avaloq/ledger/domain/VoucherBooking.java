@@ -29,6 +29,9 @@ public class VoucherBooking implements Serializable {
     @Column(name = "done_date", nullable = false)
     private LocalDate doneDate;
 
+    @Column(name = "book_date")
+    private LocalDate bookDate;
+
     @Column(name = "value_date")
     private LocalDate valueDate;
 
@@ -105,6 +108,19 @@ public class VoucherBooking implements Serializable {
 
     public void setDoneDate(LocalDate doneDate) {
         this.doneDate = doneDate;
+    }
+
+    public LocalDate getBookDate() {
+        return bookDate;
+    }
+
+    public VoucherBooking bookDate(LocalDate bookDate) {
+        this.bookDate = bookDate;
+        return this;
+    }
+
+    public void setBookDate(LocalDate bookDate) {
+        this.bookDate = bookDate;
     }
 
     public LocalDate getValueDate() {
@@ -354,6 +370,7 @@ public class VoucherBooking implements Serializable {
         return "VoucherBooking{" +
             "id=" + getId() +
             ", doneDate='" + getDoneDate() + "'" +
+            ", bookDate='" + getBookDate() + "'" +
             ", valueDate='" + getValueDate() + "'" +
             ", transactionDate='" + getTransactionDate() + "'" +
             ", quantity=" + getQuantity() +

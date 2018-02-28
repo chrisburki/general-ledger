@@ -8,41 +8,21 @@
         <dd>
             <span>{{balanceSheet.description}}</span>
         </dd>
+        <dt><span jhiTranslate="ledgerApp.balanceSheet.key">Key</span></dt>
+        <dd>
+            <span>{{balanceSheet.key}}</span>
+        </dd>
         <dt><span jhiTranslate="ledgerApp.balanceSheet.balanceDate">Balance Date</span></dt>
         <dd>
             <span>{{balanceSheet.balanceDate | date:'mediumDate'}}</span>
         </dd>
-        <dt><span jhiTranslate="ledgerApp.balanceSheet.amount">Amount</span></dt>
+        <dt><span jhiTranslate="ledgerApp.balanceSheet.balanceDateType">Balance Date Type</span></dt>
         <dd>
-            <span>{{balanceSheet.amount}}</span>
+            <span jhiTranslate="{{'ledgerApp.BalanceDateType.' + balanceSheet.balanceDateType}}">{{balanceSheet.balanceDateType}}</span>
         </dd>
-        <dt><span jhiTranslate="ledgerApp.balanceSheet.deltaAmountDebit">Delta Amount Debit</span></dt>
+        <dt><span jhiTranslate="ledgerApp.balanceSheet.globalSequenceNumber">Global Sequence Number</span></dt>
         <dd>
-            <span>{{balanceSheet.deltaAmountDebit}}</span>
-        </dd>
-        <dt><span jhiTranslate="ledgerApp.balanceSheet.deltaAmountCredit">Delta Amount Credit</span></dt>
-        <dd>
-            <span>{{balanceSheet.deltaAmountCredit}}</span>
-        </dd>
-        <dt><span jhiTranslate="ledgerApp.balanceSheet.currencyIso">Currency Iso</span></dt>
-        <dd>
-            <span>{{balanceSheet.currencyIso}}</span>
-        </dd>
-        <dt><span jhiTranslate="ledgerApp.balanceSheet.amountCurrency">Amount Currency</span></dt>
-        <dd>
-            <span>{{balanceSheet.amountCurrency}}</span>
-        </dd>
-        <dt><span jhiTranslate="ledgerApp.balanceSheet.deltaAmountDebitCurrency">Delta Amount Debit Currency</span></dt>
-        <dd>
-            <span>{{balanceSheet.deltaAmountDebitCurrency}}</span>
-        </dd>
-        <dt><span jhiTranslate="ledgerApp.balanceSheet.deltaAmountCreditCurrency">Delta Amount Credit Currency</span></dt>
-        <dd>
-            <span>{{balanceSheet.deltaAmountCreditCurrency}}</span>
-        </dd>
-        <dt><span jhiTranslate="ledgerApp.balanceSheet.isFinal">Is Final</span></dt>
-        <dd>
-            <span>{{balanceSheet.isFinal}}</span>
+            <span>{{balanceSheet.globalSequenceNumber}}</span>
         </dd>
         <dt><span jhiTranslate="ledgerApp.balanceSheet.legalEntityId">Legal Entity Id</span></dt>
         <dd>
@@ -52,12 +32,6 @@
         <dd>
             <div *ngIf="balanceSheet.chartOfAccountsId">
                 <a [routerLink]="['/chart-of-accounts', balanceSheet.chartOfAccountsId]">{{balanceSheet.chartOfAccountsId}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="ledgerApp.balanceSheet.account">Account</span></dt>
-        <dd>
-            <div *ngIf="balanceSheet.accountId">
-                <a [routerLink]="['/ledger-account', balanceSheet.accountId]">{{balanceSheet.accountId}}</a>
             </div>
         </dd>
     </dl>
