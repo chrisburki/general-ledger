@@ -71,7 +71,12 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+        <createIndex indexName="idx_balance_sheet"
+                     tableName="balance_sheet_item"
+                     unique="false">
+            <column name="balance_sheet_id" type="bigint"/>
+        </createIndex>
+
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

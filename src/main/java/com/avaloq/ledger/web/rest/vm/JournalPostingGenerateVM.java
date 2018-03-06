@@ -1,6 +1,6 @@
 package com.avaloq.ledger.web.rest.vm;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class JournalPostingGenerateVM {
 
@@ -8,15 +8,15 @@ public class JournalPostingGenerateVM {
 
     private Long count;
 
-    private Date refDate;
+    private LocalDate refDate;
 
-    private String chartOfAccountKey;
+    private String chartOfAccountsKey;
 
-    public JournalPostingGenerateVM(String status, Long count, Date refDate, String chartOfAccountKey) {
+    public JournalPostingGenerateVM(String status, Long count, LocalDate refDate, String chartOfAccountsKey) {
         this.status = status;
         this.count = count;
         this.refDate = refDate;
-        this.chartOfAccountKey = chartOfAccountKey;
+        this.chartOfAccountsKey = chartOfAccountsKey;
     }
 
     public String getStatus() {
@@ -35,20 +35,20 @@ public class JournalPostingGenerateVM {
         this.count = count;
     }
 
-    public Date getRefDate() {
+    public LocalDate getRefDate() {
         return refDate;
     }
 
-    public void setRefDate(Date refDate) {
+    public void setRefDate(LocalDate refDate) {
         this.refDate = refDate;
     }
 
     public String getChartOfAccountKey() {
-        return chartOfAccountKey;
+        return chartOfAccountsKey;
     }
 
     public void setChartOfAccountKey(String chartOfAccountKey) {
-        this.chartOfAccountKey = chartOfAccountKey;
+        this.chartOfAccountsKey = chartOfAccountKey;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class JournalPostingGenerateVM {
             "status='" + status + '\'' +
             ", count=" + count +
             ", refDate=" + refDate +
-            ", chartOfAccountKey='" + chartOfAccountKey + '\'' +
+            ", chartOfAccountKey='" + chartOfAccountsKey + '\'' +
             '}';
     }
 }

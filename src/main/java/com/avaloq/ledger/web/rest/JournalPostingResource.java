@@ -1,5 +1,7 @@
 package com.avaloq.ledger.web.rest;
 
+import com.avaloq.ledger.service.ChartOfAccountsService;
+import com.avaloq.ledger.service.dto.ChartOfAccountsDTO;
 import com.avaloq.ledger.web.rest.vm.JournalPostingGenerateVM;
 import com.codahale.metrics.annotation.Timed;
 import com.avaloq.ledger.service.JournalPostingService;
@@ -22,6 +24,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -39,8 +42,11 @@ public class JournalPostingResource {
 
     private final JournalPostingService journalPostingService;
 
-    public JournalPostingResource(JournalPostingService journalPostingService) {
+    private final ChartOfAccountsService chartOfAccountsService;
+
+    public JournalPostingResource(JournalPostingService journalPostingService, ChartOfAccountsService chartOfAccountsService) {
         this.journalPostingService = journalPostingService;
+        this.chartOfAccountsService = chartOfAccountsService;
     }
 
     /**
@@ -132,30 +138,41 @@ public class JournalPostingResource {
      * POST  /journal-postings/balance-sheet : Create a new balance Sheet.
      *
      * @param refDate the date per when to create a new balance sheet
-     * @param chartOfAccountKey key of the chart of account
+     * @param chartOfAccountsKey key of the chart of account
      * @return the ResponseEntity with status 201 (Created), or with status 400 (Bad Request) if an error occurs
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/journal-postings/balance-sheet")
     @Timed
     public ResponseEntity<JournalPostingGenerateVM> createJournalPosting(
-        @Valid @RequestBody @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam(value="refDate") Date refDate,
-        @Valid @RequestBody @RequestParam(value="chartOfAccount") String chartOfAccountKey
+        @Valid @RequestBody @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam(value="refDate") LocalDate refDate,
+        @Valid @RequestBody @RequestParam(value="chartOfAccounts") String chartOfAccountsKey
     ) throws URISyntaxException {
-        log.debug("REST request to save JournalPosting : reference date: ", refDate, ", chart of account: ",chartOfAccountKey);
+        log.debug("REST request to save JournalPosting : reference date: ", refDate, ", chart of account: ",chartOfAccountsKey);
         if (refDate == null) {
             throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid reference date (parameter date)", ENTITY_NAME, "missing refdate");
         }
-        if (chartOfAccountKey == null) {
-            throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid reference chartOfAccountKey (parameter chartofaccount)", ENTITY_NAME, "missing chartofaccount");
+        if (chartOfAccountsKey == null) {
+            throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid reference chartOfAccountKey (parameter chartOfAccounts)", ENTITY_NAME, "missing chartOfAccounts");
+        }
+        ChartOfAccountsDTO chartOfAccounts = chartOfAccountsService.findOneByKey(chartOfAccountsKey);
+        if (chartOfAccounts.getKey() == null) {
+            throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid reference to an existing chartOfAccountKey (parameter chartOfAccounts)", ENTITY_NAME, "missing entity chartOfAccounts with key: " +chartOfAccountsKey);
         }
 
         // service call
-        Long count = journalPostingService.generateFromVoucher(refDate,chartOfAccountKey);
+        Long count = journalPostingService.generateFromVoucher(refDate,chartOfAccounts);
 
         // result
-        JournalPostingGenerateVM journalPostingGenerateVM = new JournalPostingGenerateVM("created", count, refDate, chartOfAccountKey);
-        String referenceText = "reference date: " + refDate + ", chart of account: " + chartOfAccountKey;
+        String status = new String();
+        if (count < 0) {
+            status = "error finding objects";
+        }
+        else {
+            status = "created";
+        }
+        JournalPostingGenerateVM journalPostingGenerateVM = new JournalPostingGenerateVM(status, count, refDate, chartOfAccountsKey);
+        String referenceText = "reference date: " + refDate + ", chart of account: " + chartOfAccountsKey;
         return ResponseEntity.ok().headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, journalPostingGenerateVM.toString())).body(journalPostingGenerateVM);
     }
 

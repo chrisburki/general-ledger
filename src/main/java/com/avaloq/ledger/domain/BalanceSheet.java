@@ -16,7 +16,8 @@ import com.avaloq.ledger.domain.enumeration.BalanceDateType;
  * A BalanceSheet.
  */
 @Entity
-@Table(name = "balance_sheet")
+@Table(name = "balance_sheet",
+    indexes = {@Index(name = "idx_chart_of_accounts",  columnList="chart_of_accounts_id", unique = false)})
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class BalanceSheet implements Serializable {
 

@@ -14,7 +14,8 @@ import java.util.Objects;
  * A BalanceSheetItem.
  */
 @Entity
-@Table(name = "balance_sheet_item")
+@Table(name = "balance_sheet_item",
+    indexes = {@Index(name = "idx_balance_sheet",  columnList="balance_sheet_id", unique = false)})
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class BalanceSheetItem implements Serializable {
 

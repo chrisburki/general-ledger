@@ -51,7 +51,12 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+        <createIndex indexName="idx_chart_of_accounts"
+                     tableName="balance_sheet"
+                     unique="false">
+            <column name="chart_of_accounts_id" type="bigint"/>
+        </createIndex>
+
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

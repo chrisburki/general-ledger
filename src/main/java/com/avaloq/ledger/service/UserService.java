@@ -1,6 +1,5 @@
 package com.avaloq.ledger.service;
 
-import com.avaloq.ledger.config.CacheConfiguration;
 import com.avaloq.ledger.domain.Authority;
 import com.avaloq.ledger.domain.User;
 import com.avaloq.ledger.repository.AuthorityRepository;

@@ -4,6 +4,7 @@ import com.avaloq.ledger.LedgerApp;
 
 import com.avaloq.ledger.domain.JournalPosting;
 import com.avaloq.ledger.repository.JournalPostingRepository;
+import com.avaloq.ledger.service.ChartOfAccountsService;
 import com.avaloq.ledger.service.JournalPostingService;
 import com.avaloq.ledger.service.dto.JournalPostingDTO;
 import com.avaloq.ledger.service.mapper.JournalPostingMapper;
@@ -77,6 +78,9 @@ public class JournalPostingResourceIntTest {
     private JournalPostingService journalPostingService;
 
     @Autowired
+    private ChartOfAccountsService chartOfAccountsService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -95,7 +99,7 @@ public class JournalPostingResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final JournalPostingResource journalPostingResource = new JournalPostingResource(journalPostingService);
+        final JournalPostingResource journalPostingResource = new JournalPostingResource(journalPostingService, chartOfAccountsService);
         this.restJournalPostingMockMvc = MockMvcBuilders.standaloneSetup(journalPostingResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

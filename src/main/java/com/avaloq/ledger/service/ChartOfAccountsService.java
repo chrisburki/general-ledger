@@ -4,6 +4,8 @@ import com.avaloq.ledger.service.dto.ChartOfAccountsDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Optional;
+
 /**
  * Service Interface for managing ChartOfAccounts.
  */
@@ -39,4 +41,13 @@ public interface ChartOfAccountsService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    /**
+     * Get the "key" chartOfAccounts.
+     *
+     * @param key the id of the entity
+     * @return the entity
+     */
+    ChartOfAccountsDTO findOneByKey(String key);
+
 }

@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 
 /**
  * Service Implementation for managing ChartOfAccounts.
@@ -82,5 +84,34 @@ public class ChartOfAccountsServiceImpl implements ChartOfAccountsService {
     public void delete(Long id) {
         log.debug("Request to delete ChartOfAccounts : {}", id);
         chartOfAccountsRepository.delete(id);
+    }
+
+    /**
+     * Get the "key" chartOfAccounts.
+     *
+     * @param key the id of the entity
+     * @return the entity
+     */
+    public ChartOfAccountsDTO findOneByKey(String key) {
+        Optional<ChartOfAccounts> chartOfAccountsSearch = chartOfAccountsRepository.findByKey(key);
+
+        ChartOfAccounts chartOfAccounts = new ChartOfAccounts();
+        if (chartOfAccountsSearch.isPresent()) {
+            chartOfAccounts = chartOfAccountsSearch.get();
+        } else{
+            chartOfAccounts.setName("no chartOfAccounts found");
+        }
+
+        return chartOfAccountsMapper.toDto(chartOfAccounts);
+
+        /*
+        // The relevant efficient frontier id is retrieved from another system (through the
+        // efficientFrontierService and then linked to the simulation.
+        SimulationPO finalSimulationPO = simulationPO;
+        simulationPO.setEfficientFrontier(
+        efficientFrontierRepository
+            .findByExternalReferenceId(efficientFrontierService.getEfficientFrontierId(simulationPO))
+            .orElseThrow(() -> new EfficientFrontierNotFound(finalSimulationPO.getId())));
+*/
     }
 }
