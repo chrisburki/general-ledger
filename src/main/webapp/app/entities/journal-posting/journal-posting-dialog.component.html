@@ -29,6 +29,21 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.bookDateType" for="field_bookDateType">Book Date Type</label>
+            <select class="form-control" name="bookDateType" [(ngModel)]="journalPosting.bookDateType" id="field_bookDateType"  required>
+                <option value="DONE">{{'ledgerApp.BalanceDateType.DONE' | translate}}</option>
+                <option value="BOOK">{{'ledgerApp.BalanceDateType.BOOK' | translate}}</option>
+                <option value="VALUE">{{'ledgerApp.BalanceDateType.VALUE' | translate}}</option>
+                <option value="TRANSACTION">{{'ledgerApp.BalanceDateType.TRANSACTION' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.bookDateType?.dirty && editForm.controls.bookDateType?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.bookDateType?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="ledgerApp.journalPosting.documentNumber" for="field_documentNumber">Document Number</label>
             <input type="text" class="form-control" name="documentNumber" id="field_documentNumber"
                 [(ngModel)]="journalPosting.documentNumber" required/>

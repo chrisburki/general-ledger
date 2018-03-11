@@ -172,6 +172,7 @@ public class JournalPostingServiceImpl implements JournalPostingService {
             journalPosting.setDebitAccount( debitLedgerAccount );
             journalPosting.setCreditAccount( creditLedgerAccount );
             journalPosting.setBookDate( voucherBooking.getDate(dateType) );
+            journalPosting.setBookDateType(dateType);
             journalPosting.setDocumentNumber( voucherBooking.getEventId()+":"+voucherBooking.getGlobalSequenceNumber() );
             journalPosting.setAmount( voucherBooking.getAmountBaseCurrency() );
             journalPosting.setCurrencyIso( voucherBooking.getCurrencyIso() );

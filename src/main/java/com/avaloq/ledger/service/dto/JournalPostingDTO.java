@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
+import com.avaloq.ledger.domain.enumeration.BalanceDateType;
 
 /**
  * A DTO for the JournalPosting entity.
@@ -17,6 +18,9 @@ public class JournalPostingDTO implements Serializable {
 
     @NotNull
     private LocalDate bookDate;
+
+    @NotNull
+    private BalanceDateType bookDateType;
 
     @NotNull
     private String documentNumber;
@@ -54,6 +58,14 @@ public class JournalPostingDTO implements Serializable {
 
     public void setBookDate(LocalDate bookDate) {
         this.bookDate = bookDate;
+    }
+
+    public BalanceDateType getBookDateType() {
+        return bookDateType;
+    }
+
+    public void setBookDateType(BalanceDateType bookDateType) {
+        this.bookDateType = bookDateType;
     }
 
     public String getDocumentNumber() {
@@ -154,6 +166,7 @@ public class JournalPostingDTO implements Serializable {
         return "JournalPostingDTO{" +
             "id=" + getId() +
             ", bookDate='" + getBookDate() + "'" +
+            ", bookDateType='" + getBookDateType() + "'" +
             ", documentNumber='" + getDocumentNumber() + "'" +
             ", amount=" + getAmount() +
             ", currencyIso='" + getCurrencyIso() + "'" +

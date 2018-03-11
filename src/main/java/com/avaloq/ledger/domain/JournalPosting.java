@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
+import com.avaloq.ledger.domain.enumeration.BalanceDateType;
+
 /**
  * A JournalPosting.
  */
@@ -31,6 +33,11 @@ public class JournalPosting implements Serializable {
     @NotNull
     @Column(name = "book_date", nullable = false)
     private LocalDate bookDate;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "book_date_type", nullable = false)
+    private BalanceDateType bookDateType;
 
     @NotNull
     @Column(name = "document_number", nullable = false)
@@ -93,6 +100,19 @@ public class JournalPosting implements Serializable {
 
     public void setBookDate(LocalDate bookDate) {
         this.bookDate = bookDate;
+    }
+
+    public BalanceDateType getBookDateType() {
+        return bookDateType;
+    }
+
+    public JournalPosting bookDateType(BalanceDateType bookDateType) {
+        this.bookDateType = bookDateType;
+        return this;
+    }
+
+    public void setBookDateType(BalanceDateType bookDateType) {
+        this.bookDateType = bookDateType;
     }
 
     public String getDocumentNumber() {
@@ -288,6 +308,7 @@ public class JournalPosting implements Serializable {
         return "JournalPosting{" +
             "id=" + getId() +
             ", bookDate='" + getBookDate() + "'" +
+            ", bookDateType='" + getBookDateType() + "'" +
             ", documentNumber='" + getDocumentNumber() + "'" +
             ", amount=" + getAmount() +
             ", currencyIso='" + getCurrencyIso() + "'" +

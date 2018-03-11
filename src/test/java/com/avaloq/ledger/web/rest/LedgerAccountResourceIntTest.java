@@ -287,7 +287,7 @@ public class LedgerAccountResourceIntTest {
             .andExpect(jsonPath("$.id").value(ledgerAccount.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.key").value(DEFAULT_KEY))
-            .andExpect(jsonPath("$.accountType").value(DEFAULT_ACCOUNT_TYPE))
+            .andExpect(jsonPath("$.accountType").value(DEFAULT_ACCOUNT_TYPE.toString()))
             .andExpect(jsonPath("$.orderedBy").value(DEFAULT_ORDERED_BY))
             .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL))
             .andExpect(jsonPath("$.isleaf").value(DEFAULT_ISLEAF.booleanValue()))

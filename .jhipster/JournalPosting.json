@@ -35,6 +35,14 @@
             ]
         },
         {
+            "fieldName": "bookDateType",
+            "fieldType": "BalanceDateType",
+            "fieldValues": "DONE,BOOK,VALUE,TRANSACTION",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
             "fieldName": "documentNumber",
             "fieldType": "String",
             "fieldValidateRules": [

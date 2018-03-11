@@ -25,6 +25,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="book_date_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
             <column name="document_number" type="varchar(255)">
                 <constraints nullable="false" />
             </column>

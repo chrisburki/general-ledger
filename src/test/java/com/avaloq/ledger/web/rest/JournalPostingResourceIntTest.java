@@ -36,6 +36,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.avaloq.ledger.domain.enumeration.BalanceDateType;
 /**
  * Test class for the JournalPostingResource REST controller.
  *
@@ -47,6 +48,9 @@ public class JournalPostingResourceIntTest {
 
     private static final LocalDate DEFAULT_BOOK_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_BOOK_DATE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final BalanceDateType DEFAULT_BOOK_DATE_TYPE = BalanceDateType.DONE;
+    private static final BalanceDateType UPDATED_BOOK_DATE_TYPE = BalanceDateType.BOOK;
 
     private static final String DEFAULT_DOCUMENT_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_DOCUMENT_NUMBER = "BBBBBBBBBB";
@@ -120,6 +124,7 @@ public class JournalPostingResourceIntTest {
     public static JournalPosting createEntity(EntityManager em) {
         JournalPosting journalPosting = new JournalPosting()
             .bookDate(DEFAULT_BOOK_DATE)
+            .bookDateType(DEFAULT_BOOK_DATE_TYPE)
             .documentNumber(DEFAULT_DOCUMENT_NUMBER)
             .amount(DEFAULT_AMOUNT)
             .currencyIso(DEFAULT_CURRENCY_ISO)
@@ -152,6 +157,7 @@ public class JournalPostingResourceIntTest {
         assertThat(journalPostingList).hasSize(databaseSizeBeforeCreate + 1);
         JournalPosting testJournalPosting = journalPostingList.get(journalPostingList.size() - 1);
         assertThat(testJournalPosting.getBookDate()).isEqualTo(DEFAULT_BOOK_DATE);
+        assertThat(testJournalPosting.getBookDateType()).isEqualTo(DEFAULT_BOOK_DATE_TYPE);
         assertThat(testJournalPosting.getDocumentNumber()).isEqualTo(DEFAULT_DOCUMENT_NUMBER);
         assertThat(testJournalPosting.getAmount()).isEqualTo(DEFAULT_AMOUNT);
         assertThat(testJournalPosting.getCurrencyIso()).isEqualTo(DEFAULT_CURRENCY_ISO);
@@ -187,6 +193,25 @@ public class JournalPostingResourceIntTest {
         int databaseSizeBeforeTest = journalPostingRepository.findAll().size();
         // set the field null
         journalPosting.setBookDate(null);
+
+        // Create the JournalPosting, which fails.
+        JournalPostingDTO journalPostingDTO = journalPostingMapper.toDto(journalPosting);
+
+        restJournalPostingMockMvc.perform(post("/api/journal-postings")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(journalPostingDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<JournalPosting> journalPostingList = journalPostingRepository.findAll();
+        assertThat(journalPostingList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkBookDateTypeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = journalPostingRepository.findAll().size();
+        // set the field null
+        journalPosting.setBookDateType(null);
 
         // Create the JournalPosting, which fails.
         JournalPostingDTO journalPostingDTO = journalPostingMapper.toDto(journalPosting);
@@ -288,6 +313,7 @@ public class JournalPostingResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(journalPosting.getId().intValue())))
             .andExpect(jsonPath("$.[*].bookDate").value(hasItem(DEFAULT_BOOK_DATE.toString())))
+            .andExpect(jsonPath("$.[*].bookDateType").value(hasItem(DEFAULT_BOOK_DATE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].documentNumber").value(hasItem(DEFAULT_DOCUMENT_NUMBER.toString())))
             .andExpect(jsonPath("$.[*].amount").value(hasItem(DEFAULT_AMOUNT.doubleValue())))
             .andExpect(jsonPath("$.[*].currencyIso").value(hasItem(DEFAULT_CURRENCY_ISO.toString())))
@@ -309,6 +335,7 @@ public class JournalPostingResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(journalPosting.getId().intValue()))
             .andExpect(jsonPath("$.bookDate").value(DEFAULT_BOOK_DATE.toString()))
+            .andExpect(jsonPath("$.bookDateType").value(DEFAULT_BOOK_DATE_TYPE.toString()))
             .andExpect(jsonPath("$.documentNumber").value(DEFAULT_DOCUMENT_NUMBER.toString()))
             .andExpect(jsonPath("$.amount").value(DEFAULT_AMOUNT.doubleValue()))
             .andExpect(jsonPath("$.currencyIso").value(DEFAULT_CURRENCY_ISO.toString()))
@@ -339,6 +366,7 @@ public class JournalPostingResourceIntTest {
         em.detach(updatedJournalPosting);
         updatedJournalPosting
             .bookDate(UPDATED_BOOK_DATE)
+            .bookDateType(UPDATED_BOOK_DATE_TYPE)
             .documentNumber(UPDATED_DOCUMENT_NUMBER)
             .amount(UPDATED_AMOUNT)
             .currencyIso(UPDATED_CURRENCY_ISO)
@@ -358,6 +386,7 @@ public class JournalPostingResourceIntTest {
         assertThat(journalPostingList).hasSize(databaseSizeBeforeUpdate);
         JournalPosting testJournalPosting = journalPostingList.get(journalPostingList.size() - 1);
         assertThat(testJournalPosting.getBookDate()).isEqualTo(UPDATED_BOOK_DATE);
+        assertThat(testJournalPosting.getBookDateType()).isEqualTo(UPDATED_BOOK_DATE_TYPE);
         assertThat(testJournalPosting.getDocumentNumber()).isEqualTo(UPDATED_DOCUMENT_NUMBER);
         assertThat(testJournalPosting.getAmount()).isEqualTo(UPDATED_AMOUNT);
         assertThat(testJournalPosting.getCurrencyIso()).isEqualTo(UPDATED_CURRENCY_ISO);

@@ -8,6 +8,10 @@
         <dd>
             <span>{{journalPosting.bookDate | date:'mediumDate'}}</span>
         </dd>
+        <dt><span jhiTranslate="ledgerApp.journalPosting.bookDateType">Book Date Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'ledgerApp.BalanceDateType.' + journalPosting.bookDateType}}">{{journalPosting.bookDateType}}</span>
+        </dd>
         <dt><span jhiTranslate="ledgerApp.journalPosting.documentNumber">Document Number</span></dt>
         <dd>
             <span>{{journalPosting.documentNumber}}</span>

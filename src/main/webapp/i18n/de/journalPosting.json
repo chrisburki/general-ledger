@@ -17,6 +17,7 @@
                 "title": "Journal Posting"
             },
             "bookDate": "Book Date",
+            "bookDateType": "Book Date Type",
             "documentNumber": "Document Number",
             "amount": "Amount",
             "currencyIso": "Currency Iso",
