@@ -87,13 +87,14 @@ public class ChartOfAccountsServiceImpl implements ChartOfAccountsService {
     }
 
     /**
-     * Get the "key" chartOfAccounts.
+     * Get the chartOfAccountsDTO.
      *
      * @param key the id of the entity
      * @return the entity
      */
-    public ChartOfAccountsDTO findOneByKey(String key) {
-        Optional<ChartOfAccounts> chartOfAccountsSearch = chartOfAccountsRepository.findByKey(key);
+    @Override
+    public ChartOfAccountsDTO findByKeyAndLegalEntityId(String key, String legalEntityId) {
+        Optional<ChartOfAccounts> chartOfAccountsSearch = chartOfAccountsRepository.findByKeyAndLegalEntityId(key, legalEntityId);
 
         ChartOfAccounts chartOfAccounts = new ChartOfAccounts();
         if (chartOfAccountsSearch.isPresent()) {

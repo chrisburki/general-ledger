@@ -1,7 +1,9 @@
 package com.avaloq.ledger.web.rest;
 
+import com.avaloq.ledger.domain.enumeration.BalanceDateType;
 import com.avaloq.ledger.service.ChartOfAccountsService;
 import com.avaloq.ledger.service.dto.ChartOfAccountsDTO;
+import com.avaloq.ledger.service.mapper.DateTypeMapper;
 import com.avaloq.ledger.web.rest.vm.JournalPostingGenerateVM;
 import com.codahale.metrics.annotation.Timed;
 import com.avaloq.ledger.service.JournalPostingService;
@@ -25,7 +27,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,13 +41,22 @@ public class JournalPostingResource {
 
     private static final String ENTITY_NAME = "journalPosting";
 
+    private static final String LEGAL_ENTITY_ID = "AAA";
+
     private final JournalPostingService journalPostingService;
 
     private final ChartOfAccountsService chartOfAccountsService;
 
-    public JournalPostingResource(JournalPostingService journalPostingService, ChartOfAccountsService chartOfAccountsService) {
+    private final DateTypeMapper dateTypeMapper;
+
+    public JournalPostingResource(
+        JournalPostingService journalPostingService,
+        ChartOfAccountsService chartOfAccountsService,
+        DateTypeMapper dateTypeMapper
+    ) {
         this.journalPostingService = journalPostingService;
         this.chartOfAccountsService = chartOfAccountsService;
+        this.dateTypeMapper = dateTypeMapper;
     }
 
     /**
@@ -146,25 +156,37 @@ public class JournalPostingResource {
     @Timed
     public ResponseEntity<JournalPostingGenerateVM> createJournalPosting(
         @Valid @RequestBody @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam(value="refDate") LocalDate refDate,
-        @Valid @RequestBody @RequestParam(value="chartOfAccounts") String chartOfAccountsKey
+        @Valid @RequestBody @RequestParam(value="chartOfAccounts") String chartOfAccountsKey,
+        @Valid @RequestBody @RequestParam(value="dateType") String dateType
     ) throws URISyntaxException {
-        log.debug("REST request to save JournalPosting : reference date: ", refDate, ", chart of account: ",chartOfAccountsKey);
+        log.debug("REST request to save JournalPosting : reference date: ", refDate, ", chart of account: ", chartOfAccountsKey, ", date type: ",dateType);
         if (refDate == null) {
-            throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid reference date (parameter date)", ENTITY_NAME, "missing refdate");
+            throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid reference date (parameter date)", ENTITY_NAME, "missing refDate");
         }
         if (chartOfAccountsKey == null) {
             throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid reference chartOfAccountKey (parameter chartOfAccounts)", ENTITY_NAME, "missing chartOfAccounts");
         }
-        ChartOfAccountsDTO chartOfAccounts = chartOfAccountsService.findOneByKey(chartOfAccountsKey);
+        if (dateType == null) {
+            throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid date type (parameter dateType)", ENTITY_NAME, "missing dateType");
+        }
+        // check for valid chart of accounts
+        //@todo chatch error with NotFoundException Class
+        ChartOfAccountsDTO chartOfAccounts = chartOfAccountsService.findByKeyAndLegalEntityId(chartOfAccountsKey,LEGAL_ENTITY_ID);
         if (chartOfAccounts.getKey() == null) {
             throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid reference to an existing chartOfAccountKey (parameter chartOfAccounts)", ENTITY_NAME, "missing entity chartOfAccounts with key: " +chartOfAccountsKey);
         }
 
+        // check for valid date type
+        BalanceDateType balanceDateType = dateTypeMapper.toDateType(dateType);
+        if (balanceDateType == null) {
+            throw new BadRequestAlertException("Posting for a new balance sheet can only generated with a valid date type (parameter dateType)", ENTITY_NAME, "missing or wrong date type: " +dateType);
+        }
+
         // service call
-        Long count = journalPostingService.generateFromVoucher(refDate,chartOfAccounts);
+        Long count = journalPostingService.generateFromVoucher(refDate, chartOfAccounts, balanceDateType, LEGAL_ENTITY_ID);
 
         // result
-        String status = new String();
+        String status;
         if (count < 0) {
             status = "error finding objects";
         }

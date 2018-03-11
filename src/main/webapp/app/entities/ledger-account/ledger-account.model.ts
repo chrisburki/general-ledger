@@ -1,11 +1,13 @@
 import { BaseEntity } from './../../shared';
 
 export const enum LedgerAccountType {
+    'TOP',
     'ASSETS',
     'LIABILITIES',
     'INCOME',
     'EXPENSE',
-    'OFFBALANCE'
+    'OFFBALANCE',
+    'DIFFERENCE'
 }
 
 export class LedgerAccount implements BaseEntity {

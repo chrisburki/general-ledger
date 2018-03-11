@@ -15,6 +15,6 @@ import java.util.Optional;
 @Repository
 public interface ChartOfAccountsRepository extends JpaRepository<ChartOfAccounts, Long> {
 
-    Optional<ChartOfAccounts> findByKey(String key);
+    Optional<ChartOfAccounts> findByKeyAndLegalEntityId(String key, String legalEntityId);
 
 }

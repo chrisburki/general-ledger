@@ -45,11 +45,13 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="ledgerApp.ledgerAccount.accountType" for="field_accountType">Account Type</label>
             <select class="form-control" name="accountType" [(ngModel)]="ledgerAccount.accountType" id="field_accountType"  required>
+                <option value="TOP">{{'ledgerApp.LedgerAccountType.TOP' | translate}}</option>
                 <option value="ASSETS">{{'ledgerApp.LedgerAccountType.ASSETS' | translate}}</option>
                 <option value="LIABILITIES">{{'ledgerApp.LedgerAccountType.LIABILITIES' | translate}}</option>
                 <option value="INCOME">{{'ledgerApp.LedgerAccountType.INCOME' | translate}}</option>
                 <option value="EXPENSE">{{'ledgerApp.LedgerAccountType.EXPENSE' | translate}}</option>
                 <option value="OFFBALANCE">{{'ledgerApp.LedgerAccountType.OFFBALANCE' | translate}}</option>
+                <option value="DIFFERENCE">{{'ledgerApp.LedgerAccountType.DIFFERENCE' | translate}}</option>
             </select>
             <div [hidden]="!(editForm.controls.accountType?.dirty && editForm.controls.accountType?.invalid)">
                 <small class="form-text text-danger"

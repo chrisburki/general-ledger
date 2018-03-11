@@ -1,0 +1,93 @@
+id;category;name
+1191;REPO;Repo
+1511;FXTR;FX Trade
+1512;MACC;Public Money Account
+1513;MACP;Private Money Account
+1521;FIDC;Deposit - Fiduciary Call
+1522;FIDT;Deposit - Fiduciary Fixed Term
+1523;MMTI;Deposit - Money Market Fixed Term
+1524;MMCA;Deposit - Money Market Call
+1525;LFIX;Loan - Fixed Term
+1526;GTEF;Guarantee - Fixed Term
+1527;FXSW;Swap - Foreign Exchange
+1529;GTEC;Guarantee - Call
+1530;FF;Forex Forward
+1576;LOCD;Letter of Credit - Documentary
+1577;LOCS;Letter of Credit - Stand-by
+1578;LFID;Loan - Fiduciary
+1579;LAMO;Loan - Amortising
+1582;BILE;Bill of Exchange
+1583;FDMM;Fund - Money Market
+1585;SHAB;Share - Bearer
+1586;SREG;Share - Registered
+1587;BNFI;Bond/Note - Fixed Rate
+1588;BNFL;Bond/Note - Floating Rate
+1589;BNCA;Bond/Note - Cash
+1591;TBIL;Treasury Bill
+1594;BNCO;Bond/Note - Convertible
+1596;CURR;Currency
+1597;OCUR;Option - Currency
+1601;BNDC;Bond/Note - Dual Currency
+1602;FUIN;Future - Index/Share
+1603;FUBO;Future - Bond
+1605;CFC;Cap - Floor - Collar
+1606;METP;Metal - Physical
+1607;METV;Metal - Virtual
+1608;INSU;Insurance policy
+1609;OSHA;Option - Share
+1610;OBON;Option - Bond
+1612;WARR;Warrant
+1613;OFUT;Option - Future
+1614;OIBA;Option - Index/Basket
+1615;OPME;Option - Precious metal
+1616;SPRE;Share - Preferred
+1618;SUBR;Subscription Right
+1619;OTHA;Other Asset
+1623;FDTR;Fund - Equity
+1624;MRGC;Mortgage
+1625;BNOW;Bank issued medium term note
+1626;DOCH;Real Security
+1628;FUCO;Future - Commodity
+1629;FDBO;Fund - Bond
+1630;SWIR;Swap - Interest Rate
+1631;COIN;Coin
+1632;COMM;Commodity
+1633;BNOP;Bond/Note - cum option
+1634;OOTH;Option - Other
+1635;FDOE;Fund - Own Equity
+1636;FDOB;Fund - Own Bond
+1637;FDOM;Fund - Own Money Market
+1638;LCAL;Loan - Call
+1639;AFIX;Advance - Fixed Term
+1640;ABS;Asset Backed Security
+1647;MMKT_TIME;Money Market Time
+1648;MMKT_CALL;Money Market Call
+1649;DCD_MMKT;Dual Currency Deposit Money Market
+1655;CCS;Swap - Cross Currency
+1656;OTHSEC;Other Security
+1736;FRA;Forward Rate Agreement
+1738;LIMT;Limit
+1763;METPV;Metal - Physical (VAT)
+1821;SLBC;Securities Lending & Borrowing Contract
+1835;STCOLL;Standing Collection
+1840;ACCR;Accrual
+1841;DEPR;Depreciation
+240;BNOT;Bank note (currency)
+2470;PROP;Property
+4357;CDS;Credit Default Swap
+4410;OTCOPT;Swaption on IRS/CCS
+4883;CLTMC;Cash Collateral
+4884;REPOC;Repo Contract
+4899;OMETC;Option - Precious Metal Currency
+4915;FIDDTIME;Fiduciary Time Deposit
+4916;FIDDCALL;Fiduciary Call Deposit
+4917;CPOOLAUX;Cash Pooling Auxiliary Account
+4918;CPOOLPOOL;Cash Pooling Pool Account
+4974;TRS;Total Return Swap
+4979;OOOT;Option on Other Underlyings
+4984;FIA;Fixed Asset
+6003;HYBR;Hybrid
+6006;BNZB;Bond/Note - Zero Bond
+6007;BNRB;Bond - Repacked Bond
+7519;INFLL;Bond - inflation Linked
+7574;HYIELD;Bond - High Yield

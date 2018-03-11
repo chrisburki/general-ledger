@@ -1,5 +1,6 @@
 package com.avaloq.ledger.service.impl;
 
+import com.avaloq.ledger.domain.enumeration.BalanceDateType;
 import com.avaloq.ledger.service.VoucherBookingService;
 import com.avaloq.ledger.domain.VoucherBooking;
 import com.avaloq.ledger.repository.VoucherBookingRepository;
@@ -11,6 +12,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -83,4 +88,25 @@ public class VoucherBookingServiceImpl implements VoucherBookingService {
         log.debug("Request to delete VoucherBooking : {}", id);
         voucherBookingRepository.delete(id);
     }
+
+    /**
+     * Delete the "id" voucherBooking.
+     *
+     * @param dateFrom from-date
+     * @param dateTo to-date
+     * @param dateType date type
+     */
+    @Override
+    public List<VoucherBooking> findAllByDateAndDateType(LocalDate dateFrom, LocalDate dateTo, BalanceDateType dateType) {
+        List<VoucherBooking> voucherBookings = new ArrayList<>();
+        switch (dateType) {
+            case BOOK:
+                return voucherBookingRepository.findAllByBookDateBetween(dateFrom, dateTo);
+            case DONE:
+                return voucherBookingRepository.findAllByDoneDateBetween(dateFrom, dateTo);
+            default:
+                return null;
+        }
+    }
+
 }

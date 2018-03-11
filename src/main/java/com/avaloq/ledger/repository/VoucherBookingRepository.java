@@ -17,4 +17,6 @@ import java.util.List;
 public interface VoucherBookingRepository extends JpaRepository<VoucherBooking, Long> {
 
     List<VoucherBooking> findAllByBookDateBetween(LocalDate fromDate, LocalDate toDate);
+
+    List<VoucherBooking> findAllByDoneDateBetween(LocalDate fromDate, LocalDate toDate);
 }

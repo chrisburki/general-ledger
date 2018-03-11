@@ -1,5 +1,6 @@
 package com.avaloq.ledger.service;
 
+import com.avaloq.ledger.domain.enumeration.BalanceDateType;
 import com.avaloq.ledger.service.dto.ChartOfAccountsDTO;
 import com.avaloq.ledger.service.dto.JournalPostingDTO;
 import org.springframework.data.domain.Page;
@@ -48,7 +49,9 @@ public interface JournalPostingService {
      *
      * @param refDate the date per when to create a new balance sheet
      * @param chartOfAccountsDTO DTO of the chart of account
+     * @param dateType relevant date type
+     * @param legalEntityId legal entity id
      * @return number of created entity
      */
-    Long generateFromVoucher(LocalDate refDate, ChartOfAccountsDTO chartOfAccountsDTO);
+    Long generateFromVoucher(LocalDate refDate, ChartOfAccountsDTO chartOfAccountsDTO, BalanceDateType dateType, String legalEntityId);
 }

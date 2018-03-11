@@ -45,9 +45,10 @@ public interface ChartOfAccountsService {
     /**
      * Get the "key" chartOfAccounts.
      *
-     * @param key the id of the entity
+     * @param key key of the entity
+     * @param legalEntityId the id of the legal entity
      * @return the entity
      */
-    ChartOfAccountsDTO findOneByKey(String key);
+    ChartOfAccountsDTO findByKeyAndLegalEntityId(String key, String legalEntityId);
 
 }

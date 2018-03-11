@@ -1,5 +1,6 @@
 package com.avaloq.ledger.domain;
 
+import com.avaloq.ledger.domain.enumeration.BalanceDateType;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -9,6 +10,8 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+
+import static com.avaloq.ledger.domain.enumeration.BalanceDateType.*;
 
 /**
  * A VoucherBooking.
@@ -340,10 +343,27 @@ public class VoucherBooking implements Serializable {
         return this;
     }
 
+    public LocalDate getDate(BalanceDateType dateType) {
+        switch (dateType) {
+            case BOOK:
+                return getBookDate();
+            case DONE:
+                return getDoneDate();
+            case VALUE:
+                return getValueDate();
+            case TRANSACTION:
+                return getTransactionDate();
+            default:
+                return null;
+        }
+    }
+
     public void setPosition(VoucherPosition voucherPosition) {
         this.position = voucherPosition;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+
 
     @Override
     public boolean equals(Object o) {

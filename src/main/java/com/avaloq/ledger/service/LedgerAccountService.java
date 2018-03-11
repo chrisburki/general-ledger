@@ -1,5 +1,6 @@
 package com.avaloq.ledger.service;
 
+import com.avaloq.ledger.domain.LedgerAccount;
 import com.avaloq.ledger.service.dto.LedgerAccountDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,4 +40,13 @@ public interface LedgerAccountService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    /**
+     * Delete the "id" ledgerAccount.
+     *
+     * @param key of the entity
+     * @param legalEntityId of the entity
+     */
+    LedgerAccount findByKeyAndLegalEntityId(String key, String legalEntityId);
+
 }

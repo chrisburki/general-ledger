@@ -31,7 +31,13 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+
+    </changeSet>
+    <changeSet id="20180221200206-2" author="jhipster">
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/sub_ledger_type.csv"
+                  separator=";"
+                  tableName="sub_ledger_type"/>
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

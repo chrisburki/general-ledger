@@ -1,0 +1,796 @@
+id;name;jhi_key;account_type;ordered_by;jhi_level;isleaf;balance_account_id;legal_entity_id;chart_of_accounts_id;upper_account_id
+157936;Balance sheet statement / Income statement - CSSF (IAS39);0;TOP;1;0;false;157936;AAA;1;null
+157939; Assets;1;ASSETS;2;1;false;157939;AAA;1;157936
+157945;Cash and cash balances with central banks;1.01;ASSETS;3;2;false;157945;AAA;1;157939
+158169;Cash and cash balances with central banks;1.01.01.01;ASSETS;4;8;true;158169;AAA;1;157945
+158171;Cashier desk;1.01.01.02;ASSETS;5;8;true;158171;AAA;1;157945
+158170;Cash and cash balances with central banks - accrued interests;1.01.01.81;ASSETS;6;8;true;158170;AAA;1;157945
+157951;Financial assets held for trading ;1.02;ASSETS;7;2;false;157951;AAA;1;157939
+158005;Derivatives held for trading ;1.02.01;ASSETS;8;3;false;158005;AAA;1;157951
+158179;(Trading) Options/Cap/Floor/Collar/Swaption;1.02.01.01;ASSETS;9;8;true;158179;AAA;1;158005
+158172;(Trading) IRS;1.02.01.02;ASSETS;10;8;true;158172;AAA;1;158005
+158173;(Trading) CIRS;1.02.01.03;ASSETS;11;8;true;158173;AAA;1;158005
+158174;(Trading) FRA;1.02.01.04;ASSETS;12;8;true;158174;AAA;1;158005
+158175;(Trading) CDS;1.02.01.05;ASSETS;13;8;true;158175;AAA;1;158005
+158176;(Trading) Outright;1.02.01.06;ASSETS;14;8;true;158176;AAA;1;158005
+158177;(Trading) Currency swap;1.02.01.07;ASSETS;15;8;true;158177;AAA;1;158005
+213316;(Trading) TRS;1.02.01.08;ASSETS;16;8;true;213316;AAA;1;158005
+158178;(Trading) Other;1.02.01.99;ASSETS;17;8;true;158178;AAA;1;158005
+158006;Equity instruments;1.02.02;ASSETS;18;3;false;158006;AAA;1;157951
+158180;(Trading) Equity instruments;1.02.02.01;ASSETS;19;8;true;158180;AAA;1;158006
+158007;Debt instruments;1.02.03;ASSETS;20;3;false;158007;AAA;1;157951
+158181;(Trading) Debt instruments;1.02.03.01;ASSETS;21;8;true;158181;AAA;1;158007
+158182;(Trading) Debt instruments - accrued interests;1.02.03.81;ASSETS;22;8;true;158182;AAA;1;158007
+158008;Loans and advances;1.02.04;ASSETS;23;3;false;158008;AAA;1;157951
+158183;(Trading) Loans and advances - at sight;1.02.04.01;ASSETS;24;8;true;158183;AAA;1;158008
+158184;(Trading) Loans and advances - fix term;1.02.04.02;ASSETS;25;8;true;158184;AAA;1;158008
+158185;(Trading) Loans and advances - accrued interests;1.02.04.81;ASSETS;26;8;true;158185;AAA;1;158008
+158009;Other;1.02.99;ASSETS;27;3;false;158009;AAA;1;157951
+158186;(Trading) Other;1.02.99.01;ASSETS;28;8;true;158186;AAA;1;158009
+157943;Financial assets designated at fair value through profit or loss;1.03;ASSETS;29;2;false;157943;AAA;1;157939
+158010;Equity instruments ;1.03.01;ASSETS;30;3;false;158010;AAA;1;157943
+158187;(FVO) Equity instruments ;1.03.01.01;ASSETS;31;8;true;158187;AAA;1;158010
+158011;Debt instruments ;1.03.02;ASSETS;32;3;false;158011;AAA;1;157943
+158188;(FVO) Debt instruments ;1.03.02.01;ASSETS;33;8;true;158188;AAA;1;158011
+158189;(FVO) Debt instruments - accrued interests;1.03.02.81;ASSETS;34;8;true;158189;AAA;1;158011
+158012;Loans and advances;1.03.03;ASSETS;35;3;false;158012;AAA;1;157943
+158190;(FVO) Loans and advances - at sight;1.03.03.01;ASSETS;36;8;true;158190;AAA;1;158012
+158191;(FVO) Loans and advances - fix term;1.03.03.02;ASSETS;37;8;true;158191;AAA;1;158012
+158192;(FVO) Loans and advances - accrued interests;1.03.03.81;ASSETS;38;8;true;158192;AAA;1;158012
+158013;Other;1.03.99;ASSETS;39;3;false;158013;AAA;1;157943
+158193;(FVO) Other;1.03.99.01;ASSETS;40;8;true;158193;AAA;1;158013
+157944;Available-for-sale financial assets;1.04;ASSETS;41;2;false;157944;AAA;1;157939
+158014;Equity instruments;1.04.01;ASSETS;42;3;false;158014;AAA;1;157944
+158196;(AFS) Equity instruments;1.04.01.01;ASSETS;43;8;true;158196;AAA;1;158014
+158195;(AFS) Participations in associates;1.04.01.02;ASSETS;44;8;true;158195;AAA;1;158014
+158194;(AFS) Equity instruments - impairment;1.04.01.91;ASSETS;45;8;true;158194;AAA;1;158014
+158015;Debt instruments ;1.04.02;ASSETS;46;3;false;158015;AAA;1;157944
+158200;(AFS) Debt instruments ;1.04.02.01;ASSETS;47;8;true;158200;AAA;1;158015
+158197;(AFS) Debt instruments - accrued interests;1.04.02.81;ASSETS;48;8;true;158197;AAA;1;158015
+158199;(AFS) Debt instruments - impairment;1.04.02.91;ASSETS;49;8;true;158199;AAA;1;158015
+158198;(AFS) Debt instruments - impairment accrued interests;1.04.02.98;ASSETS;50;8;true;158198;AAA;1;158015
+158016;Loans and advances;1.04.03;ASSETS;51;3;false;158016;AAA;1;157944
+158204;(AFS) Loans and advances - at sight;1.04.03.01;ASSETS;52;8;true;158204;AAA;1;158016
+158201;(AFS) Loans and advances - fix term;1.04.03.02;ASSETS;53;8;true;158201;AAA;1;158016
+158202;(AFS) Loans and advances - accrued interests;1.04.03.81;ASSETS;54;8;true;158202;AAA;1;158016
+158203;(AFS) Loans and advances - impairment;1.04.03.91;ASSETS;55;8;true;158203;AAA;1;158016
+158205;(AFS) Loans and advances - impairment accrued interests;1.04.03.98;ASSETS;56;8;true;158205;AAA;1;158016
+158017;Other;1.04.99;ASSETS;57;3;false;158017;AAA;1;157944
+158206;(AFS) Other;1.04.99.01;ASSETS;58;8;true;158206;AAA;1;158017
+157955;Loans and receivables (including finance leases);1.05;ASSETS;59;2;false;157955;AAA;1;157939
+158019;Debt instruments;1.05.01;ASSETS;60;3;false;158019;AAA;1;157955
+158211;(LAR) Debt instruments ;1.05.01.01;ASSETS;61;8;true;158211;AAA;1;158019
+158209;(LAR) Debt instruments - FVH reserve;1.05.01.61;ASSETS;62;8;true;158209;AAA;1;158019
+158208;(LAR) Debt instruments - accrued interests;1.05.01.81;ASSETS;63;8;true;158208;AAA;1;158019
+158207;(LAR) Debt instruments - impairment;1.05.01.91;ASSETS;64;8;true;158207;AAA;1;158019
+158212;(LAR) Debt instruments - impairment accrued interests;1.05.01.98;ASSETS;65;8;true;158212;AAA;1;158019
+158018;Loans and advances;1.05.02;ASSETS;66;3;false;158018;AAA;1;157955
+158217;(AC) Loans and advances - at sight;1.05.02.01;ASSETS;67;8;true;158217;AAA;1;158018
+158216;(AC) Loans and advances - fix term;1.05.02.02;ASSETS;68;8;true;158216;AAA;1;158018
+158214;(AC) Loans and advances - FVH reserve;1.05.02.61;ASSETS;69;8;true;158214;AAA;1;158018
+158213;(AC) Loans and advances - accrued interests;1.05.02.81;ASSETS;70;8;true;158213;AAA;1;158018
+158218;(AC) Loans and advances - impairment;1.05.02.91;ASSETS;71;8;true;158218;AAA;1;158018
+158219;(AC) Loans and advances - impairment accrued interests;1.05.02.98;ASSETS;72;8;true;158219;AAA;1;158018
+158020;Repo;1.05.03;ASSETS;73;3;false;158020;AAA;1;157955
+158220;(AC) Repo;1.05.03.01;ASSETS;74;8;true;158220;AAA;1;158020
+158221;(AC) Repo - accrued interests;1.05.03.81;ASSETS;75;8;true;158221;AAA;1;158020
+158222;(AC) Repo - impairment;1.05.03.91;ASSETS;76;8;true;158222;AAA;1;158020
+158223;(AC) Repo - impairment accrued interests;1.05.03.98;ASSETS;77;8;true;158223;AAA;1;158020
+158021;Collateral cash;1.05.04;ASSETS;78;3;false;158021;AAA;1;157955
+158225;(AC) Collateral cash;1.05.04.01;ASSETS;79;8;true;158225;AAA;1;158021
+158226;(AC) Collateral cash - accrued interests;1.05.04.81;ASSETS;80;8;true;158226;AAA;1;158021
+158227;(AC) Collateral cash - impairment;1.05.04.91;ASSETS;81;8;true;158227;AAA;1;158021
+158224;(AC) Collateral cash - impairment accrued interests;1.05.04.98;ASSETS;82;8;true;158224;AAA;1;158021
+157950;Held-to-maturity investments ;1.06;ASSETS;83;2;false;157950;AAA;1;157939
+158022;Debt instruments ;1.06.01;ASSETS;84;3;false;158022;AAA;1;157950
+158231;(HTM) Debt instruments ;1.06.01.01;ASSETS;85;8;true;158231;AAA;1;158022
+158230;(HTM) Debt instruments - accrued interests;1.06.01.81;ASSETS;86;8;true;158230;AAA;1;158022
+158229;(HTM) Debt instruments - impairment;1.06.01.91;ASSETS;87;8;true;158229;AAA;1;158022
+158228;(HTM) Debt instruments - impairment accrued interests;1.06.01.98;ASSETS;88;8;true;158228;AAA;1;158022
+158023;Loans and advances;1.06.02;ASSETS;89;3;false;158023;AAA;1;157950
+158236;(HTM) Loans and advances - at sight;1.06.02.01;ASSETS;90;8;true;158236;AAA;1;158023
+158234;(HTM) Loans and advances - fix term;1.06.02.02;ASSETS;91;8;true;158234;AAA;1;158023
+158233;(HTM) Loans and advances - accrued interests;1.06.02.81;ASSETS;92;8;true;158233;AAA;1;158023
+158232;(HTM) Loans and advances - impairment;1.06.02.91;ASSETS;93;8;true;158232;AAA;1;158023
+158235;(HTM) Loans and advances - impairment accrued interests;1.06.02.98;ASSETS;94;8;true;158235;AAA;1;158023
+157949;Derivatives – Hedge accounting ;1.07;ASSETS;95;2;false;157949;AAA;1;157939
+158027;Fair value hedges;1.07.01;ASSETS;96;3;false;158027;AAA;1;157949
+158237;(Hedge) Options/Cap/Floor/Collar/Swaption;1.07.01.01;ASSETS;97;8;true;158237;AAA;1;158027
+158238;(Hedge) IRS;1.07.01.02;ASSETS;98;8;true;158238;AAA;1;158027
+158239;(Hedge) CIRS;1.07.01.03;ASSETS;99;8;true;158239;AAA;1;158027
+158240;(Hedge) FRA;1.07.01.04;ASSETS;100;8;true;158240;AAA;1;158027
+158241;(Hedge) CDS;1.07.01.05;ASSETS;101;8;true;158241;AAA;1;158027
+158242;(Hedge) Outright;1.07.01.06;ASSETS;102;8;true;158242;AAA;1;158027
+158244;(Hedge) Currency swap;1.07.01.07;ASSETS;103;8;true;158244;AAA;1;158027
+213317;(Hedge) TRS;1.07.01.08;ASSETS;104;8;true;213317;AAA;1;158027
+158243;(Hedge) Other;1.07.01.99;ASSETS;105;8;true;158243;AAA;1;158027
+158024;Cash flow hedges;1.07.02;ASSETS;106;3;false;158024;AAA;1;157949
+158245;Cash flow hedges;1.07.02.01;ASSETS;107;8;true;158245;AAA;1;158024
+158026;Hedges of a net investment in a foreign operation;1.07.03;ASSETS;108;3;false;158026;AAA;1;157949
+158246;Hedges of a net investment in a foreign operation;1.07.03.01;ASSETS;109;8;true;158246;AAA;1;158026
+158025;Fair value hedge of interest rate risk;1.07.04;ASSETS;110;3;false;158025;AAA;1;157949
+158247;Fair value hedge of interest rate risk;1.07.04.01;ASSETS;111;8;true;158247;AAA;1;158025
+158028;Cash flow hedge of interest rate risk;1.07.05;ASSETS;112;3;false;158028;AAA;1;157949
+158248;Cash flow hedge of interest rate risk;1.07.05.01;ASSETS;113;8;true;158248;AAA;1;158028
+157948;Fair value changes of the hedged items in portfolio hedge of interest rate risk ;1.08;ASSETS;114;2;false;157948;AAA;1;157939
+158249;Fair value changes of the hedged items in portfolio hedge of interest rate risk ;1.08.01.01;ASSETS;115;8;true;158249;AAA;1;157948
+157947;Tangible assets;1.09;ASSETS;116;2;false;157947;AAA;1;157939
+158030;Bank buildings and other properties;1.09.01;ASSETS;117;3;false;158030;AAA;1;157947
+158254;Bank buildings and other properties - acquisition costs;1.09.01.01;ASSETS;118;8;true;158254;AAA;1;158030
+158250;Bank buildings and other properties - accumulated main depreciation;1.09.01.71;ASSETS;119;8;true;158250;AAA;1;158030
+232276;Bank buildings and other properties - accumulated special depreciation;1.09.01.73;ASSETS;120;8;true;232276;AAA;1;158030
+232277;Bank buildings and other properties - main depreciation - accruals;1.09.01.81;ASSETS;121;8;true;232277;AAA;1;158030
+158252;Bank buildings and other properties - accumulated impairments;1.09.01.91;ASSETS;122;8;true;158252;AAA;1;158030
+158029;Other tangible fixed assets;1.09.02;ASSETS;123;3;false;158029;AAA;1;157947
+158256;Other tangible fixed assets - acquisition costs;1.09.02.01;ASSETS;124;8;true;158256;AAA;1;158029
+158260;Other tangible fixed assets - accumulated main depreciation;1.09.02.71;ASSETS;125;8;true;158260;AAA;1;158029
+232279;Other tangible fixed assets - accumulated special depreciation;1.09.02.73;ASSETS;126;8;true;232279;AAA;1;158029
+232278;Other tangible fixed assets - main depreciation - accruals;1.09.02.81;ASSETS;127;8;true;232278;AAA;1;158029
+158258;Other tangible fixed assets - accumulated impairments;1.09.02.91;ASSETS;128;8;true;158258;AAA;1;158029
+232275;Assets under construction;1.09.03;ASSETS;129;3;false;232275;AAA;1;157947
+232280;Assets under construction - acquisition costs;1.09.03.01;ASSETS;130;8;true;232280;AAA;1;232275
+232281;Assets under construction - accumulated impairments;1.09.03.91;ASSETS;131;8;true;232281;AAA;1;232275
+232274;Investment property ;1.09.09;ASSETS;132;3;false;232274;AAA;1;157947
+232284;Investment property ;1.09.09.01;ASSETS;133;8;true;232284;AAA;1;232274
+232286;Investment property  - amortization;1.09.09.71;ASSETS;134;8;true;232286;AAA;1;232274
+232282;Investment property  - depreciation;1.09.09.91;ASSETS;135;8;true;232282;AAA;1;232274
+157946;Intangible assets;1.10;ASSETS;136;2;false;157946;AAA;1;157939
+158032;Goodwill;1.10.01;ASSETS;137;3;false;158032;AAA;1;157946
+158264;Goodwill;1.10.01.01;ASSETS;138;8;true;158264;AAA;1;158032
+158262;Goodwill - depreciation;1.10.01.91;ASSETS;139;8;true;158262;AAA;1;158032
+158031;Other intangible assets;1.10.99;ASSETS;140;3;false;158031;AAA;1;157946
+158266;Other intangible assets - acquisition costs;1.10.99.01;ASSETS;141;8;true;158266;AAA;1;158031
+158268;Other intangible assets - accumulated main depreciation;1.10.99.71;ASSETS;142;8;true;158268;AAA;1;158031
+232288;Other intangible assets - accumulated special depreciation;1.10.99.73;ASSETS;143;8;true;232288;AAA;1;158031
+232289;Other intangible assets - main depreciation - accruals;1.10.99.81;ASSETS;144;8;true;232289;AAA;1;158031
+158270;Other intangible assets - accumulated impairments;1.10.99.91;ASSETS;145;8;true;158270;AAA;1;158031
+157954;Tax assets ;1.12;ASSETS;146;2;false;157954;AAA;1;157939
+158034;Current tax assets;1.12.01;ASSETS;147;3;false;158034;AAA;1;157954
+158272;Current tax assets;1.12.01.01;ASSETS;148;8;true;158272;AAA;1;158034
+158033;Deferred tax assets ;1.12.02;ASSETS;149;3;false;158033;AAA;1;157954
+158274;Deferred tax assets ;1.12.02.01;ASSETS;150;8;true;158274;AAA;1;158033
+157953;Other assets ;1.13;ASSETS;151;2;false;157953;AAA;1;157939
+158039;Settlement accounts;1.13.01;ASSETS;152;3;false;158039;AAA;1;157953
+158276;Settlement accounts;1.13.01.01;ASSETS;153;8;true;158276;AAA;1;158039
+158038;Sundry Debtors;1.13.02;ASSETS;154;3;false;158038;AAA;1;157953
+158278;Sundry Debtors;1.13.02.01;ASSETS;155;8;true;158278;AAA;1;158038
+158037;Stock Accounts and various uses;1.13.03;ASSETS;156;3;false;158037;AAA;1;157953
+158280;Stock Accounts and various uses;1.13.03.01;ASSETS;157;8;true;158280;AAA;1;158037
+158036;Regularization accounts;1.13.04;ASSETS;158;3;false;158036;AAA;1;157953
+158282;Prepaid expenses;1.13.04.01;ASSETS;159;8;true;158282;AAA;1;158036
+158284;Income claims;1.13.04.02;ASSETS;160;8;true;158284;AAA;1;158036
+158286;VAT - Claims on tax office;1.13.04.03;ASSETS;161;8;true;158286;AAA;1;158036
+206340;WTAX - Claims on tax office;1.13.04.04;ASSETS;162;8;true;206340;AAA;1;158036
+158035;Headquarters and branches;1.13.05;ASSETS;163;3;false;158035;AAA;1;157953
+158288;Headquarters and branches;1.13.05.01;ASSETS;164;8;true;158288;AAA;1;158035
+210212;TEST ONLY: Tax refund Swiss withholding tax (FTA) - Final Withholding Tax;1.13.60;ASSETS;165;3;false;210212;AAA;1;157953
+210214;TEST ONLY: CH FWT - refund Swiss withholding tax (agreement CH/UK);1.13.60.10;ASSETS;166;8;true;210214;AAA;1;210212
+210216;TEST ONLY: CH FWT - refund Swiss withholding tax (agreement CH/AT);1.13.60.20;ASSETS;167;8;true;210216;AAA;1;210212
+158040;Auxiliary accounts;1.13.99;ASSETS;168;3;false;158040;AAA;1;157953
+158290;Auxiliary accounts;1.13.99.01;ASSETS;169;8;true;158290;AAA;1;158040
+228308;Auxiliary account for fixed asset acquisitions;1.13.99.02;ASSETS;170;8;true;228308;AAA;1;158040
+228306;Auxiliary account for fixed asset retirements;1.13.99.03;ASSETS;171;8;true;228306;AAA;1;158040
+157952;Non-current assets and disposal groups classified as held for sale;1.14;ASSETS;172;2;false;157952;AAA;1;157939
+158292;Non-current assets and disposal groups classified as held for sale;1.14.01.01;ASSETS;173;8;true;158292;AAA;1;157952
+157942;Liabilities;2;LIABILITIES;174;1;false;157942;AAA;1;157936
+157967;Deposits from central banks;2.01;LIABILITIES;175;2;false;157967;AAA;1;157942
+158295;Deposits from central banks;2.01.01.01;LIABILITIES;176;8;true;158295;AAA;1;157967
+158294;Deposits from central banks - accrued interests;2.01.01.81;LIABILITIES;177;8;true;158294;AAA;1;157967
+157966;Financial liabilities held for trading;2.02;LIABILITIES;178;2;false;157966;AAA;1;157942
+158042;Derivatives held for trading;2.02.01;LIABILITIES;179;3;false;158042;AAA;1;157966
+158301;(Trading) Options/Cap/Floor/Collar/Swaption;2.02.01.01;LIABILITIES;180;8;true;158301;AAA;1;158042
+158300;(Trading) IRS;2.02.01.02;LIABILITIES;181;8;true;158300;AAA;1;158042
+158296;(Trading) CIRS;2.02.01.03;LIABILITIES;182;8;true;158296;AAA;1;158042
+158297;(Trading) FRA;2.02.01.04;LIABILITIES;183;8;true;158297;AAA;1;158042
+158298;(Trading) CDS;2.02.01.05;LIABILITIES;184;8;true;158298;AAA;1;158042
+158299;(Trading) Outright;2.02.01.06;LIABILITIES;185;8;true;158299;AAA;1;158042
+158302;(Trading) Currency swap;2.02.01.07;LIABILITIES;186;8;true;158302;AAA;1;158042
+213318;(Trading) TRS;2.02.01.08;LIABILITIES;187;8;true;213318;AAA;1;158042
+158303;(Trading) Other;2.02.01.99;LIABILITIES;188;8;true;158303;AAA;1;158042
+158041;Short positions ;2.02.02;LIABILITIES;189;3;false;158041;AAA;1;157966
+158304;(Trading) Short positions ;2.02.02.01;LIABILITIES;190;8;true;158304;AAA;1;158041
+158043;Deposits from credit institutions;2.02.03;LIABILITIES;191;3;false;158043;AAA;1;157966
+158305;(Trading) Deposits from credit institutions;2.02.03.01;LIABILITIES;192;8;true;158305;AAA;1;158043
+158306;(Trading) Deposits from credit institutions - accrued interests;2.02.03.81;LIABILITIES;193;8;true;158306;AAA;1;158043
+158044;Deposits (other than from credit institutions);2.02.04;LIABILITIES;194;3;false;158044;AAA;1;157966
+158307;(Trading) Deposits (other than from credit institutions);2.02.04.01;LIABILITIES;195;8;true;158307;AAA;1;158044
+158308;(Trading) Deposits (other than from credit institutions) - accrued interests;2.02.04.81;LIABILITIES;196;8;true;158308;AAA;1;158044
+158045;Debt certificates (including bonds intended for repurchase in short term);2.02.05;LIABILITIES;197;3;false;158045;AAA;1;157966
+158309;(Trading) Debt instruments;2.02.05.01;LIABILITIES;198;8;true;158309;AAA;1;158045
+158310;(Trading) Debt instruments - accrued interests;2.02.05.81;LIABILITIES;199;8;true;158310;AAA;1;158045
+158046;Other financial liabilities;2.02.99;LIABILITIES;200;3;false;158046;AAA;1;157966
+158311;(Trading) Other financial liabilities;2.02.99.01;LIABILITIES;201;8;true;158311;AAA;1;158046
+158312;(Trading) Other financial liabilities - accrued interests;2.02.99.81;LIABILITIES;202;8;true;158312;AAA;1;158046
+157965;Financial liabilities designated at fair value through profit or loss ;2.03;LIABILITIES;203;2;false;157965;AAA;1;157942
+158048;Deposits from credit institutions;2.03.01;LIABILITIES;204;3;false;158048;AAA;1;157965
+158314;(FVO) Deposits from credit institutions;2.03.01.01;LIABILITIES;205;8;true;158314;AAA;1;158048
+158313;(FVO) Deposits from credit institutions - accrued interests;2.03.01.81;LIABILITIES;206;8;true;158313;AAA;1;158048
+158047;Deposits (other than from credit institutions);2.03.02;LIABILITIES;207;3;false;158047;AAA;1;157965
+158316;(FVO) Deposits (other than from credit institutions);2.03.02.01;LIABILITIES;208;8;true;158316;AAA;1;158047
+158315;(FVO) Deposits (other than from credit institutions) - accrued interests;2.03.02.81;LIABILITIES;209;8;true;158315;AAA;1;158047
+158049;Debt certificates (including bonds);2.03.03;LIABILITIES;210;3;false;158049;AAA;1;157965
+158317;(FVO) Debt certificates (including bonds);2.03.03.01;LIABILITIES;211;8;true;158317;AAA;1;158049
+158318;(FVO) Debt certificates (including bonds) - accrued interests;2.03.03.81;LIABILITIES;212;8;true;158318;AAA;1;158049
+158051;Subordinated liabilities;2.03.04;LIABILITIES;213;3;false;158051;AAA;1;157965
+158319;(FVO) Subordinated liabilities;2.03.04.01;LIABILITIES;214;8;true;158319;AAA;1;158051
+158050;Other financial liabilities;2.03.99;LIABILITIES;215;3;false;158050;AAA;1;157965
+158320;(FVO) Other financial liabilities;2.03.99.01;LIABILITIES;216;8;true;158320;AAA;1;158050
+157964;Financial liabilities measured at amortised cost;2.04;LIABILITIES;217;2;false;157964;AAA;1;157942
+158052;Deposits from credit institutions;2.04.01;LIABILITIES;218;3;false;158052;AAA;1;157964
+158322;(AC) Deposits from credit institutions;2.04.01.01;LIABILITIES;219;8;true;158322;AAA;1;158052
+158321;(AC) Deposits from credit institutions - accrued interests;2.04.01.81;LIABILITIES;220;8;true;158321;AAA;1;158052
+158053;Deposits (other than from credit institutions) ;2.04.02;LIABILITIES;221;3;false;158053;AAA;1;157964
+158323;(AC) Deposits (other than from credit institutions) ;2.04.02.01;LIABILITIES;222;8;true;158323;AAA;1;158053
+158324;(AC) Deposits (other than from credit institutions) - accrued interests;2.04.02.81;LIABILITIES;223;8;true;158324;AAA;1;158053
+158054;Debt certificates (including bonds);2.04.03;LIABILITIES;224;3;false;158054;AAA;1;157964
+158325;(AC) Debt certificates (including bonds);2.04.03.01;LIABILITIES;225;8;true;158325;AAA;1;158054
+158326;(AC) Debt certificates (including bonds) - accrued interests;2.04.03.81;LIABILITIES;226;8;true;158326;AAA;1;158054
+158055;Subordinated liabilities;2.04.04;LIABILITIES;227;3;false;158055;AAA;1;157964
+158327;(AC) Subordinated liabilities;2.04.04.01;LIABILITIES;228;8;true;158327;AAA;1;158055
+158057;Repo;2.04.05;LIABILITIES;229;3;false;158057;AAA;1;157964
+158328;(AC) Repo;2.04.05.01;LIABILITIES;230;8;true;158328;AAA;1;158057
+158329;(AC) Repo - accrued interests;2.04.05.81;LIABILITIES;231;8;true;158329;AAA;1;158057
+158056;Collateral cash;2.04.06;LIABILITIES;232;3;false;158056;AAA;1;157964
+158330;(AC) Collateral cash;2.04.06.01;LIABILITIES;233;8;true;158330;AAA;1;158056
+158331;(AC) Collateral cash - accrued interests;2.04.06.81;LIABILITIES;234;8;true;158331;AAA;1;158056
+158058;Other financial liabilities;2.04.99;LIABILITIES;235;3;false;158058;AAA;1;157964
+158332;(AC) Other financial liabilities;2.04.99.01;LIABILITIES;236;8;true;158332;AAA;1;158058
+157963;Financial liabilities associated with transferred financial assets;2.05;LIABILITIES;237;2;false;157963;AAA;1;157942
+158333;Financial liabilities associated with transferred financial assets;2.05.01.01;LIABILITIES;238;8;true;158333;AAA;1;157963
+157962;Derivatives – Hedge accounting;2.06;LIABILITIES;239;2;false;157962;AAA;1;157942
+158059;Fair value hedges;2.06.01;LIABILITIES;240;3;false;158059;AAA;1;157962
+158339;(Hedge) Options/Cap/Floor/Collar/Swaption;2.06.01.01;LIABILITIES;241;8;true;158339;AAA;1;158059
+158338;(Hedge) IRS;2.06.01.02;LIABILITIES;242;8;true;158338;AAA;1;158059
+158337;(Hedge) CIRS;2.06.01.03;LIABILITIES;243;8;true;158337;AAA;1;158059
+158336;(Hedge) FRA;2.06.01.04;LIABILITIES;244;8;true;158336;AAA;1;158059
+158335;(Hedge) CDS;2.06.01.05;LIABILITIES;245;8;true;158335;AAA;1;158059
+158334;(Hedge) Outright;2.06.01.06;LIABILITIES;246;8;true;158334;AAA;1;158059
+158340;(Hedge) Currency swap;2.06.01.07;LIABILITIES;247;8;true;158340;AAA;1;158059
+213319;(Hedge) TRS;2.06.01.08;LIABILITIES;248;8;true;213319;AAA;1;158059
+158341;(Hedge) Other;2.06.01.99;LIABILITIES;249;8;true;158341;AAA;1;158059
+158063;Cash flow hedges;2.06.02;LIABILITIES;250;3;false;158063;AAA;1;157962
+158342;Cash flow hedges;2.06.02.01;LIABILITIES;251;8;true;158342;AAA;1;158063
+158062;Hedges of a net investment in a foreign operation;2.06.03;LIABILITIES;252;3;false;158062;AAA;1;157962
+158343;Hedges of a net investment in a foreign operation;2.06.03.01;LIABILITIES;253;8;true;158343;AAA;1;158062
+158061;Fair value hedge of interest rate risk;2.06.04;LIABILITIES;254;3;false;158061;AAA;1;157962
+158344;Fair value hedge of interest rate risk;2.06.04.01;LIABILITIES;255;8;true;158344;AAA;1;158061
+158060;Cash flow hedge interest rate risk;2.06.05;LIABILITIES;256;3;false;158060;AAA;1;157962
+158345;Cash flow hedge interest rate risk;2.06.05.01;LIABILITIES;257;8;true;158345;AAA;1;158060
+157961;Fair value changes of the hedged items in portfolio hedge of interest rate risk ;2.07;LIABILITIES;258;2;false;157961;AAA;1;157942
+158346;Fair value changes of the hedged items in portfolio hedge of interest rate risk ;2.07.01.01;LIABILITIES;259;8;true;158346;AAA;1;157961
+157958;Provisions;2.08;LIABILITIES;260;2;false;157958;AAA;1;157942
+158064;Restructuring;2.08.01;LIABILITIES;261;3;false;158064;AAA;1;157958
+158347;Restructuring;2.08.01.01;LIABILITIES;262;8;true;158347;AAA;1;158064
+158065;Pending legal issues and tax litigation;2.08.02;LIABILITIES;263;3;false;158065;AAA;1;157958
+158349;Pending legal issues and tax litigation;2.08.02.01;LIABILITIES;264;8;true;158349;AAA;1;158065
+158069;Pensions and other post retirement benefit obligations;2.08.03;LIABILITIES;265;3;false;158069;AAA;1;157958
+158351;Contingent liabilities from employee benefits;2.08.03.01;LIABILITIES;266;8;true;158351;AAA;1;158069
+158353;End of career benefits ;2.08.03.02;LIABILITIES;267;8;true;158353;AAA;1;158069
+158355;covered pension liabilities;2.08.03.03;LIABILITIES;268;8;true;158355;AAA;1;158069
+158357;Supplementary pension rights acquired;2.08.03.04;LIABILITIES;269;8;true;158357;AAA;1;158069
+158068;Loan commitments and guarantees;2.08.04;LIABILITIES;270;3;false;158068;AAA;1;157958
+158359;Loan commitments and guarantees;2.08.04.01;LIABILITIES;271;8;true;158359;AAA;1;158068
+158066;Onerous contracts;2.08.05;LIABILITIES;272;3;false;158066;AAA;1;157958
+158361;Onerous contracts;2.08.05.01;LIABILITIES;273;8;true;158361;AAA;1;158066
+158067;Other provisions;2.08.99;LIABILITIES;274;3;false;158067;AAA;1;157958
+158365;Other provisions;2.08.99.01;LIABILITIES;275;8;true;158365;AAA;1;158067
+158363;AGDL Provision;2.08.99.02;LIABILITIES;276;8;true;158363;AAA;1;158067
+158367;Prudential Provisions;2.08.99.03;LIABILITIES;277;8;true;158367;AAA;1;158067
+157960;Tax liabilities ;2.09;LIABILITIES;278;2;false;157960;AAA;1;157942
+158071;Current tax liabilities;2.09.01;LIABILITIES;279;3;false;158071;AAA;1;157960
+158369;Current tax liabilities;2.09.01.01;LIABILITIES;280;8;true;158369;AAA;1;158071
+158070;Deferred tax liabilities;2.09.02;LIABILITIES;281;3;false;158070;AAA;1;157960
+158373;Deferred tax liabilities 2007;2.09.02.01;LIABILITIES;282;8;true;158373;AAA;1;158070
+158371;Deferred tax liabilities 2008;2.09.02.02;LIABILITIES;283;8;true;158371;AAA;1;158070
+158375;Deferred tax liabilities 2009;2.09.02.03;LIABILITIES;284;8;true;158375;AAA;1;158070
+158379;Deferred tax liabilities 2010;2.09.02.04;LIABILITIES;285;8;true;158379;AAA;1;158070
+158381;Deferred tax liabilities 2011;2.09.02.05;LIABILITIES;286;8;true;158381;AAA;1;158070
+158383;Deferred tax liabilities 2012;2.09.02.06;LIABILITIES;287;8;true;158383;AAA;1;158070
+158377;Deferred tax liabilities 2013;2.09.02.07;LIABILITIES;288;8;true;158377;AAA;1;158070
+158072;Deferred tax liabilities;2.09.03;LIABILITIES;289;3;false;158072;AAA;1;157960
+158385;Deferred tax liabilities to reserve;2.09.03.01;LIABILITIES;290;8;true;158385;AAA;1;158072
+158387;Deferred tax liabilities to income;2.09.03.02;LIABILITIES;291;8;true;158387;AAA;1;158072
+157959;Other liabilities ;2.10;LIABILITIES;292;2;false;157959;AAA;1;157942
+158074;Settlement accounts;2.10.01;LIABILITIES;293;3;false;158074;AAA;1;157959
+158389;Settlement accounts;2.10.01.01;LIABILITIES;294;8;true;158389;AAA;1;158074
+158078;Sundry creditors;2.10.02;LIABILITIES;295;3;false;158078;AAA;1;157959
+158391;Sundry creditors;2.10.02.01;LIABILITIES;296;8;true;158391;AAA;1;158078
+158077;Stock Accounts and various uses;2.10.03;LIABILITIES;297;3;false;158077;AAA;1;157959
+158393;Stock Accounts and various uses;2.10.03.01;LIABILITIES;298;8;true;158393;AAA;1;158077
+158076;Regularization accounts;2.10.04;LIABILITIES;299;3;false;158076;AAA;1;157959
+158419;Liabilities - Provisions;2.10.04.01;LIABILITIES;300;8;true;158419;AAA;1;158076
+158421;Deferred revenue;2.10.04.02;LIABILITIES;301;8;true;158421;AAA;1;158076
+158423;Accrued interests migration;2.10.04.03;LIABILITIES;302;8;true;158423;AAA;1;158076
+158413;Not yet paid TVA;2.10.04.11;LIABILITIES;303;8;true;158413;AAA;1;158076
+158415;Not yet paid tax QI;2.10.04.21;LIABILITIES;304;8;true;158415;AAA;1;158076
+158417;Not yet paid tax QI - manual allocation;2.10.04.22;LIABILITIES;305;8;true;158417;AAA;1;158076
+158411;Not yet paid tax QI - Difference account;2.10.04.23;LIABILITIES;306;8;true;158411;AAA;1;158076
+158395;Not yet paid tax EUSD;2.10.04.31;LIABILITIES;307;8;true;158395;AAA;1;158076
+158397;Not yet paid tax EUSD - manual allocation;2.10.04.32;LIABILITIES;308;8;true;158397;AAA;1;158076
+158401;Not yet paid tax Lux.;2.10.04.41;LIABILITIES;309;8;true;158401;AAA;1;158076
+158407;Not yet paid national tax on stex transactions;2.10.04.51;LIABILITIES;310;8;true;158407;AAA;1;158076
+158409;Taxes on wages;2.10.04.61;LIABILITIES;311;8;true;158409;AAA;1;158076
+158075;Headquarters and branches;2.10.05;LIABILITIES;312;3;false;158075;AAA;1;157959
+158425;Headquarters and branches;2.10.05.01;LIABILITIES;313;8;true;158425;AAA;1;158075
+210213;TEST ONLY: Swiss final withholding tax;2.10.60;LIABILITIES;314;3;false;210213;AAA;1;157959
+210218;TEST ONLY: CH FWT - final withholding tax (agreement CH/UK);2.10.60.10;LIABILITIES;315;8;true;210218;AAA;1;210213
+210222;TEST ONLY: CH FWT - tax finality payment (agreement CH/UK);2.10.60.11;LIABILITIES;316;8;true;210222;AAA;1;210213
+220700;TEST ONLY: CH FWT - inheritance taxation (agreement CH/UK);2.10.60.12;LIABILITIES;317;8;true;220700;AAA;1;210213
+210220;TEST ONLY: CH FWT - final withholding tax (agreement CH/AT);2.10.60.20;LIABILITIES;318;8;true;210220;AAA;1;210213
+213320;TEST ONLY: CH FWT - final withholding tax (agreement FL/AT);2.10.60.30;LIABILITIES;319;8;true;213320;AAA;1;210213
+220699;TEST ONLY: French Tax;2.10.61;LIABILITIES;320;3;false;220699;AAA;1;157959
+220702;TEST ONLY: French Tax - French Mandatory Tax;2.10.61.00;LIABILITIES;321;8;true;220702;AAA;1;220699
+220704;TEST ONLY: French Tax - French Social Deduction CSG;2.10.61.10;LIABILITIES;322;8;true;220704;AAA;1;220699
+220706;TEST ONLY: French Tax - French Social Deduction PS;2.10.61.11;LIABILITIES;323;8;true;220706;AAA;1;220699
+220708;TEST ONLY: French Tax - French Social Deduction CAPS;2.10.61.12;LIABILITIES;324;8;true;220708;AAA;1;220699
+220710;TEST ONLY: French Tax - French Social Deduction PSOL;2.10.61.13;LIABILITIES;325;8;true;220710;AAA;1;220699
+220712;TEST ONLY: French Tax - French Social Deduction CRDS;2.10.61.14;LIABILITIES;326;8;true;220712;AAA;1;220699
+220714;TEST ONLY: French Tax - French Social Deduction CRSA;2.10.61.15;LIABILITIES;327;8;true;220714;AAA;1;220699
+220716;TEST ONLY: French Tax - French Withholding Tax;2.10.61.20;LIABILITIES;328;8;true;220716;AAA;1;220699
+233124;TEST ONLY: Austrian Tax;2.10.62;LIABILITIES;329;3;false;233124;AAA;1;157959
+233127;TEST ONLY: Austrian Tax - General KESt;2.10.62.00;LIABILITIES;330;8;true;233127;AAA;1;233124
+233125;TEST ONLY: Austrian Tax - Foreigner KESt;2.10.62.10;LIABILITIES;331;8;true;233125;AAA;1;233124
+233129;TEST ONLY: Austrian Tax - KESt on Domestic Dividends;2.10.62.20;LIABILITIES;332;8;true;233129;AAA;1;233124
+158073;Auxiliary accounts;2.10.99;LIABILITIES;333;3;false;158073;AAA;1;157959
+158427;Auxiliary accounts - Stock exchange;2.10.99.10;LIABILITIES;334;8;true;158427;AAA;1;158073
+158429;Auxiliary accounts - Stock exchange (Hedge Fund Equalization);2.10.99.11;LIABILITIES;335;8;true;158429;AAA;1;158073
+158431;Auxiliary accounts - Security settlement;2.10.99.12;LIABILITIES;336;8;true;158431;AAA;1;158073
+158433;Auxiliary accounts - Security events;2.10.99.20;LIABILITIES;337;8;true;158433;AAA;1;158073
+158435;Auxiliary accounts - FX OTC Options;2.10.99.30;LIABILITIES;338;8;true;158435;AAA;1;158073
+158437;Auxiliary accounts - Fiduciary operations;2.10.99.40;LIABILITIES;339;8;true;158437;AAA;1;158073
+158439;Auxiliary accounts - medium-term notes;2.10.99.50;LIABILITIES;340;8;true;158439;AAA;1;158073
+157957;Share capital repayable on demand (e.g. cooperative shares);2.11;LIABILITIES;341;2;false;157957;AAA;1;157942
+158441;Share capital repayable on demand (e.g. cooperative shares);2.11.01.01;LIABILITIES;342;8;true;158441;AAA;1;157957
+157956;Liabilities included in disposal groups classified as held for sale;2.12;LIABILITIES;343;2;false;157956;AAA;1;157942
+158443;Liabilities included in disposal groups classified as held for sale;2.12.01.01;LIABILITIES;344;8;true;158443;AAA;1;157956
+157940;Equity;3;LIABILITIES;345;1;false;157940;AAA;1;157936
+157968;Issued capital;3.01;LIABILITIES;346;2;false;157968;AAA;1;157940
+158445;Paid in capital (Multi GAAP);3.01.01.01;LIABILITIES;347;8;true;158445;AAA;1;157968
+158447;Unpaid capital which has been called up (Multi GAAP);3.01.01.02;LIABILITIES;348;8;true;158447;AAA;1;157968
+157969;Share premium;3.02;LIABILITIES;349;2;false;157969;AAA;1;157940
+158449;Share premium (Multi GAAP);3.02.01.01;LIABILITIES;350;8;true;158449;AAA;1;157969
+157970;Other Equity ;3.03;LIABILITIES;351;2;false;157970;AAA;1;157940
+158080;Equity component of compound financial instruments;3.03.01;LIABILITIES;352;3;false;158080;AAA;1;157970
+158451;Equity component of compound financial instruments;3.03.01.01;LIABILITIES;353;8;true;158451;AAA;1;158080
+158079;Other equity instruments;3.03.02;LIABILITIES;354;3;false;158079;AAA;1;157970
+158453;Other equity instruments;3.03.02.01;LIABILITIES;355;8;true;158453;AAA;1;158079
+157971;Revaluation reserves and other valuation differences on:;3.04;LIABILITIES;356;2;false;157971;AAA;1;157940
+158088;Tangible assets;3.04.01;LIABILITIES;357;3;false;158088;AAA;1;157971
+158455;Tangible assets;3.04.01.01;LIABILITIES;358;8;true;158455;AAA;1;158088
+158087;Intangible assets;3.04.02;LIABILITIES;359;3;false;158087;AAA;1;157971
+158457;Intangible assets;3.04.02.01;LIABILITIES;360;8;true;158457;AAA;1;158087
+158081;Hedge of net investments in foreign operations (effective portion);3.04.03;LIABILITIES;361;3;false;158081;AAA;1;157971
+158459;Hedge of net investments in foreign operations (effective portion);3.04.03.01;LIABILITIES;362;8;true;158459;AAA;1;158081
+158089;Foreign currency translation ;3.04.04;LIABILITIES;363;3;false;158089;AAA;1;157971
+158461;Foreign currency translation ;3.04.04.01;LIABILITIES;364;8;true;158461;AAA;1;158089
+158083;Cash flow hedges (effective portion);3.04.05;LIABILITIES;365;3;false;158083;AAA;1;157971
+158463;Cash flow hedges (effective portion);3.04.05.01;LIABILITIES;366;8;true;158463;AAA;1;158083
+158084;Available-for-sale financial assets;3.04.06;LIABILITIES;367;3;false;158084;AAA;1;157971
+158465;Available-for-sale financial assets;3.04.06.01;LIABILITIES;368;8;true;158465;AAA;1;158084
+158085;Non-current assets and disposal groups held for sale;3.04.07;LIABILITIES;369;3;false;158085;AAA;1;157971
+158467;Non-current assets and disposal groups held for sale;3.04.07.01;LIABILITIES;370;8;true;158467;AAA;1;158085
+158086;Loans and receivables;3.04.08;LIABILITIES;371;3;false;158086;AAA;1;157971
+158469;(LAR) Loans and receivables - formerly AFS;3.04.08.01;LIABILITIES;372;8;true;158469;AAA;1;158086
+158082;Other items;3.04.99;LIABILITIES;373;3;false;158082;AAA;1;157971
+158471;Other items;3.04.99.01;LIABILITIES;374;8;true;158471;AAA;1;158082
+157972;Reserves (including retained earnings);3.05;LIABILITIES;375;2;false;157972;AAA;1;157940
+158473;Reserves (Multi GAAP);3.05.01.01;LIABILITIES;376;8;true;158473;AAA;1;157972
+158475;Retained earnings (Multi GAAP);3.05.01.02;LIABILITIES;377;8;true;158475;AAA;1;157972
+196252;Retained earnings;3.05.01.03;LIABILITIES;378;8;true;196252;AAA;1;157972
+157973;<Treasury shares>;3.06;LIABILITIES;379;2;false;157973;AAA;1;157940
+158477;<Treasury shares>;3.06.01.01;LIABILITIES;380;8;true;158477;AAA;1;157973
+157974;Income from current year;3.07;LIABILITIES;381;2;false;157974;AAA;1;157940
+158479;Income from current year (Multi GAAP);3.07.01.01;LIABILITIES;382;8;true;158479;AAA;1;157974
+196254;Income from current year;3.07.01.02;LIABILITIES;383;8;true;196254;AAA;1;157974
+157975;<Interim dividends> ;3.08;LIABILITIES;384;2;false;157975;AAA;1;157940
+158481;<Interim dividends> ;3.08.01.01;LIABILITIES;385;8;true;158481;AAA;1;157975
+157937;Off Balance sheet;4; OFFBALANCE;613;0;false;157937;AAA;1;null
+157976;Table B 1.6 H: Loan commitments: financial guarantees and other commitments;4.01; OFFBALANCE;614;2;false;157976;AAA;1;157937
+158090;Loan commitments;4.01.01; OFFBALANCE;615;3;false;158090;AAA;1;157976
+158483;Given;4.01.01.01; OFFBALANCE;616;8;true;158483;AAA;1;158090
+158485;Received;4.01.01.02; OFFBALANCE;617;8;true;158485;AAA;1;158090
+158091;Financial guarantees;4.01.02; OFFBALANCE;618;3;false;158091;AAA;1;157976
+158487;Guarantees given;4.01.02.01; OFFBALANCE;619;8;true;158487;AAA;1;158091
+158489;Guarantees received;4.01.02.02; OFFBALANCE;620;8;true;158489;AAA;1;158091
+158491;Credit derivatives received;4.01.02.03; OFFBALANCE;621;8;true;158491;AAA;1;158091
+158092;Other commitments (Note issuance facilities: revolving underwriting facilities);4.01.03; OFFBALANCE;622;3;false;158092;AAA;1;157976
+158495;Given to another counterparty;4.01.03.01; OFFBALANCE;623;8;true;158495;AAA;1;158092
+158493;Received from another counterparty;4.01.03.02; OFFBALANCE;624;8;true;158493;AAA;1;158092
+157977;Table B 1.6 A: Derivatives held for trading;4.02; OFFBALANCE;625;2;false;157977;AAA;1;157937
+158093;Interest rate;4.02.01; OFFBALANCE;626;3;false;158093;AAA;1;157977
+158519;Cap/Floor/Collar/Swaption;4.02.01.01; OFFBALANCE;627;8;true;158519;AAA;1;158093
+158517;IRS;4.02.01.02; OFFBALANCE;628;8;true;158517;AAA;1;158093
+158515;CIRS;4.02.01.03; OFFBALANCE;629;8;true;158515;AAA;1;158093
+158513;FRA bought;4.02.01.04; OFFBALANCE;630;8;true;158513;AAA;1;158093
+158511;FRA sold;4.02.01.05; OFFBALANCE;631;8;true;158511;AAA;1;158093
+158509;Forward;4.02.01.06; OFFBALANCE;632;8;true;158509;AAA;1;158093
+158503;Interest future;4.02.01.07; OFFBALANCE;633;8;true;158503;AAA;1;158093
+158505;Option Call (Long) - Bond;4.02.01.20; OFFBALANCE;634;8;true;158505;AAA;1;158093
+158507;Option Call (Short) - Bond;4.02.01.21; OFFBALANCE;635;8;true;158507;AAA;1;158093
+158501;Option Put (Long) - Bond;4.02.01.22; OFFBALANCE;636;8;true;158501;AAA;1;158093
+158499;Option Put (Short) - Bond;4.02.01.23; OFFBALANCE;637;8;true;158499;AAA;1;158093
+158497;Other;4.02.01.99; OFFBALANCE;638;8;true;158497;AAA;1;158093
+158098;Equity;4.02.02; OFFBALANCE;639;3;false;158098;AAA;1;157977
+158529;Equity forward;4.02.02.01; OFFBALANCE;640;8;true;158529;AAA;1;158098
+158531;Equity future;4.02.02.02; OFFBALANCE;641;8;true;158531;AAA;1;158098
+158533;Equity Option Call (Long) - Share: Index;4.02.02.20; OFFBALANCE;642;8;true;158533;AAA;1;158098
+158521;Equity Option Call (Short) - Share: Index;4.02.02.21; OFFBALANCE;643;8;true;158521;AAA;1;158098
+158537;Equity Option Put (Long) - Share: Index;4.02.02.22; OFFBALANCE;644;8;true;158537;AAA;1;158098
+158541;Equity Option Put (Short) - Share: Index;4.02.02.23; OFFBALANCE;645;8;true;158541;AAA;1;158098
+158539;Warrant Call (Long);4.02.02.30; OFFBALANCE;646;8;true;158539;AAA;1;158098
+158535;Warrant Call (Short);4.02.02.31; OFFBALANCE;647;8;true;158535;AAA;1;158098
+158523;Warrant Put (Long);4.02.02.32; OFFBALANCE;648;8;true;158523;AAA;1;158098
+158525;Warrant Put (Short);4.02.02.33; OFFBALANCE;649;8;true;158525;AAA;1;158098
+158527;Other;4.02.02.99; OFFBALANCE;650;8;true;158527;AAA;1;158098
+158097;Currency (FX);4.02.03; OFFBALANCE;651;3;false;158097;AAA;1;157977
+158547;FX forward;4.02.03.01; OFFBALANCE;652;8;true;158547;AAA;1;158097
+158543;FX future;4.02.03.02; OFFBALANCE;653;8;true;158543;AAA;1;158097
+158545;Cross currency swap;4.02.03.03; OFFBALANCE;654;8;true;158545;AAA;1;158097
+158551;FX forward rate agreement;4.02.03.05; OFFBALANCE;655;8;true;158551;AAA;1;158097
+158557;FX Option Call (Long);4.02.03.20; OFFBALANCE;656;8;true;158557;AAA;1;158097
+158555;FX Option Call (Short);4.02.03.21; OFFBALANCE;657;8;true;158555;AAA;1;158097
+158553;FX Option Put (Long);4.02.03.22; OFFBALANCE;658;8;true;158553;AAA;1;158097
+158559;FX Option Put (Short);4.02.03.23; OFFBALANCE;659;8;true;158559;AAA;1;158097
+158549;Other;4.02.03.99; OFFBALANCE;661;8;true;158549;AAA;1;158097
+158094;Credit;4.02.04; OFFBALANCE;662;3;false;158094;AAA;1;157977
+158565;Credit default swap;4.02.04.01; OFFBALANCE;663;8;true;158565;AAA;1;158094
+158567;Credit spread option;4.02.04.02; OFFBALANCE;664;8;true;158567;AAA;1;158094
+158561;TRS;4.02.04.03; OFFBALANCE;665;8;true;158561;AAA;1;158094
+158563;Other;4.02.04.99; OFFBALANCE;666;8;true;158563;AAA;1;158094
+158095;Commodity;4.02.05; OFFBALANCE;667;3;false;158095;AAA;1;157977
+158569;Commodity;4.02.05.01; OFFBALANCE;668;8;true;158569;AAA;1;158095
+158096;Other;4.02.99; OFFBALANCE;669;3;false;158096;AAA;1;157977
+158577;Other;4.02.99.01; OFFBALANCE;670;8;true;158577;AAA;1;158096
+158579;Option Call (Long) - Other: Precious metal: Future;4.02.99.20; OFFBALANCE;671;8;true;158579;AAA;1;158096
+158573;Option Call (Short) - Other: Precious metal: Future;4.02.99.21; OFFBALANCE;672;8;true;158573;AAA;1;158096
+158575;Option Put (Long) - Other: Precious metal: Future;4.02.99.22; OFFBALANCE;673;8;true;158575;AAA;1;158096
+158571;Option Put (Short) - Other: Precious metal: Future;4.02.99.23; OFFBALANCE;674;8;true;158571;AAA;1;158096
+157982;Table B 1.6 B1: Fair value hedges;4.03; OFFBALANCE;675;2;false;157982;AAA;1;157937
+158104;Interest rate;4.03.01; OFFBALANCE;676;3;false;158104;AAA;1;157982
+158597;Cap/Floor/Collar/Swaption;4.03.01.01; OFFBALANCE;677;8;true;158597;AAA;1;158104
+158599;IRS;4.03.01.02; OFFBALANCE;678;8;true;158599;AAA;1;158104
+158601;CIRS;4.03.01.03; OFFBALANCE;679;8;true;158601;AAA;1;158104
+158591;FRA bought;4.03.01.04; OFFBALANCE;680;8;true;158591;AAA;1;158104
+158595;FRA sold;4.03.01.05; OFFBALANCE;681;8;true;158595;AAA;1;158104
+158593;Forward;4.03.01.06; OFFBALANCE;682;8;true;158593;AAA;1;158104
+158603;Interest future;4.03.01.07; OFFBALANCE;683;8;true;158603;AAA;1;158104
+158589;Option Call (Long) - Bond;4.03.01.20; OFFBALANCE;684;8;true;158589;AAA;1;158104
+158587;Option Call (Short) - Bond;4.03.01.21; OFFBALANCE;685;8;true;158587;AAA;1;158104
+158585;Option Put (Long) - Bond;4.03.01.22; OFFBALANCE;686;8;true;158585;AAA;1;158104
+158583;Option Put (Short) - Bond;4.03.01.23; OFFBALANCE;687;8;true;158583;AAA;1;158104
+158581;Autres;4.03.01.99; OFFBALANCE;688;8;true;158581;AAA;1;158104
+158103;Equity;4.03.02; OFFBALANCE;689;3;false;158103;AAA;1;157982
+158623;Equity forward;4.03.02.01; OFFBALANCE;690;8;true;158623;AAA;1;158103
+158625;Equity future;4.03.02.02; OFFBALANCE;691;8;true;158625;AAA;1;158103
+158621;Equity Option Call (Long) - Share: Index;4.03.02.20; OFFBALANCE;692;8;true;158621;AAA;1;158103
+158619;Equity Option Call (Short) - Share: Index;4.03.02.21; OFFBALANCE;693;8;true;158619;AAA;1;158103
+158617;Equity Option Put (Long) - Share: Index;4.03.02.22; OFFBALANCE;694;8;true;158617;AAA;1;158103
+158615;Equity Option Put (Short) - Share: Index;4.03.02.23; OFFBALANCE;695;8;true;158615;AAA;1;158103
+158613;Warrant Call (Long);4.03.02.30; OFFBALANCE;696;8;true;158613;AAA;1;158103
+158611;Warrant Call (Short);4.03.02.31; OFFBALANCE;697;8;true;158611;AAA;1;158103
+158609;Warrant Put (Long);4.03.02.32; OFFBALANCE;698;8;true;158609;AAA;1;158103
+158607;Warrant Put (Short);4.03.02.33; OFFBALANCE;699;8;true;158607;AAA;1;158103
+158605;Other;4.03.02.99; OFFBALANCE;700;8;true;158605;AAA;1;158103
+158101;Currency (FX);4.03.03; OFFBALANCE;701;3;false;158101;AAA;1;157982
+158627;FX forward;4.03.03.01; OFFBALANCE;702;8;true;158627;AAA;1;158101
+158631;FX future;4.03.03.02; OFFBALANCE;703;8;true;158631;AAA;1;158101
+158629;Cross currency swap;4.03.03.03; OFFBALANCE;704;8;true;158629;AAA;1;158101
+158635;FX forward rate agreement;4.03.03.05; OFFBALANCE;705;8;true;158635;AAA;1;158101
+158641;FX Option Call (Long);4.03.03.20; OFFBALANCE;706;8;true;158641;AAA;1;158101
+158639;FX Option Call (Short);4.03.03.21; OFFBALANCE;707;8;true;158639;AAA;1;158101
+158637;FX Option Put (Long);4.03.03.22; OFFBALANCE;708;8;true;158637;AAA;1;158101
+158643;FX Option Put (Short);4.03.03.23; OFFBALANCE;709;8;true;158643;AAA;1;158101
+158633;Other;4.03.03.99; OFFBALANCE;710;8;true;158633;AAA;1;158101
+158102;Credit;4.03.04; OFFBALANCE;711;3;false;158102;AAA;1;157982
+158651;Credit default swap;4.03.04.01; OFFBALANCE;712;8;true;158651;AAA;1;158102
+158645;Credit spread option;4.03.04.02; OFFBALANCE;713;8;true;158645;AAA;1;158102
+158647;TRS;4.03.04.03; OFFBALANCE;714;8;true;158647;AAA;1;158102
+158649;Other;4.03.04.99; OFFBALANCE;715;8;true;158649;AAA;1;158102
+158100;Commodity;4.03.05; OFFBALANCE;716;3;false;158100;AAA;1;157982
+158653;Commodity;4.03.05.01; OFFBALANCE;717;8;true;158653;AAA;1;158100
+158099;Other;4.03.99; OFFBALANCE;718;3;false;158099;AAA;1;157982
+158659;Other;4.03.99.01; OFFBALANCE;719;8;true;158659;AAA;1;158099
+158657;Option Call (Long) - Other: Precious metal: Future;4.03.99.20; OFFBALANCE;720;8;true;158657;AAA;1;158099
+158655;Option Call (Short) - Other: Precious metal: Future;4.03.99.21; OFFBALANCE;721;8;true;158655;AAA;1;158099
+158661;Option Put (Long) - Other: Precious metal: Future;4.03.99.22; OFFBALANCE;722;8;true;158661;AAA;1;158099
+158663;Option Put (Short) - Other: Precious metal: Future;4.03.99.23; OFFBALANCE;723;8;true;158663;AAA;1;158099
+157978;Table B 1.6 B2: Cash flow hedges;4.04; OFFBALANCE;724;2;false;157978;AAA;1;157937
+158106;Interest rate;4.04.01; OFFBALANCE;725;3;false;158106;AAA;1;157978
+158687;Cap/Floor/Collar/Swaption;4.04.01.01; OFFBALANCE;726;8;true;158687;AAA;1;158106
+158673;IRS;4.04.01.02; OFFBALANCE;727;8;true;158673;AAA;1;158106
+158671;CIRS;4.04.01.03; OFFBALANCE;728;8;true;158671;AAA;1;158106
+158669;FRA bought;4.04.01.04; OFFBALANCE;729;8;true;158669;AAA;1;158106
+158667;FRA sold;4.04.01.05; OFFBALANCE;730;8;true;158667;AAA;1;158106
+158665;Forward;4.04.01.06; OFFBALANCE;731;8;true;158665;AAA;1;158106
+158677;Interest future;4.04.01.07; OFFBALANCE;732;8;true;158677;AAA;1;158106
+158679;Option Call (Long) - Bond;4.04.01.20; OFFBALANCE;733;8;true;158679;AAA;1;158106
+158681;Option Call (Short) - Bond;4.04.01.21; OFFBALANCE;734;8;true;158681;AAA;1;158106
+158683;Option Put (Long) - Bond;4.04.01.22; OFFBALANCE;735;8;true;158683;AAA;1;158106
+158685;Option Put (Short) - Bond;4.04.01.23; OFFBALANCE;736;8;true;158685;AAA;1;158106
+158675;Autres;4.04.01.99; OFFBALANCE;737;8;true;158675;AAA;1;158106
+158105;Equity;4.04.02; OFFBALANCE;738;3;false;158105;AAA;1;157978
+158699;Equity forward;4.04.02.01; OFFBALANCE;739;8;true;158699;AAA;1;158105
+158697;Equity future;4.04.02.02; OFFBALANCE;740;8;true;158697;AAA;1;158105
+158695;Equity Option Call (Long) - Share: Index;4.04.02.20; OFFBALANCE;741;8;true;158695;AAA;1;158105
+158693;Equity Option Call (Short) - Share: Index;4.04.02.21; OFFBALANCE;742;8;true;158693;AAA;1;158105
+158691;Equity Option Put (Long) - Share: Index;4.04.02.22; OFFBALANCE;743;8;true;158691;AAA;1;158105
+158689;Equity Option Put (Short) - Share: Index;4.04.02.23; OFFBALANCE;744;8;true;158689;AAA;1;158105
+158701;Warrant Call (Long);4.04.02.30; OFFBALANCE;745;8;true;158701;AAA;1;158105
+158709;Warrant Call (Short);4.04.02.31; OFFBALANCE;746;8;true;158709;AAA;1;158105
+158707;Warrant Put (Long);4.04.02.32; OFFBALANCE;747;8;true;158707;AAA;1;158105
+158705;Warrant Put (Short);4.04.02.33; OFFBALANCE;748;8;true;158705;AAA;1;158105
+158703;Other;4.04.02.99; OFFBALANCE;749;8;true;158703;AAA;1;158105
+158108;Currency (FX);4.04.03; OFFBALANCE;750;3;false;158108;AAA;1;157978
+158711;FX forward;4.04.03.01; OFFBALANCE;751;8;true;158711;AAA;1;158108
+158713;FX future;4.04.03.02; OFFBALANCE;752;8;true;158713;AAA;1;158108
+158715;Cross currency swap;4.04.03.03; OFFBALANCE;753;8;true;158715;AAA;1;158108
+158717;FX forward rate agreement;4.04.03.05; OFFBALANCE;754;8;true;158717;AAA;1;158108
+158719;FX Option Call (Long);4.04.03.20; OFFBALANCE;755;8;true;158719;AAA;1;158108
+158721;FX Option Call (Short);4.04.03.21; OFFBALANCE;756;8;true;158721;AAA;1;158108
+158723;FX Option Put (Long);4.04.03.22; OFFBALANCE;757;8;true;158723;AAA;1;158108
+158727;FX Option Put (Short);4.04.03.23; OFFBALANCE;758;8;true;158727;AAA;1;158108
+158725;Other;4.04.03.99; OFFBALANCE;759;8;true;158725;AAA;1;158108
+158110;Credit;4.04.04; OFFBALANCE;760;3;false;158110;AAA;1;157978
+158733;Credit default swap;4.04.04.01; OFFBALANCE;761;8;true;158733;AAA;1;158110
+158735;Credit spread option;4.04.04.02; OFFBALANCE;762;8;true;158735;AAA;1;158110
+158731;TRS;4.04.04.03; OFFBALANCE;763;8;true;158731;AAA;1;158110
+158729;Other;4.04.04.99; OFFBALANCE;764;8;true;158729;AAA;1;158110
+158109;Commodity;4.04.05; OFFBALANCE;765;3;false;158109;AAA;1;157978
+158737;Commodity;4.04.05.01; OFFBALANCE;766;8;true;158737;AAA;1;158109
+158107;Other;4.04.99; OFFBALANCE;767;3;false;158107;AAA;1;157978
+158743;Other;4.04.99.01; OFFBALANCE;768;8;true;158743;AAA;1;158107
+158745;Option Call (Long) - Other: Precious metal: Future;4.04.99.20; OFFBALANCE;769;8;true;158745;AAA;1;158107
+158747;Option Call (Short) - Other: Precious metal: Future;4.04.99.21; OFFBALANCE;770;8;true;158747;AAA;1;158107
+158739;Option Put (Long) - Other: Precious metal: Future;4.04.99.22; OFFBALANCE;771;8;true;158739;AAA;1;158107
+158741;Option Put (Short) - Other: Precious metal: Future;4.04.99.23; OFFBALANCE;772;8;true;158741;AAA;1;158107
+157979;Table B 1.6 B3: Hedge of net investments in a foreign operation;4.05; OFFBALANCE;773;2;false;157979;AAA;1;157937
+158749;Hedge of net investments in a foreign operation;4.05.01.01; OFFBALANCE;774;8;true;158749;AAA;1;157979
+157980;Table B 1.6 B4: Portfolio hedges of interest rate risk;4.06; OFFBALANCE;775;2;false;157980;AAA;1;157937
+158751;Fair value hedges of interest rate risk (IAS 39.89 A);4.06.01.01; OFFBALANCE;776;8;true;158751;AAA;1;157980
+158753;Cash flow hedges of interest rate risk (IAS 39 IG F.6 1-3);4.06.01.02; OFFBALANCE;777;8;true;158753;AAA;1;157980
+157981;Table B 1.6 I: Management functions;4.07; OFFBALANCE;778;2;false;157981;AAA;1;157937
+158112;Custody assets;4.07.01; OFFBALANCE;779;3;false;158112;AAA;1;157981
+158757;Custody assets from undertakings for collective investment (UCI);4.07.01.01; OFFBALANCE;780;8;true;158757;AAA;1;158112
+158755;Custody assets from clearing or settlement institutions;4.07.01.02; OFFBALANCE;781;8;true;158755;AAA;1;158112
+158759;Custody assets from other professionals dealing on the financial markets;4.07.01.03; OFFBALANCE;782;8;true;158759;AAA;1;158112
+158761;Other custody assets;4.07.01.99; OFFBALANCE;783;8;true;158761;AAA;1;158112
+158113;Fiduciary transactions;4.07.02; OFFBALANCE;784;3;false;158113;AAA;1;157981
+158763;Fiduciary investments;4.07.02.01; OFFBALANCE;785;8;true;158763;AAA;1;158113
+158765;Fiduciary loans;4.07.02.02; OFFBALANCE;786;8;true;158765;AAA;1;158113
+158111;Asset management;4.07.03; OFFBALANCE;787;3;false;158111;AAA;1;157981
+158767;Asset management;4.07.03.01; OFFBALANCE;788;8;true;158767;AAA;1;158111
+158114;Other;4.07.99; OFFBALANCE;789;3;false;158114;AAA;1;157981
+158769;Other;4.07.99.01; OFFBALANCE;790;8;true;158769;AAA;1;158114
+157941;Income Statement;5;INCOME;386;1;false;157941;AAA;1;157936
+157984;Interest income (+);5.02;INCOME;387;2;false;157984;AAA;1;157941
+158117;Cash & cash balances with central banks;5.02.01;INCOME;388;3;false;158117;AAA;1;157984
+158771;Cash & cash balances with central banks;5.02.01.01;INCOME;389;8;true;158771;AAA;1;158117
+158118;Financial assets held for trading (if accounted for separately);5.02.02;INCOME;390;3;false;158118;AAA;1;157984
+158773;(Trading) Financial assets held for trading (if accounted for separately) (+);5.02.02.01;INCOME;391;8;true;158773;AAA;1;158118
+158123;Financial assets designated at fair value through profit or loss;5.02.03;INCOME;392;3;false;158123;AAA;1;157984
+158775;(FVO) Financial assets designated at fair value through profit or loss ;5.02.03.01;INCOME;393;8;true;158775;AAA;1;158123
+158120;Available-for-sale financial assets;5.02.04;INCOME;394;3;false;158120;AAA;1;157984
+158777;(AFS) Available-for-sale financial assets;5.02.04.01;INCOME;395;8;true;158777;AAA;1;158120
+158779;(AFS) Available-for-sale financial assets - Agio amortization;5.02.04.71;INCOME;396;8;true;158779;AAA;1;158120
+158121;Loans and receivables (including finance leases);5.02.05;INCOME;397;3;false;158121;AAA;1;157984
+158781;(LAR) Debt Instruments;5.02.05.01;INCOME;398;8;true;158781;AAA;1;158121
+158783;(LAR) Debt Instruments - Agio amortization;5.02.05.71;INCOME;399;8;true;158783;AAA;1;158121
+158122;Loans and advances;5.02.06;INCOME;400;3;false;158122;AAA;1;157984
+158785;(AC) Loans and advances;5.02.06.01;INCOME;401;8;true;158785;AAA;1;158122
+158791;(AC) Repo;5.02.06.02;INCOME;402;8;true;158791;AAA;1;158122
+158789;(AC) Collateral cash;5.02.06.03;INCOME;403;8;true;158789;AAA;1;158122
+158787;(AC) Loans and advances - Agio amortization;5.02.06.71;INCOME;404;8;true;158787;AAA;1;158122
+188107;(AC) Loans and advances - Agio amortization (interest rate induced);5.02.06.75;INCOME;405;8;true;188107;AAA;1;158122
+188109;(AC) Loans and advances - Agio amortization (credit spread induced);5.02.06.76;INCOME;406;8;true;188109;AAA;1;158122
+210224;(AC) Loans and advances - Transaction costs amortization;5.02.06.91;INCOME;407;8;true;210224;AAA;1;158122
+158119;Held-to-maturity investments;5.02.07;INCOME;408;3;false;158119;AAA;1;157984
+158795;(HTM) Held-to-maturity investments;5.02.07.01;INCOME;409;8;true;158795;AAA;1;158119
+158793;(HTM) Held-to-maturity investments - Agio amortization;5.02.07.71;INCOME;410;8;true;158793;AAA;1;158119
+158116;Derivatives - Hedge accounting: interest rate risk ;5.02.08;INCOME;411;3;false;158116;AAA;1;157984
+158797;Derivatives - Hedge accounting: interest rate risk (+);5.02.08.01;INCOME;412;8;true;158797;AAA;1;158116
+213322;Derivatives - Hedge accounting: other risk (+);5.02.08.02;INCOME;413;8;true;213322;AAA;1;158116
+158115;Other assets;5.02.99;INCOME;414;3;false;158115;AAA;1;157984
+158799;Other assets;5.02.99.01;INCOME;415;8;true;158799;AAA;1;158115
+157985;Interest expenses (-);5.03;EXPENSE;416;2;false;157985;AAA;1;157941
+158127;Deposits from central banks;5.03.01;EXPENSE;417;3;false;158127;AAA;1;157985
+158801;Deposits from central banks;5.03.01.01;EXPENSE;418;8;true;158801;AAA;1;158127
+158128;Financial liabilities held for trading (if accounted for separately);5.03.02;EXPENSE;419;3;false;158128;AAA;1;157985
+158803;(Trading) Financial liabilities held for trading (-);5.03.02.01;EXPENSE;420;8;true;158803;AAA;1;158128
+158129;Financial liabilities designated at fair value through profit or loss;5.03.03;EXPENSE;421;3;false;158129;AAA;1;157985
+158805;(FVO) Financial liabilities designated at fair value through profit or loss;5.03.03.01;EXPENSE;422;8;true;158805;AAA;1;158129
+158126;Financial liabilities measured at amortised cost;5.03.04;EXPENSE;423;3;false;158126;AAA;1;157985
+158809;(AC) Financial liabilities measured at amortised cost;5.03.04.01;EXPENSE;424;8;true;158809;AAA;1;158126
+158811;(AC) Repo;5.03.04.02;EXPENSE;425;8;true;158811;AAA;1;158126
+158807;(AC) Collateral cash;5.03.04.03;EXPENSE;426;8;true;158807;AAA;1;158126
+158125;Derivatives - Hedge accounting: interest rate risk ;5.03.05;EXPENSE;427;3;false;158125;AAA;1;157985
+158813;Derivatives - Hedge accounting: interest rate risk  (-);5.03.05.01;EXPENSE;428;8;true;158813;AAA;1;158125
+158124;Other liabilities;5.03.99;EXPENSE;429;3;false;158124;AAA;1;157985
+158815;Other liabilities;5.03.99.01;EXPENSE;430;8;true;158815;AAA;1;158124
+157986;Expenses on share capital repayable on demand (-);5.04;EXPENSE;431;2;false;157986;AAA;1;157941
+158817;Expenses on share capital repayable on demand;5.04.01.01;EXPENSE;432;8;true;158817;AAA;1;157986
+157987;Dividend income (+);5.05;INCOME;433;2;false;157987;AAA;1;157941
+158130;Financial assets held for trading (if accounted for separately);5.05.01;INCOME;434;3;false;158130;AAA;1;157987
+158819;Financial assets held for trading (if accounted for separately);5.05.01.01;INCOME;435;8;true;158819;AAA;1;158130
+158131;Financial assets designated at fair value through profit or loss;5.05.02;INCOME;436;3;false;158131;AAA;1;157987
+158821;Financial assets designated at fair value through profit or loss;5.05.02.01;INCOME;437;8;true;158821;AAA;1;158131
+158132;Available-for-sale financial assets;5.05.03;INCOME;438;3;false;158132;AAA;1;157987
+158823;Available-for-sale financial assets - Participations;5.05.03.01;INCOME;439;8;true;158823;AAA;1;158132
+158825;Available-for-sale financial assets - Other;5.05.03.02;INCOME;440;8;true;158825;AAA;1;158132
+157994;Fee and commission income (+);5.06;INCOME;441;2;false;157994;AAA;1;157941
+158133;Credit activities;5.06.01;INCOME;442;3;false;158133;AAA;1;157994
+158831;Credit activities - Receivable commissions on CDS;5.06.01.01;INCOME;443;8;true;158831;AAA;1;158133
+158829;Credit activities - Receivable commissions on credit;5.06.01.02;INCOME;444;8;true;158829;AAA;1;158133
+158827;Credit activities - Receivable commissions on commitment;5.06.01.03;INCOME;445;8;true;158827;AAA;1;158133
+158833;Credit activities - Other;5.06.01.04;INCOME;446;8;true;158833;AAA;1;158133
+158134;Management Function;5.06.02;INCOME;447;3;false;158134;AAA;1;157994
+158161;Institutional customers;5.06.02.01;INCOME;448;4;false;158161;AAA;1;158134
+158847;Management fees;5.06.02.01.01;INCOME;449;8;true;158847;AAA;1;158161
+158849;Brokerage;5.06.02.01.02;INCOME;450;8;true;158849;AAA;1;158161
+158843;Custody fees and custodian charges;5.06.02.01.03;INCOME;451;8;true;158843;AAA;1;158161
+158841;securities transactions commissions;5.06.02.01.04;INCOME;452;8;true;158841;AAA;1;158161
+158835;Coupons commissions;5.06.02.01.05;INCOME;453;8;true;158835;AAA;1;158161
+158837;Options and futures commissions;5.06.02.01.06;INCOME;454;8;true;158837;AAA;1;158161
+158839;Commissions on services;5.06.02.01.07;INCOME;455;8;true;158839;AAA;1;158161
+158845;Other commissions;5.06.02.01.08;INCOME;456;8;true;158845;AAA;1;158161
+158162;Private customers;5.06.02.02;INCOME;457;4;false;158162;AAA;1;158134
+158851;Management fees;5.06.02.02.01;INCOME;458;8;true;158851;AAA;1;158162
+158853;Brokerage;5.06.02.02.02;INCOME;459;8;true;158853;AAA;1;158162
+158865;Custody fees and custodian charges;5.06.02.02.03;INCOME;460;8;true;158865;AAA;1;158162
+158863;securities transactions commissions;5.06.02.02.04;INCOME;461;8;true;158863;AAA;1;158162
+158861;Coupons commissions;5.06.02.02.05;INCOME;462;8;true;158861;AAA;1;158162
+158859;Options and futures commissions;5.06.02.02.06;INCOME;463;8;true;158859;AAA;1;158162
+158857;Commissions on services;5.06.02.02.07;INCOME;464;8;true;158857;AAA;1;158162
+158855;Other commissions;5.06.02.02.08;INCOME;465;8;true;158855;AAA;1;158162
+158163;Other;5.06.02.03;INCOME;466;4;false;158163;AAA;1;158134
+158867;Other management fees;5.06.02.03.01;INCOME;467;8;true;158867;AAA;1;158163
+158135;Undertakings for collective investment (UCI) activities;5.06.03;INCOME;468;3;false;158135;AAA;1;157994
+158873;Custodian bank;5.06.03.01;INCOME;469;8;true;158873;AAA;1;158135
+158871;Central administration;5.06.03.02;INCOME;470;8;true;158871;AAA;1;158135
+158869;Other;5.06.03.99;INCOME;471;8;true;158869;AAA;1;158135
+158136;Corporate finance;5.06.04;INCOME;472;3;false;158136;AAA;1;157994
+158875;Corporate finance;5.06.04.01;INCOME;473;8;true;158875;AAA;1;158136
+158137;Other fee and commission income;5.06.99;INCOME;474;3;false;158137;AAA;1;157994
+158877;Transfer commissions;5.06.99.01;INCOME;475;8;true;158877;AAA;1;158137
+158879;miscellaneous services commissions;5.06.99.02;INCOME;476;8;true;158879;AAA;1;158137
+157995;Fee and commission expenses (-);5.07;EXPENSE;477;2;false;157995;AAA;1;157941
+158138;Credit activities;5.07.01;EXPENSE;478;3;false;158138;AAA;1;157995
+158883;Credit activities - Receivable commissions on CDS;5.07.01.01;EXPENSE;479;8;true;158883;AAA;1;158138
+158881;Credit activities - Receivable commissions on credit;5.07.01.02;EXPENSE;480;8;true;158881;AAA;1;158138
+158887;Credit activities - Receivable commissions on commitment;5.07.01.03;EXPENSE;481;8;true;158887;AAA;1;158138
+158885;Credit activities - Other;5.07.01.04;EXPENSE;482;8;true;158885;AAA;1;158138
+158139;Management Function;5.07.02;EXPENSE;483;3;false;158139;AAA;1;157995
+158164;Institutional customers;5.07.02.01;EXPENSE;484;4;false;158164;AAA;1;158139
+158899;Management fees;5.07.02.01.01;EXPENSE;485;8;true;158899;AAA;1;158164
+158897;Brokerage;5.07.02.01.02;EXPENSE;486;8;true;158897;AAA;1;158164
+158895;Custody fees and custodian charges;5.07.02.01.03;EXPENSE;487;8;true;158895;AAA;1;158164
+158893;securities transactions commissions;5.07.02.01.04;EXPENSE;488;8;true;158893;AAA;1;158164
+158889;Coupons commissions;5.07.02.01.05;EXPENSE;489;8;true;158889;AAA;1;158164
+158891;Options and futures commissions;5.07.02.01.06;EXPENSE;490;8;true;158891;AAA;1;158164
+158901;Commissions on services;5.07.02.01.07;EXPENSE;491;8;true;158901;AAA;1;158164
+158903;Other commissions;5.07.02.01.08;EXPENSE;492;8;true;158903;AAA;1;158164
+158165;Private customers;5.07.02.02;EXPENSE;493;4;false;158165;AAA;1;158139
+158905;Management fees;5.07.02.02.01;EXPENSE;494;8;true;158905;AAA;1;158165
+158907;Brokerage;5.07.02.02.02;EXPENSE;495;8;true;158907;AAA;1;158165
+158909;Custody fees and custodian charges;5.07.02.02.03;EXPENSE;496;8;true;158909;AAA;1;158165
+158911;securities transactions commissions;5.07.02.02.04;EXPENSE;497;8;true;158911;AAA;1;158165
+158913;Coupons commissions;5.07.02.02.05;EXPENSE;498;8;true;158913;AAA;1;158165
+158915;Options and futures commissions;5.07.02.02.06;EXPENSE;499;8;true;158915;AAA;1;158165
+158917;Commissions on services;5.07.02.02.07;EXPENSE;500;8;true;158917;AAA;1;158165
+158919;Other commissions;5.07.02.02.08;EXPENSE;501;8;true;158919;AAA;1;158165
+158166;Other;5.07.02.03;EXPENSE;502;4;false;158166;AAA;1;158139
+158921;Other management fees;5.07.02.03.01;EXPENSE;503;8;true;158921;AAA;1;158166
+158140;Undertakings for collective investment (UCI) activities;5.07.03;EXPENSE;504;3;false;158140;AAA;1;157995
+158923;Custodian bank;5.07.03.01;EXPENSE;505;8;true;158923;AAA;1;158140
+158925;Central administration;5.07.03.02;EXPENSE;506;8;true;158925;AAA;1;158140
+158927;Other;5.07.03.99;EXPENSE;507;8;true;158927;AAA;1;158140
+158141;Corporate finance;5.07.04;EXPENSE;508;3;false;158141;AAA;1;157995
+158929;Corporate finance;5.07.04.01;EXPENSE;509;8;true;158929;AAA;1;158141
+158142;Other fee and commission income;5.07.99;EXPENSE;510;3;false;158142;AAA;1;157995
+158933;Transfer commissions;5.07.99.01;EXPENSE;511;8;true;158933;AAA;1;158142
+158931;Other service commissions;5.07.99.02;EXPENSE;512;8;true;158931;AAA;1;158142
+157996;Net results on financial assets & liabilities not measured at fvtpl: net;5.08;INCOME;513;2;false;157996;AAA;1;157941
+158143;Available-for-sale financial assets;5.08.01;INCOME;514;3;false;158143;AAA;1;157996
+158935;(AFS) Available-for-sale financial assets;5.08.01.01;INCOME;515;8;true;158935;AAA;1;158143
+158937;(AFS) Participations in associates;5.08.01.02;INCOME;516;8;true;158937;AAA;1;158143
+158144;Loans and receivables (including finance leases);5.08.02;INCOME;517;3;false;158144;AAA;1;157996
+158939;(LAR) Loans and receivables (including finance leases);5.08.02.01;INCOME;518;8;true;158939;AAA;1;158144
+158145;Held-to-maturity investments;5.08.03;INCOME;519;3;false;158145;AAA;1;157996
+158941;(HTM) Held-to-maturity investments;5.08.03.01;INCOME;520;8;true;158941;AAA;1;158145
+158146;Financial liabilities measured at amortised cost;5.08.04;INCOME;521;3;false;158146;AAA;1;157996
+158943;(AC) Financial liabilities measured at amortised cost;5.08.04.01;INCOME;522;8;true;158943;AAA;1;158146
+158147;Other ;5.08.99;INCOME;523;3;false;158147;AAA;1;157996
+158945;Other ;5.08.99.01;INCOME;524;8;true;158945;AAA;1;158147
+157997;Gains (losses) on financial assets and liabilities held for trading: net (+/-);5.09;INCOME;525;2;false;157997;AAA;1;157941
+158148;Equity instruments and related derivatives;5.09.01;INCOME;526;3;false;158148;AAA;1;157997
+158947;(Trading) Equity instruments and related derivatives;5.09.01.01;INCOME;527;8;true;158947;AAA;1;158148
+158149;Interest rate instruments and related derivatives ;5.09.02;INCOME;528;3;false;158149;AAA;1;157997
+158951;(Trading) Options/Cap/Floor/Collar/Swaption;5.09.02.01;INCOME;529;8;true;158951;AAA;1;158149
+158949;(Trading) IRS;5.09.02.02;INCOME;530;8;true;158949;AAA;1;158149
+158955;(Trading) CIRS;5.09.02.03;INCOME;531;8;true;158955;AAA;1;158149
+158953;(Trading) FRA;5.09.02.04;INCOME;532;8;true;158953;AAA;1;158149
+158957;(Trading) Futures;5.09.02.05;INCOME;533;8;true;158957;AAA;1;158149
+158959;(Trading) Bonds;5.09.02.06;INCOME;534;8;true;158959;AAA;1;158149
+213324;(Trading) TRS;5.09.02.08;INCOME;535;8;true;213324;AAA;1;158149
+158961;(Trading) Other;5.09.02.99;INCOME;536;8;true;158961;AAA;1;158149
+158153;Foreign exchange trading;5.09.03;INCOME;537;3;false;158153;AAA;1;157997
+158965;Foreign exchange trading - Spot;5.09.03.01;INCOME;538;8;true;158965;AAA;1;158153
+158963;Foreign exchange trading - Term;5.09.03.02;INCOME;539;8;true;158963;AAA;1;158153
+158971;Foreign exchange - Precious metal;5.09.03.03;INCOME;540;8;true;158971;AAA;1;158153
+158967;Foreign exchange - Bills;5.09.03.04;INCOME;541;8;true;158967;AAA;1;158153
+158969;Foreign exchange - Swap;5.09.03.05;INCOME;542;8;true;158969;AAA;1;158153
+158152;Credit risk instruments and related derivatives;5.09.04;INCOME;543;3;false;158152;AAA;1;157997
+158973;(Trading) Credit risk instruments and related derivatives;5.09.04.01;INCOME;544;8;true;158973;AAA;1;158152
+158151;Commodities and related derivatives;5.09.05;INCOME;545;3;false;158151;AAA;1;157997
+158975;(Trading) Commodities and related derivatives;5.09.05.01;INCOME;546;8;true;158975;AAA;1;158151
+158150;Other (including hybrid derivatives);5.09.99;INCOME;547;3;false;158150;AAA;1;157997
+158977;(Trading) Other (including hybrid derivatives);5.09.99.01;INCOME;548;8;true;158977;AAA;1;158150
+157998;Net results on financial assets and liabilities designated at fvtpl: net(+/-);5.10;INCOME;549;2;false;157998;AAA;1;157941
+158979;(FVO) Net results on financial assets and liabilities designated at fvtpl: net;5.10.01.01;INCOME;550;8;true;158979;AAA;1;157998
+157999;Gains (losses) from hedge accounting: net (+/-);5.11;INCOME;551;2;false;157999;AAA;1;157941
+158983;Hedge results - Derivative (+/-);5.11.01.01;INCOME;552;8;true;158983;AAA;1;157999
+158981;Hedge results - Bonds (+/-);5.11.01.02;INCOME;553;8;true;158981;AAA;1;157999
+158985;Hedge results - Credit (+/-);5.11.01.03;INCOME;554;8;true;158985;AAA;1;157999
+158000;Exchange differences: net (+/-);5.12;INCOME;555;2;false;158000;AAA;1;157941
+158167;Balance sheet - Rounding difference;5.12.01.01;INCOME;556;8;true;158167;AAA;1;158000
+158987;Settlement - Matching difference;5.12.01.02;INCOME;557;8;true;158987;AAA;1;158000
+158989;STEX - Gross amount difference;5.12.01.03;INCOME;558;8;true;158989;AAA;1;158000
+158991;STEX - Pooling difference;5.12.01.04;INCOME;559;8;true;158991;AAA;1;158000
+158993;Exchange differences on monetary financial instrument;5.12.01.05;INCOME;560;8;true;158993;AAA;1;158000
+158001;Gains (losses) on derecognition of assets other than held for sale: net  (+/-);5.13;INCOME;561;2;false;158001;AAA;1;157941
+158995;Gains (losses) on derecognition of assets other than held for sale: net  (+/-);5.13.01.01;INCOME;562;8;true;158995;AAA;1;158001
+158002;Other operating income  (+);5.14;INCOME;563;2;false;158002;AAA;1;157941
+158997;Other operating income  (+);5.14.01.01;INCOME;564;8;true;158997;AAA;1;158002
+158003;Other operating expenses (-);5.15;EXPENSE;565;2;false;158003;AAA;1;157941
+158999;Other operating expenses (-);5.15.01.01;EXPENSE;566;8;true;158999;AAA;1;158003
+157991;Administration costs (-);5.16;EXPENSE;567;2;false;157991;AAA;1;157941
+158154;Staff expenses (-);5.16.01;EXPENSE;568;3;false;158154;AAA;1;157991
+159005;Wages and salaries;5.16.01.01;EXPENSE;569;8;true;159005;AAA;1;158154
+159003;Social security charges;5.16.01.02;EXPENSE;570;8;true;159003;AAA;1;158154
+159001;Pension and similar expenses;5.16.01.03;EXPENSE;571;8;true;159001;AAA;1;158154
+159007;Temporary staff expenses;5.16.01.04;EXPENSE;572;8;true;159007;AAA;1;158154
+159011;Share based payments;5.16.01.05;EXPENSE;573;8;true;159011;AAA;1;158154
+159009;Other;5.16.01.99;EXPENSE;574;8;true;159009;AAA;1;158154
+158155;General and administrative expenses (-);5.16.02;EXPENSE;575;3;false;158155;AAA;1;157991
+159013;General and administrative expenses (-);5.16.02.01;EXPENSE;576;8;true;159013;AAA;1;158155
+157992;Depreciation (+/-);5.17;EXPENSE;577;2;false;157992;AAA;1;157941
+158158;Property: Plant and Equipment;5.17.01;EXPENSE;578;3;false;158158;AAA;1;157992
+159015;Bank buildings and other properties - main depreciation;5.17.01.01;EXPENSE;579;8;true;159015;AAA;1;158158
+232298;Bank buildings and other properties - special depreciation;5.17.01.03;EXPENSE;580;8;true;232298;AAA;1;158158
+232294;Bank buildings and other properties - main depreciation - accruals;5.17.01.08;EXPENSE;581;8;true;232294;AAA;1;158158
+232290;Other tangible fixed assets - main depreciation;5.17.01.11;EXPENSE;582;8;true;232290;AAA;1;158158
+232292;Other tangible fixed assets - special depreciation;5.17.01.13;EXPENSE;583;8;true;232292;AAA;1;158158
+232296;Other tangible fixed assets - main depreciation - accruals;5.17.01.18;EXPENSE;584;8;true;232296;AAA;1;158158
+158157;Investment Properties;5.17.02;EXPENSE;585;3;false;158157;AAA;1;157992
+159017;Investment Properties;5.17.02.01;EXPENSE;586;8;true;159017;AAA;1;158157
+158156;Intangible assets (other than goodwill);5.17.03;EXPENSE;587;3;false;158156;AAA;1;157992
+159019;Other intangible assets - main depreciation;5.17.03.01;EXPENSE;588;8;true;159019;AAA;1;158156
+232302;Other intangible assets - special depreciation;5.17.03.03;EXPENSE;589;8;true;232302;AAA;1;158156
+232300;Other intangible assets - main depreciation - accruals;5.17.03.08;EXPENSE;590;8;true;232300;AAA;1;158156
+157993;Provisions (+/-);5.18;EXPENSE;591;2;false;157993;AAA;1;157941
+159021;Provisions (+/-);5.18.01.01;EXPENSE;592;8;true;159021;AAA;1;157993
+157983;Impairment (+/-);5.19;EXPENSE;593;2;false;157983;AAA;1;157941
+158159;Impairment on financial assets not measured at fair value through profit or loss;5.19.01;EXPENSE;594;3;false;158159;AAA;1;157983
+159025;(LAR) Financial assets measured at cost (unquoted equity);5.19.01.01;EXPENSE;595;8;true;159025;AAA;1;158159
+159023;(AFS) Available-for-sale financial assets ;5.19.01.02;EXPENSE;596;8;true;159023;AAA;1;158159
+159027;(AC) Loans and receivables measured at amortised cost (including finance leases);5.19.01.03;EXPENSE;597;8;true;159027;AAA;1;158159
+159029;(HTM) Held to maturity investments measured at amortised cost;5.19.01.04;EXPENSE;598;8;true;159029;AAA;1;158159
+158160;Impairment on non-financial assets: net (+/-);5.19.02;EXPENSE;599;3;false;158160;AAA;1;157983
+159033;Property: plant and equipment;5.19.02.01;EXPENSE;600;8;true;159033;AAA;1;158160
+159031;Investment properties;5.19.02.02;EXPENSE;601;8;true;159031;AAA;1;158160
+159035;Goodwill;5.19.02.03;EXPENSE;602;8;true;159035;AAA;1;158160
+159039;Other intangible assets;5.19.02.04;EXPENSE;603;8;true;159039;AAA;1;158160
+159037;Other;5.19.02.99;EXPENSE;604;8;true;159037;AAA;1;158160
+158004;Negative goodwill immediately recognised in profit or loss (+);5.20;INCOME;605;2;false;158004;AAA;1;157941
+159041;Negative goodwill immediately recognised in profit or loss (+);5.20.01.01;INCOME;606;8;true;159041;AAA;1;158004
+157988;Res.from non-curr.assets and disposal grps classif.HFT not qual.as discont.oper.;5.22;INCOME;607;2;false;157988;AAA;1;157941
+159043;Res.from non-curr.assets and disposal grps classif.HFT not qual.as discont.oper.;5.22.01.01;INCOME;608;8;true;159043;AAA;1;157988
+157989;Tax expense (income) related to profit or loss from continuing operations (-/+);5.24;EXPENSE;609;2;false;157989;AAA;1;157941
+159045;Tax expense (income) related to profit or loss from continuing operations (-/+);5.24.01.01;EXPENSE;610;8;true;159045;AAA;1;157989
+157990;Profit or loss after tax from discontinued operations (+/-);5.26;EXPENSE;611;2;false;157990;AAA;1;157941
+159047;Profit or loss after tax from discontinued operations (+/-);5.26.01.01;EXPENSE;612;8;true;159047;AAA;1;157990
+157938;Difference accounts;9;DIFFERENCE;791;0;false;157938;AAA;1;null
+159049;Difference accounts - debit;9.01.01.01;DIFFERENCE;792;8;true;159049;AAA;1;157938
+159051;Difference accounts - credit;9.01.01.02;DIFFERENCE;793;8;true;159051;AAA;1;157938
+159057;Difference accounts - Charge/tax given to customers !!!;9.01.01.03;DIFFERENCE;794;8;true;159057;AAA;1;157938
+159055;Difference accounts - debit - Migration;9.01.01.11;DIFFERENCE;795;8;true;159055;AAA;1;157938
+159053;Difference accounts - credit - Migration;9.01.01.12;DIFFERENCE;796;8;true;159053;AAA;1;157938

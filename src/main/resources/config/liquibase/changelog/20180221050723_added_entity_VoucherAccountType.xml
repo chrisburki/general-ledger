@@ -31,7 +31,13 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+
+    </changeSet>
+    <changeSet id="20180221050723-2" author="jhipster">
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/voucher_account_type.csv"
+                  separator=";"
+                  tableName="voucher_account_type"/>
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

@@ -15,7 +15,7 @@ entity ChartOfAccounts {
 }
 
 enum LedgerAccountType {
-    ASSETS, LIABILITIES, INCOME, EXPENSE, OFFBALANCE
+    TOP, ASSETS, LIABILITIES, INCOME, EXPENSE, OFFBALANCE, DIFFERENCE
 }
 
 entity LedgerAccount {
@@ -51,7 +51,7 @@ entity BalanceSheet {
     balanceDate LocalDate required,
     balanceDateType BalanceDateType required,
     globalSequenceNumber Long required,
-	legalEntityId String required    
+	legalEntityId String required
 }
 
 entity BalanceSheetItem {

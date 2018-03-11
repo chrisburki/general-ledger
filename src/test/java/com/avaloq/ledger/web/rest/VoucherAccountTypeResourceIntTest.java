@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 import static com.avaloq.ledger.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -112,7 +113,8 @@ public class VoucherAccountTypeResourceIntTest {
         // Validate the VoucherAccountType in the database
         List<VoucherAccountType> voucherAccountTypeList = voucherAccountTypeRepository.findAll();
         assertThat(voucherAccountTypeList).hasSize(databaseSizeBeforeCreate + 1);
-        VoucherAccountType testVoucherAccountType = voucherAccountTypeList.get(voucherAccountTypeList.size() - 1);
+        Optional<VoucherAccountType> voucherAccountTypeSearch = voucherAccountTypeRepository.findByCategory(DEFAULT_CATEGORY);
+        VoucherAccountType testVoucherAccountType = voucherAccountTypeSearch.get();
         assertThat(testVoucherAccountType.getCategory()).isEqualTo(DEFAULT_CATEGORY);
         assertThat(testVoucherAccountType.getName()).isEqualTo(DEFAULT_NAME);
     }
@@ -167,8 +169,8 @@ public class VoucherAccountTypeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(voucherAccountType.getId().intValue())))
-            .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY.toString())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)));
     }
 
     @Test
@@ -182,8 +184,8 @@ public class VoucherAccountTypeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(voucherAccountType.getId().intValue()))
-            .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY.toString()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME));
     }
 
     @Test
@@ -218,7 +220,8 @@ public class VoucherAccountTypeResourceIntTest {
         // Validate the VoucherAccountType in the database
         List<VoucherAccountType> voucherAccountTypeList = voucherAccountTypeRepository.findAll();
         assertThat(voucherAccountTypeList).hasSize(databaseSizeBeforeUpdate);
-        VoucherAccountType testVoucherAccountType = voucherAccountTypeList.get(voucherAccountTypeList.size() - 1);
+        Optional<VoucherAccountType> voucherAccountTypeSearch = voucherAccountTypeRepository.findByCategory(UPDATED_CATEGORY);
+        VoucherAccountType testVoucherAccountType = voucherAccountTypeSearch.get();
         assertThat(testVoucherAccountType.getCategory()).isEqualTo(UPDATED_CATEGORY);
         assertThat(testVoucherAccountType.getName()).isEqualTo(UPDATED_NAME);
     }

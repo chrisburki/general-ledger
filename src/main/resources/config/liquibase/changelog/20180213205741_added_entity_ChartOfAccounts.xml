@@ -47,6 +47,12 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <createIndex indexName="idx_coa_key_entity"
+                     tableName="chart_of_accounts"
+                     unique="true">
+            <column name="jhi_key"/>
+            <column name="legal_entity_id"/>
+        </createIndex>
 
     </changeSet>
     <changeSet id="20180213205741-2" author="jhipster">

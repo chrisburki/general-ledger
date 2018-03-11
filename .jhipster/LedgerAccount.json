@@ -36,7 +36,7 @@
         {
             "fieldName": "accountType",
             "fieldType": "LedgerAccountType",
-            "fieldValues": "ASSETS,LIABILITIES,INCOME,EXPENSE,OFFBALANCE",
+            "fieldValues": "TOP,ASSETS,LIABILITIES,INCOME,EXPENSE,OFFBALANCE,DIFFERENCE",
             "fieldValidateRules": [
                 "required"
             ]

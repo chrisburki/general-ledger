@@ -1,6 +1,7 @@
 package com.avaloq.ledger.repository;
 
 import com.avaloq.ledger.domain.BalanceSheet;
+import com.avaloq.ledger.domain.enumeration.BalanceDateType;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
@@ -16,6 +17,6 @@ import java.util.Optional;
 @Repository
 public interface BalanceSheetRepository extends JpaRepository<BalanceSheet, Long> {
 
-    Optional<BalanceSheet> findByChartOfAccountsIdAndBalanceDate(Long chartOfAccountsId, LocalDate date);
+    Optional<BalanceSheet> findByChartOfAccountsIdAndBalanceDateAndBalanceDateType(Long chartOfAccountsId, LocalDate date, BalanceDateType dateType);
 
 }

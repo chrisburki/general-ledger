@@ -15,7 +15,8 @@ import com.avaloq.ledger.domain.enumeration.LedgerAccountType;
  * A LedgerAccount.
  */
 @Entity
-@Table(name = "ledger_account")
+@Table(name = "ledger_account",
+    indexes = {@Index(name = "idx_la_key_entity",  columnList="jhi_key,legal_entity_id", unique = true)})
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class LedgerAccount implements Serializable {
 

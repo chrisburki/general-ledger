@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 import static com.avaloq.ledger.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -116,7 +117,8 @@ public class FinancialInstrumentTypeResourceIntTest {
         // Validate the FinancialInstrumentType in the database
         List<FinancialInstrumentType> financialInstrumentTypeList = financialInstrumentTypeRepository.findAll();
         assertThat(financialInstrumentTypeList).hasSize(databaseSizeBeforeCreate + 1);
-        FinancialInstrumentType testFinancialInstrumentType = financialInstrumentTypeList.get(financialInstrumentTypeList.size() - 1);
+        Optional<FinancialInstrumentType> financialInstrumentTypeSearch = financialInstrumentTypeRepository.findByCategory(DEFAULT_CATEGORY);
+        FinancialInstrumentType testFinancialInstrumentType = financialInstrumentTypeSearch.get();
         assertThat(testFinancialInstrumentType.getCategory()).isEqualTo(DEFAULT_CATEGORY);
         assertThat(testFinancialInstrumentType.getName()).isEqualTo(DEFAULT_NAME);
     }
@@ -171,8 +173,8 @@ public class FinancialInstrumentTypeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(financialInstrumentType.getId().intValue())))
-            .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY.toString())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY)))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)));
     }
 
     @Test
@@ -186,8 +188,8 @@ public class FinancialInstrumentTypeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(financialInstrumentType.getId().intValue()))
-            .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY.toString()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME));
     }
 
     @Test
@@ -222,7 +224,8 @@ public class FinancialInstrumentTypeResourceIntTest {
         // Validate the FinancialInstrumentType in the database
         List<FinancialInstrumentType> financialInstrumentTypeList = financialInstrumentTypeRepository.findAll();
         assertThat(financialInstrumentTypeList).hasSize(databaseSizeBeforeUpdate);
-        FinancialInstrumentType testFinancialInstrumentType = financialInstrumentTypeList.get(financialInstrumentTypeList.size() - 1);
+        Optional<FinancialInstrumentType> financialInstrumentTypeSearch = financialInstrumentTypeRepository.findByCategory(UPDATED_CATEGORY);
+        FinancialInstrumentType testFinancialInstrumentType = financialInstrumentTypeSearch.get();
         assertThat(testFinancialInstrumentType.getCategory()).isEqualTo(UPDATED_CATEGORY);
         assertThat(testFinancialInstrumentType.getName()).isEqualTo(UPDATED_NAME);
     }

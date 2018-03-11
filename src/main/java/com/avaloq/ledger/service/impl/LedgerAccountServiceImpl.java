@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 
 /**
  * Service Implementation for managing LedgerAccount.
@@ -83,4 +85,24 @@ public class LedgerAccountServiceImpl implements LedgerAccountService {
         log.debug("Request to delete LedgerAccount : {}", id);
         ledgerAccountRepository.delete(id);
     }
+
+    /**
+     * Get the chartOfAccountsDTO.
+     *
+     * @param key the id of the entity
+     * @return the entity
+     */
+    @Override
+    public LedgerAccount findByKeyAndLegalEntityId(String key, String legalEntityId) {
+        Optional<LedgerAccount> ledgerAccountSearch = ledgerAccountRepository.findByKeyAndLegalEntityId(key, legalEntityId);
+
+        LedgerAccount ledgerAccount = new LedgerAccount();
+        if (ledgerAccountSearch.isPresent()) {
+            ledgerAccount = ledgerAccountSearch.get();
+        }
+
+        return ledgerAccount;
+
+    }
+
 }

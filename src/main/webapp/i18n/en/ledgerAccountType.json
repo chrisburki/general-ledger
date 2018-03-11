@@ -2,11 +2,13 @@
     "ledgerApp": {
         "LedgerAccountType" : {
             "null": "",
+            "TOP": "TOP",
             "ASSETS": "ASSETS",
             "LIABILITIES": "LIABILITIES",
             "INCOME": "INCOME",
             "EXPENSE": "EXPENSE",
-            "OFFBALANCE": "OFFBALANCE"
+            "OFFBALANCE": "OFFBALANCE",
+            "DIFFERENCE": "DIFFERENCE"
         }
     }
 }

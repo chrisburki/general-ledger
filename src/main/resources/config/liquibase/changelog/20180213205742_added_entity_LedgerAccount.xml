@@ -63,7 +63,20 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+        <createIndex indexName="idx_la_key_entity"
+                     tableName="ledger_account"
+                     unique="true">
+            <column name="jhi_key"/>
+            <column name="legal_entity_id"/>
+        </createIndex>
+
     </changeSet>
+    <changeSet id="20180213205742-2" author="jhipster">
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/ledger_account.csv"
+                  separator=";"
+                  tableName="ledger_account"/>
+    </changeSet>
+
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

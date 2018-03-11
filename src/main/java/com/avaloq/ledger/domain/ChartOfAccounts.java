@@ -15,7 +15,8 @@ import com.avaloq.ledger.domain.enumeration.AccountingStandard;
  * A ChartOfAccounts.
  */
 @Entity
-@Table(name = "chart_of_accounts")
+@Table(name = "chart_of_accounts",
+    indexes = {@Index(name = "idx_coa_key_entity",  columnList="jhi_key,legal_entity_id", unique = true)})
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class ChartOfAccounts implements Serializable {
 
