@@ -106,3 +106,4 @@ jhipster:
 # ===================================================================
 
 application:
+    voucher_posting_url: http://10.0.75.1/ledger-posting

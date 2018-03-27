@@ -8,7 +8,13 @@ services:
             - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
         ports:
             - 8080:8080
+        links:
+          - ledger-posting-rule
     ledger-postgresql:
         extends:
             file: postgresql.yml
             service: ledger-postgresql
+    ledger-posting-rule:
+        image: chrisburki/ledger-posting-service
+        ports:
+            - 80:8080

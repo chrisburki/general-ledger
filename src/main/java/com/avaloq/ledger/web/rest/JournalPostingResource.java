@@ -157,7 +157,8 @@ public class JournalPostingResource {
     public ResponseEntity<JournalPostingGenerateVM> createJournalPosting(
         @Valid @RequestBody @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam(value="refDate") LocalDate refDate,
         @Valid @RequestBody @RequestParam(value="chartOfAccounts") String chartOfAccountsKey,
-        @Valid @RequestBody @RequestParam(value="dateType") String dateType
+        @Valid @RequestBody @RequestParam(value="dateType") String dateType,
+        @Valid @RequestBody @RequestParam(value="useRule", defaultValue= "true") boolean useRule
     ) throws URISyntaxException {
         log.debug("REST request to save JournalPosting : reference date: ", refDate, ", chart of account: ", chartOfAccountsKey, ", date type: ",dateType);
         if (refDate == null) {
@@ -183,7 +184,7 @@ public class JournalPostingResource {
         }
 
         // service call
-        Long count = journalPostingService.generateFromVoucher(refDate, chartOfAccounts, balanceDateType, LEGAL_ENTITY_ID);
+        Long count = journalPostingService.generateFromVoucher(refDate, chartOfAccounts, balanceDateType, LEGAL_ENTITY_ID, useRule);
 
         // result
         String status;

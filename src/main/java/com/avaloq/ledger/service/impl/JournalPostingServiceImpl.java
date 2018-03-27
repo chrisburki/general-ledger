@@ -1,14 +1,11 @@
 package com.avaloq.ledger.service.impl;
 
-import com.avaloq.ledger.domain.BalanceSheet;
-import com.avaloq.ledger.domain.LedgerAccount;
-import com.avaloq.ledger.domain.VoucherBooking;
+import com.avaloq.ledger.domain.*;
 import com.avaloq.ledger.domain.enumeration.BalanceDateType;
 import com.avaloq.ledger.repository.BalanceSheetItemRepository;
 import com.avaloq.ledger.repository.BalanceSheetRepository;
-import com.avaloq.ledger.repository.VoucherBookingRepository;
+import com.avaloq.ledger.service.JournalPostingRuleService;
 import com.avaloq.ledger.service.JournalPostingService;
-import com.avaloq.ledger.domain.JournalPosting;
 import com.avaloq.ledger.repository.JournalPostingRepository;
 import com.avaloq.ledger.service.LedgerAccountService;
 import com.avaloq.ledger.service.VoucherBookingService;
@@ -24,7 +21,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,6 +49,8 @@ public class JournalPostingServiceImpl implements JournalPostingService {
 
     private final ChartOfAccountsMapper chartOfAccountsMapper;
 
+    private final JournalPostingRuleService journalPostingRuleService;
+
     public JournalPostingServiceImpl(
         JournalPostingRepository journalPostingRepository,
         JournalPostingMapper journalPostingMapper,
@@ -60,7 +58,8 @@ public class JournalPostingServiceImpl implements JournalPostingService {
         ChartOfAccountsMapper chartOfAccountsMapper,
         BalanceSheetItemRepository balanceSheetItemRepository,
         VoucherBookingService voucherBookingService,
-        LedgerAccountService ledgerAccountService
+        LedgerAccountService ledgerAccountService,
+        JournalPostingRuleService journalPostingRuleService
     ) {
         this.journalPostingRepository = journalPostingRepository;
         this.journalPostingMapper = journalPostingMapper;
@@ -69,6 +68,7 @@ public class JournalPostingServiceImpl implements JournalPostingService {
         this.balanceSheetItemRepository = balanceSheetItemRepository;
         this.voucherBookingService = voucherBookingService;
         this.ledgerAccountService = ledgerAccountService;
+        this.journalPostingRuleService = journalPostingRuleService;
     }
 
     /**
@@ -132,7 +132,7 @@ public class JournalPostingServiceImpl implements JournalPostingService {
      * @return number of created entity
      */
     @Override
-    public Long generateFromVoucher(LocalDate refDate, ChartOfAccountsDTO chartOfAccountsDTO, BalanceDateType dateType, String legalEntityId) {
+    public Long generateFromVoucher(LocalDate refDate, ChartOfAccountsDTO chartOfAccountsDTO, BalanceDateType dateType, String legalEntityId, boolean useRule) {
 
         // 1. check for existing balance-sheet
         Optional<BalanceSheet> balanceSheetSearch = balanceSheetRepository.findByChartOfAccountsIdAndBalanceDateAndBalanceDateType(chartOfAccountsDTO.getId(), refDate, dateType);
@@ -166,8 +166,25 @@ public class JournalPostingServiceImpl implements JournalPostingService {
             JournalPosting journalPosting = new JournalPosting();
 
             // Get Ledger Account from Rule
-            LedgerAccount debitLedgerAccount = ledgerAccountService.findByKeyAndLegalEntityId("2.03.02.01",legalEntityId);
-            LedgerAccount creditLedgerAccount = ledgerAccountService.findByKeyAndLegalEntityId("5.06.02.02.01",legalEntityId);
+            LedgerAccount debitLedgerAccount = new LedgerAccount();
+            LedgerAccount creditLedgerAccount = new LedgerAccount();
+            if (useRule)  {
+                Voucher voucher = new Voucher();
+                voucher.setSubLedgerCategory("ACC");
+                voucher.setAccountCategory("BANK");
+                voucher.setFinancialInstrumentCategory("MACC");
+                voucher.setCurrencyIso(voucherBooking.getCurrencyIso());
+                voucher.setAmount(voucherBooking.getAmountBaseCurrency());
+                voucher.setAmountCategory("BOOKING");
+                PostingMap postingMap = journalPostingRuleService.evalRule(voucher);
+                journalPosting.setBookingText(postingMap.getCreditLedgerAccount());
+                debitLedgerAccount = ledgerAccountService.findByKeyAndLegalEntityId("2.03.02.01",legalEntityId);
+                creditLedgerAccount = ledgerAccountService.findByKeyAndLegalEntityId("5.06.02.02.01",legalEntityId);
+            } else {
+                journalPosting.setBookingText( voucherBooking.getBookingText() );
+                debitLedgerAccount = ledgerAccountService.findByKeyAndLegalEntityId("2.03.02.01",legalEntityId);
+                creditLedgerAccount = ledgerAccountService.findByKeyAndLegalEntityId("5.06.02.02.01",legalEntityId);
+            }
 
             journalPosting.setDebitAccount( debitLedgerAccount );
             journalPosting.setCreditAccount( creditLedgerAccount );
@@ -177,7 +194,6 @@ public class JournalPostingServiceImpl implements JournalPostingService {
             journalPosting.setAmount( voucherBooking.getAmountBaseCurrency() );
             journalPosting.setCurrencyIso( voucherBooking.getCurrencyIso() );
             journalPosting.setAmountCurrency( voucherBooking.getAmount() );
-            journalPosting.setBookingText( voucherBooking.getBookingText() );
             journalPosting.setGlobalSequenceNumber( voucherBooking.getGlobalSequenceNumber() );
             journalPosting.setLegalEntityId( voucherBooking.getLegalEntityId() );
             journalPostingRepository.save(journalPosting);

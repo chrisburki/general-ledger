@@ -51,7 +51,8 @@ public interface JournalPostingService {
      * @param chartOfAccountsDTO DTO of the chart of account
      * @param dateType relevant date type
      * @param legalEntityId legal entity id
+     *
      * @return number of created entity
      */
-    Long generateFromVoucher(LocalDate refDate, ChartOfAccountsDTO chartOfAccountsDTO, BalanceDateType dateType, String legalEntityId);
+    Long generateFromVoucher(LocalDate refDate, ChartOfAccountsDTO chartOfAccountsDTO, BalanceDateType dateType, String legalEntityId, boolean useRule);
 }
