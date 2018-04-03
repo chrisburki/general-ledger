@@ -1,11 +1,12 @@
 version: '2'
 services:
     ledger-app:
-        image: ledger
+        image: chrisburki/ledger
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - SPRING_DATASOURCE_URL=jdbc:postgresql://ledger-postgresql:5432/ledger
             - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+            - APPLICATION_VOUCHER_POSTING_URL=http://172.31.44.192:8080/ledger-posting
         ports:
             - 80:8080
         links:
